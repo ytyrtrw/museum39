@@ -7,17 +7,13 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" sizes="16x16" href="icon.png">
 </head>
-<body class="dark-theme"> <!-- Темная тема по умолчанию -->
-    <!-- ПРЕЛОАДЕР (ЗАГРУЗКА) -->
+<body class="dark-theme">
     <div class="preloader" id="preloader">
         <div class="preloader__container">
-            <!-- Колесо загрузки (спиннер) -->
             <div class="preloader__spinner"></div>
-            <!-- Пульсирующий текст -->
             <div class="preloader__text">Загрузка...</div>
         </div>
     </div>
-    <!-- ШАПКА -->
     <header class="header">
         <div class="container header__inner">
             <a href="#" class="logo" id="logoHome"><b>Музей</b><span><b>39</b></span></a>
@@ -26,7 +22,6 @@
                 <a href="#gallery" class="nav__link" data-page="gallery">Галерея</a>
                 <a href="#videos" class="nav__link" data-page="videos">Экскурсия</a>
             </nav>
-            <!-- ПЕРЕКЛЮЧАТЕЛЬ ТЕМЫ (Слайдер, а не кнопка) -->
             <div class="theme-switcher">
                 <label class="theme-toggle" for="themeCheckbox">
                     <input type="checkbox" id="themeCheckbox" class="theme-checkbox">
@@ -36,7 +31,6 @@
                     </span>
                 </label>
             </div>
-            <!-- ГАМБУРГЕР-КНОПКА (только на мобильных) -->
             <button class="hamburger" id="hamburgerBtn" aria-label="Открыть меню" aria-expanded="false">
                 <span class="hamburger__line"></span>
                 <span class="hamburger__line"></span>
@@ -45,7 +39,6 @@
         </div>
     </header>
 
-    <!-- МОБИЛЬНОЕ МЕНЮ-ШТОРКА -->
     <div class="mobile-nav" id="mobileNav" aria-hidden="true">
         <div class="mobile-nav__overlay" id="mobileNavOverlay"></div>
         <div class="mobile-nav__menu">
@@ -71,78 +64,63 @@
         </div>
     </div>
 
-    <!-- ДИНАМИЧЕСКАЯ ПАНЕЛЬ (РОТАТОР ФАКТОВ И ЦИТАТ) -->
     <div class="quote-rotator" id="quoteRotator">
         <div class="container quote-rotator__inner">
-            <!-- Слайд 1: Факт -->
             <div class="quote-slide active">
                 <div class="quote-label">Факт:</div>
                 <div class="quote-text">Музей сооружен силами родителей, учителей и учащихся школы</div>
             </div>
-            <!-- Слайд 2: Цитата -->
             <div class="quote-slide">
                 <div class="quote-label">Цитата:</div>
                 <div class="quote-text">«Мы должны знать свою историю, историю своей семьи, своей страны. Без этого невозможно двигаться вперёд».</div>
                 <div class="quote-author">В.В. Путин</div>
             </div>
-            <!-- Слайд 3: Факт -->
             <div class="quote-slide">
                 <div class="quote-label">Факт:</div>
                 <div class="quote-text">Музей  занимает помещение общей площадью 24 кв. м. и состоит из одного полуизолированного экспозиционного зала</div>
             </div>
-            <!-- Слайд 4: Цитата -->
             <div class="quote-slide">
                 <div class="quote-label">Факт:</div>
                 <div class="quote-text">Имя Героя Советского Союза Крейзра Я.Г. было присвоено нашей школе 27 августа 2020 года</div>
             </div>
-            <!-- Слайд 5: Факт -->
             <div class="quote-slide">
                 <div class="quote-label">Факт:</div>
                 <div class="quote-text">Яков Григорьевич Крейзер получил звание Героя Советского Союза спустя месяц после начала Великой Отечественной войны.</div>
             </div>
-            <!-- Слайд 6: Цитата -->
             <div class="quote-slide">
                 <div class="quote-label">Цитата:</div>
                 <div class="quote-text">«Если драка неизбежна - бить надо первым».</div>
                 <div class="quote-author">В.В. Путин</div>
             </div>
-                        <!-- Слайд 7: Факт о Крымской весне -->
-            <div class="quote-slide">
+                        <div class="quote-slide">
                 <div class="quote-label">Факт:</div>
                 <div class="quote-text">Большинство эксопзиций музея выполнены ручной работой.</div>
             </div>
             
-            <!-- Слайд 8: Цитата о войне -->
             <div class="quote-slide">
                 <div class="quote-label">Цитата:</div>
                 <div class="quote-text">«Кто с мечом к нам придет, тот от меча и погибнет».</div>
                 <div class="quote-author">Александр Невский</div>
             </div>
             
-            <!-- Слайд 9: Факт о школе -->
             <div class="quote-slide">
                 <div class="quote-label">Факт:</div>
                 <div class="quote-text">18 марта 2014 года Крым был возвращён в состав Российской Федерации.</div>
             </div>
             
-            <!-- Слайд 11: Факт о героях -->
             <div class="quote-slide">
                 <div class="quote-label">Факт:</div>
                 <div class="quote-text">В музее хранятся письма с фронта, написанные солдатами своим родным в 1941-1945 годах.</div>
             </div>
         </div>
     </div>
-    <!-- КНОПКА СВОРАЧИВАНИЯ ФАКТОВ -->
     <div class="quote-toggle" id="quoteToggle">
         <div class="quote-toggle__arrow">▲</div>
     </div>
 
-    <!-- ЭЛЕМЕНТ ВЕЧНОГО ОГНЯ (ДЛЯ АНИМАЦИИ) -->
     <div class="eternal-flame" id="eternalFlame"></div>
 
-    <!-- ОСНОВНОЙ КОНТЕНТ -->
     <main id="mainContent">
-        <!-- ГЛАВНАЯ -->
         <section id="homePage" class="page active">
             <div class="container">
                 <div class="hero">
@@ -151,7 +129,6 @@
                         Этот сайт создан для того, чтобы сохранить историю нашего школьного музея. Мы хотим, чтобы каждый ученик помнил подвиги предков и гордился героями современности. Здесь собраны экспонаты трёх выставок, фотографии и видеоэкскурсия.
                     </div>
 
-                    <!-- Карточки 3 выставок -->
                     <div class="exhibits-grid">
                         <div class="exhibit-card" data-tab-main="0" data-tab-sub="0">
                             <div class="exhibit-card__image" style="background-image: url('img/музей/2.jpg')"></div>
@@ -179,21 +156,17 @@
             </div>
         </section>
 
-        <!-- ГАЛЕРЕЯ -->
         <section id="galleryPage" class="page">
             <div class="container">
                 <h2><b>Экспозиции музея</b></h2>
                 
-                <!-- Основные табы (3 раздела) -->
                 <div class="gallery-tabs main-tabs" id="galleryMainTabs">
                     <button class="tab-btn active" data-main-tab="0">Великая Отечественная</button>
                     <button class="tab-btn" data-main-tab="1">Специальная военная операция</button>
                     <button class="tab-btn" data-main-tab="2">Крымская весна</button>
                 </div>
 
-                <!-- Панель ВОВ (с подтабами) -->
                 <div id="mainPanel0" class="main-panel active">
-                    <!-- ОПИСАНИЕ ВЕЛИКОЙ ОТЕЧЕСТВЕННОЙ ВОЙНЫ (ОБЩЕЕ) -->
                     <div class="event-description fade-in">
                         <h3 class="event-description__title">Великая Отечественная война</h3>
                         <div class="event-description__preview">
@@ -208,16 +181,11 @@
                         </button>
                     </div>
 
-                    <!-- ===== НОВЫЕ РАЗДЕЛЫ ДЛЯ ДИОРАМ ===== -->
-                    <!-- ВСТАВЬТЕ ЭТОТ КОД ПОСЛЕ ЗАКРЫВАЮЩЕГО ТЕГА </button> ОБЩЕГО ОПИСАНИЯ ВОВ 
-                        И ПЕРЕД ОТКРЫВАЮЩИМ ТЕГОМ <div class="sub-tabs"> -->
-                    <!-- РАЗДЕЛ 1: Контрнаступление под Москвой -->
                     <div class="battle-section" style="margin-bottom: 40px;">
                         <h3 class="event-description__title" style="font-size: 1.8rem;">Контрнаступление советских войск под Москвой</h3>
                         <div class="gallery-slider" id="slider6">
                             <div class="slider-container">
                                 <div class="slider-track" id="slideTrack6">
-                                    <!-- Слайд 1 -->
                                     <div class="slider-item active-caption">
                                         <img src="img/музей/вов/под мск/контрнаступление под москвой.jpg" class="slider-image" loading="lazy">
                                         <div class="slider-overlay">
@@ -226,7 +194,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- Слайд 2 -->
                                     <div class="slider-item">
                                         <img src="img/музей/вов/под мск/танк.jpg" class="slider-image" loading="lazy">
                                         <div class="slider-overlay">
@@ -236,7 +203,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- Слайд 3 -->
                                     <div class="slider-item">
                                         <img src="img/музей/вов/под мск/бойцы.jpg" class="slider-image" loading="lazy">
                                         <div class="slider-overlay">
@@ -255,13 +221,11 @@
                         </div>
                     </div>
 
-                    <!-- РАЗДЕЛ 2: Непокоренный Сталинград -->
                     <div class="battle-section" style="margin-bottom: 40px;">
                         <h3 class="event-description__title" style="font-size: 1.8rem;">Непокоренный Сталинград</h3>
                         <div class="gallery-slider" id="slider7">
                             <div class="slider-container">
                                 <div class="slider-track" id="slideTrack7">
-                                    <!-- Слайд 1 -->
                                     <div class="slider-item active-caption">
                                         <img src="img/музей/вов/сталинград/сталинград.jpg" class="slider-image" loading="lazy">
                                         <div class="slider-overlay">
@@ -270,7 +234,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- Слайд 2 -->
                                     <div class="slider-item">
                                         <img src="img/музей/вов/сталинград/2.jpg" class="slider-image" loading="lazy">
                                         <div class="slider-overlay">
@@ -280,7 +243,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- Слайд 3 -->
                                     <div class="slider-item">
                                         <img src="img/музей/вов/сталинград/1.jpg" class="slider-image" loading="lazy">
                                         <div class="slider-overlay">
@@ -299,13 +261,11 @@
                         </div>
                     </div>
 
-                    <!-- РАЗДЕЛ 3: Штурм Сапун-горы -->
                     <div class="battle-section" style="margin-bottom: 40px;">
                         <h3 class="event-description__title" style="font-size: 1.8rem;">Штурм Сапун-горы</h3>
                         <div class="gallery-slider" id="slider8">
                             <div class="slider-container">
                                 <div class="slider-track" id="slideTrack8">
-                                    <!-- Слайд 1 -->
                                     <div class="slider-item active-caption">
                                         <img src="img/музей/вов/сапун гора/сапун-гора.jpg" class="slider-image" loading="lazy">
                                         <div class="slider-overlay">
@@ -315,7 +275,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- Слайд 2 -->
                                     <div class="slider-item">
                                         <img src="img/музей/вов/сапун гора/брустверы.jpg" class="slider-image" loading="lazy">
                                         <div class="slider-overlay">
@@ -325,7 +284,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- Слайд 3 -->
                                     <div class="slider-item">
                                         <img src="img/музей/вов/сапун гора/осколки.jpg" class="slider-image" loading="lazy">
                                         <div class="slider-overlay">
@@ -343,14 +301,12 @@
                             </div>
                         </div>
                     </div>                    
-                    <!-- Подтабы для ВОВ -->
                     <div class="sub-tabs">
                         <button class="sub-tab-btn active" data-sub-tab="0">Яков Крейзер</button>
                         <button class="sub-tab-btn" data-sub-tab="1">Путь 51-й армии</button>
                         <button class="sub-tab-btn" data-sub-tab="2">Крым в годы ВОВ</button>
                     </div>
 
-                    <!-- Подпанель: Яков Крейзер -->
                     <div id="wowSubPanel0" class="sub-panel active">
                         <div class="event-description fade-in">
                             <h3 class="event-description__title">Яков Григорьевич Крейзер</h3>
@@ -369,7 +325,6 @@
                         <div class="gallery-slider" id="slider1">
                             <div class="slider-container">
                                 <div class="slider-track" id="slideTrack1">
-                                    <!-- 5 слайдов Яков Крейзер -->
                                     <div class="slider-item active-caption">
                                         <img src="img/музей/Крейзер/крейзер.jpeg" alt="Яков Крейзер" class="slider-image" loading="lazy">
                                         <div class="slider-overlay">
@@ -390,7 +345,6 @@
                                                 <h3><b>Экспозиция «Я.Г. Крейзер-имя в истории Победы»</b></h3>
                                             </div>
                                         </div>
-                                        <!-- ВСПЛЫВАЮЩАЯ ПОДСКАЗКА -->
                                         <div class="scroll-hint">↓ листай ↓</div>
                                     </div>
                                     <div class="slider-item">
@@ -437,7 +391,6 @@
                         </div>
                     </div>
 
-                    <!-- Подпанель: Путь 51-й армии -->
                     <div id="wowSubPanel1" class="sub-panel">
                         <div class="event-description fade-in">
                             <h3 class="event-description__title">51-я армия: Боевой путь</h3>
@@ -456,7 +409,6 @@
                         <div class="gallery-slider" id="slider4">
                             <div class="slider-container">
                                 <div class="slider-track" id="slideTrack4">
-                                    <!-- 5 слайдов Путь 51-й армии -->
                                     <div class="slider-item active-caption">
                                         <img src="img/музей/51 армия/минометчики.jpg" class="slider-image" loading="lazy">
                                         <div class="slider-overlay">
@@ -465,7 +417,6 @@
                                             </div>
                                         </div>
                                     </div>
-                <!-- 2 слайд: Оборона Перекопа (с вертикальной прокруткой) -->
                 <div class="slider-item">
                     <div class="vertical-image-container">
                         <div class="vertical-image-wrapper">
@@ -478,10 +429,8 @@
                             <p>Сформированной 14 августа 1941 года из крымчан. Основу армии составили жители Симферополя.</p>
                         </div>
                     </div>
-                    <!-- ВСПЛЫВАЮЩАЯ ПОДСКАЗКА -->
                     <div class="scroll-hint">↓ листай ↓</div>
                 </div>
-                                    <!-- 3 слайд: Газета (с вертикальной прокруткой) -->
                 <div class="slider-item">
                     <div class="vertical-image-container">
                         <div class="vertical-image-wrapper">
@@ -494,7 +443,6 @@
                             <p>Копия ежедневной газеты 51-й армии «Сын Отечества» от 15 мая 1944 г.</p>
                         </div>
                     </div>
-                    <!-- ВСПЛЫВАЮЩАЯ ПОДСКАЗКА -->
                     <div class="scroll-hint">↓ листай ↓</div>
                 </div>
                                     <div class="slider-item">
@@ -520,7 +468,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- ВСПЛЫВАЮЩАЯ ПОДСКАЗКА -->
                                     <div class="scroll-hint">↓ листай ↓</div>
                                 </div>
                                 </div>
@@ -532,7 +479,6 @@
                         </div>
                     </div>
 
-                    <!-- Подпанель: Крым в годы ВОВ -->
                     <div id="wowSubPanel2" class="sub-panel">
                         <div class="event-description fade-in">
                             <h3 class="event-description__title">Крым в годы Великой Отечественной</h3>
@@ -551,7 +497,6 @@
                         <div class="gallery-slider" id="slider5">
                             <div class="slider-container">
                                 <div class="slider-track" id="slideTrack5">
-                                    <!-- 5 слайдов Крым в годы ВОВ -->
                                     <div class="slider-item active-caption">
                                         <img src="img/музей/крым вов/памятник кораблям.jpg" class="slider-image" loading="lazy">
                                         <div class="slider-overlay">
@@ -582,7 +527,6 @@
                                                 <p>Витрина «Наш город в годы великих испытаний» раскрывает темы первых дней войны, мобилизации, обороны Крыма, ужасов фашистской оккупации и борьбы с ней.</p>
                                             </div>
                                         </div>
-                                        <!-- ВСПЛЫВАЮЩАЯ ПОДСКАЗКА -->
                                         <div class="scroll-hint">↓ листай ↓</div>
                                     </div>
                                     <div class="slider-item" id="slide4_crimea">
@@ -597,7 +541,6 @@
                                                 <p>Копия плаката «Победа будет за нами!» Н. Самокиша, созданного в 1941 году в Симферополе и ставшего одним из первых агитационных плакатов Великой Отечественной войны.</p>
                                             </div>
                                         </div>
-                                        <!-- ВСПЛЫВАЮЩАЯ ПОДСКАЗКА -->
                                         <div class="scroll-hint">↓ листай ↓</div>
                                     </div>
                                 </div>
@@ -610,9 +553,7 @@
                     </div>
                 </div>
 
-                <!-- Панель СВО (с подтабами) -->
                 <div id="mainPanel1" class="main-panel">
-                    <!-- ОПИСАНИЕ СПЕЦИАЛЬНОЙ ВОЕННОЙ ОПЕРАЦИИ -->
                     <div class="event-description fade-in">
                         <h3 class="event-description__title">Специальная военная операция</h3>
                         <div class="event-description__preview">
@@ -775,9 +716,7 @@
                     </div>
                 </div>
 
-                <!-- Панель Крымская весна -->
                 <div id="mainPanel2" class="main-panel">
-                    <!-- ОПИСАНИЕ КРЫМСКОЙ ВЕСНЫ -->
                     <div class="event-description fade-in">
                         <h3 class="event-description__title">Крымская весна</h3>
                         <div class="event-description__preview">
@@ -816,7 +755,6 @@
                                                 <h3><b>Плакат "Хроники Крымской весны"</b></h3>
                                             </div>
                                         </div>
-                                        <!-- ВСПЛЫВАЮЩАЯ ПОДСКАЗКА -->
                                         <div class="scroll-hint">↓ листай ↓</div>
                                     </div>
                                 <div class="slider-item">
@@ -848,9 +786,7 @@
             </div>
         </section>
 
-        <!-- ВИДЕО-ОТЗЫВЫ (6 ячеек) -->
-                <!-- ВИДЕОЭКСКУРСИЯ -->
-        <section id="videosPage" class="page">
+                <section id="videosPage" class="page">
             <div class="container">
                 <h2><b>Видеоэкскурсия по музею</b></h2>
                 <div class="video-single" id="videoContainer">
@@ -867,19 +803,14 @@
                 </div>
             </div>
         </section>
-        <!-- КОНТАКТЫ -->
     </main>
 
-    <!-- ПОДВАЛ -->
     <footer class="footer">
         <div class="container">
             <p>Музей Школы-гимназии №39 им. Крейзера Я.Г.</p>
         </div>
     </footer>
 
-    <!-- МОДАЛЬНОЕ ОКНО ДЛЯ ВИДЕО -->
-
-        <!-- МОДАЛЬНОЕ ОКНО ДЛЯ ГЕРОЯ -->
     <div class="hero-modal" id="heroModal">
         <div class="hero-modal__overlay"></div>
         <div class="hero-modal__content">
@@ -906,7 +837,6 @@
     <a href="https://t.me/ytyrtrw" target="_blank" class="support-button" id="supportButton">
         <span class="support-icon">🤝</span>
     </a>
-    <!-- ПОДКЛЮЧЕНИЕ JAVASCRIPT -->
     
     <script src="script.js"></script>
 </body>

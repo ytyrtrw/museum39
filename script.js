@@ -1,32 +1,26 @@
-// ===== СОСТОЯНИЕ СЛАЙДЕРОВ =====
 let currentSlides = {
-    1: 0, // ВОВ - Яков Крейзер
-    2: 0, // СВО - Галерея
-    3: 0, // Крымская весна
-    4: 0, // ВОВ - Путь 51-й армии
-    5: 0, // ВОВ - Крым в годы ВОВ
-    6: 0, // ВОВ - Контрнаступление под Москвой (НОВЫЙ)
-    7: 0, // ВОВ - Непокоренный Сталинград (НОВЫЙ)
-    8: 0  // ВОВ - Штурм Сапун-горы (НОВЫЙ)
+    1: 0,
+    2: 0,
+    3: 0,
+    4: 0,
+    5: 0,
+    6: 0,
+    7: 0,
+    8: 0
 };
 
-// ===== БЫСТРЫЙ ПРЕЛОАДЕР (минимальная задержка) =====
 (function() {
-    // Самовызывающаяся функция для немедленного выполнения
     const preloader = document.getElementById('preloader');
     if (!preloader) return;
     
-    // Проверяем, была ли уже загрузка
     if (sessionStorage.getItem('pageLoaded')) {
         preloader.classList.add('hide');
         document.body.style.overflow = '';
         return;
     }
     
-    // Блокируем прокрутку
     document.body.style.overflow = 'hidden';
     
-    // Функция скрытия прелоадера
     function hidePreloader() {
         preloader.classList.add('hide');
         document.body.style.overflow = '';
@@ -39,36 +33,27 @@ let currentSlides = {
         }, 800);
     }
     
-    // Если страница уже загружена
     if (document.readyState === 'complete') {
         setTimeout(hidePreloader, 300);
     } else {
-        // Ждем загрузки
         window.addEventListener('load', function() {
             setTimeout(hidePreloader, 300);
         });
     }
 })();
 
-// Запускаем прелоадер при загрузке
 document.addEventListener('DOMContentLoaded', function() {
     if (typeof initPreloader === 'function') {
         initPreloader();
     }
 });
 
-// ===== ПРИНУДИТЕЛЬНЫЙ СКРОЛЛ НАВЕРХ ПРИ ОБНОВЛЕНИИ =====
-// Запрещаем браузеру пытаться восстановить старую позицию скролла
 if ('scrollRestoration' in history) {
     history.scrollRestoration = 'manual'; 
 }
 
-// Прокручиваем наверх моментально в ту же миллисекунду, как браузер читает этот код
 window.scrollTo(0, 0);
-// =======================================================
 
-
-// ===== ПЕРЕКЛЮЧЕНИЕ ТЕМЫ =====
 function initTheme() {
     const themeCheckbox = document.getElementById('themeCheckbox');
     const body = document.body;
@@ -97,7 +82,6 @@ function initTheme() {
     }
 }
 
-// ===== АНИМАЦИЯ ВЕЧНОГО ОГНЯ ПРИ ПРОКРУТКЕ =====
 function initEternalFlame() {
     const flame = document.getElementById('eternalFlame');
     const mainContent = document.getElementById('mainContent');
@@ -124,7 +108,6 @@ function initEternalFlame() {
     checkScroll();
 }
 
-// ===== СВОРАЧИВАНИЕ БЛОКА ФАКТОВ =====
 function initQuoteToggler() {
     const quoteRotator = document.getElementById('quoteRotator');
     const quoteToggle = document.getElementById('quoteToggle');
@@ -148,7 +131,6 @@ function initQuoteToggler() {
     });
 }
 
-// ===== КНОПКИ "РАЗВЕРНУТЬ/СВЕРНУТЬ" ДЛЯ ОПИСАНИЙ =====
 function initDescriptionButtons() {
     const descriptionToggles = document.querySelectorAll('.event-description__toggle');
     
@@ -168,10 +150,8 @@ function initDescriptionButtons() {
     });
 }
 
-// ===== МОДАЛЬНОЕ ОКНО ДЛЯ ГЕРОЕВ =====
 function initHeroModal() {
     const heroModal = document.getElementById('heroModal');
-    // Находим именно тот блок, который прокручивается (с контентом)
     const heroModalContent = document.querySelector('.hero-modal__content');
     
     if (!heroModal || !heroModalContent) return;
@@ -186,10 +166,8 @@ function initHeroModal() {
     
     document.querySelectorAll('.hero-card').forEach(card => {
         card.addEventListener('click', function(e) {
-            // Сохраняем позицию страницы, чтобы она не прыгала под модалкой
             scrollPosition = window.scrollY;
             
-            // 1. Наполняем данными
             const name = this.dataset.heroName;
             const years = this.dataset.heroYears;
             const description = this.dataset.heroDescription;
@@ -203,14 +181,11 @@ function initHeroModal() {
                 heroModalImage.alt = `Фото ${name || 'героя'}`;
             }
             
-            // 2. Делаем блок видимым
             document.body.classList.add('modal-open');
             heroModal.style.display = 'block';
             
-            // 3. ИСПРАВЛЕНИЕ: Сбрасываем скролл контента ТОЛЬКО ПОСЛЕ display: block
             heroModalContent.scrollTop = 0; 
             
-            // 4. Запускаем анимацию появления
             setTimeout(() => {
                 heroModal.classList.add('active');
             }, 10);
@@ -221,7 +196,6 @@ function initHeroModal() {
         heroModal.classList.remove('active');
         document.body.classList.remove('modal-open');
         
-        // Возвращаем основной скролл страницы
         window.scrollTo(0, scrollPosition);
         
         setTimeout(() => {
@@ -246,14 +220,11 @@ function initHeroModal() {
     });
 }
 
-// ===== ВИДЕО МОДАЛКА ДЛЯ RUTUBE =====
-// ===== ВИДЕО ВСТРОЕННОЕ (Rutube) =====
 function initInlineVideo() {
     const videoCard = document.querySelector('.video-single .video-card');
     if (!videoCard) return;
 
     videoCard.addEventListener('click', function() {
-        // Если видео уже запущено, ничего не делаем
         if (this.classList.contains('is-playing')) return;
         
         let videoId = this.dataset.video;
@@ -265,15 +236,12 @@ function initInlineVideo() {
         }
 
         const preview = this.querySelector('.video-card__preview');
-        // Заменяем картинку на iframe с автовоспроизведением
         preview.innerHTML = `<iframe id="rutubeIframeInline" width="100%" height="100%" src="https://rutube.ru/play/embed/${videoId}?p=1&skinColor=e6830f" frameborder="0" allow="clipboard-write; autoplay" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>`;
         
         this.classList.add('is-playing');
     });
 }
 
-// ===== ПОЛНОЭКРАННЫЙ РЕЖИМ СЛАЙДОВ (ТОЛЬКО ДЛЯ МОБИЛЬНЫХ) =====
-// ===== ПОЛНОЭКРАННЫЙ РЕЖИМ СЛАЙДОВ (ТОЛЬКО ДЛЯ МОБИЛЬНЫХ) =====
 function initMobileFullscreen() {
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
     if (!isMobile) return;
@@ -283,10 +251,8 @@ function initMobileFullscreen() {
     let pendingSlider = null;
     let hideTimeout = null;
 
-    // Функция для плавного скрытия подсказки
     function hidePrompt() {
         if (!prompt) return;
-        // Очищаем предыдущий таймаут, если есть
         if (hideTimeout) clearTimeout(hideTimeout);
         prompt.classList.add('hiding');
         hideTimeout = setTimeout(() => {
@@ -296,24 +262,19 @@ function initMobileFullscreen() {
         }, 400);
     }
 
-    // Функция для плавного показа подсказки
     function showPrompt() {
         if (!prompt) return;
-        // Очищаем предыдущий таймаут, если есть
         if (hideTimeout) {
             clearTimeout(hideTimeout);
             hideTimeout = null;
         }
-        // Сначала делаем элемент видимым (но с opacity 0)
         prompt.classList.remove('hiding');
         prompt.classList.add('active');
-        // Небольшая задержка для запуска CSS-перехода
         setTimeout(() => {
             if (prompt.classList.contains('active')) {
                 prompt.classList.add('showing');
             }
         }, 10);
-        // Убираем класс showing после завершения анимации
         setTimeout(() => {
             if (prompt.classList.contains('active')) {
                 prompt.classList.remove('showing');
@@ -321,7 +282,6 @@ function initMobileFullscreen() {
         }, 400);
     }
 
-    // Функция для выхода из полноэкранного режима
     function exitFullscreen() {
         if (document.fullscreenElement || document.webkitFullscreenElement) {
             if (document.exitFullscreen) {
@@ -335,7 +295,6 @@ function initMobileFullscreen() {
         pendingSlider = null;
     }
 
-    // Функция входа в реальный Fullscreen
     function enterRealFullscreen(el) {
         if (el.requestFullscreen) {
             el.requestFullscreen();
@@ -346,7 +305,6 @@ function initMobileFullscreen() {
         hidePrompt();
     }
 
-    // Обработчик кнопки "Отмена"
     if (cancelBtn) {
         cancelBtn.addEventListener('click', (e) => {
             e.preventDefault();
@@ -356,7 +314,6 @@ function initMobileFullscreen() {
         });
     }
 
-    // Делегирование клика (обрабатываем клик по лупе)
     document.body.addEventListener('click', (e) => {
         const btn = e.target.closest('.mobile-fullscreen-btn');
         if (!btn) return;
@@ -364,41 +321,34 @@ function initMobileFullscreen() {
         const slider = btn.closest('.gallery-slider');
         if (!slider) return;
 
-        // Если уже в полноэкранном режиме - выходим
         if (document.fullscreenElement || document.webkitFullscreenElement) {
             exitFullscreen();
             return;
         }
 
-        // Проверяем ориентацию
         const isLandscape = window.innerWidth > window.innerHeight;
 
         if (isLandscape) {
             enterRealFullscreen(slider);
         } else {
-            // Телефон вертикально - показываем подсказку
             pendingSlider = slider;
             showPrompt();
         }
     });
 
-    // Слушатель поворота экрана
     window.addEventListener('resize', () => {
         const isLandscape = window.innerWidth > window.innerHeight;
         
-        // Если телефон перевернули в горизонталь и есть ожидающий слайдер
         if (isLandscape && pendingSlider) {
             enterRealFullscreen(pendingSlider);
             pendingSlider = null;
         }
         
-        // Если телефон перевернули в вертикаль, а мы в полноэкранном режиме - выходим
         if (!isLandscape && (document.fullscreenElement || document.webkitFullscreenElement)) {
             exitFullscreen();
         }
     });
 
-    // Очистка при выходе из фулскрина
     document.addEventListener("fullscreenchange", () => {
         if (!document.fullscreenElement && !document.webkitFullscreenElement) {
             document.querySelectorAll('.gallery-slider').forEach(s => s.classList.remove('is-fullscreen'));
@@ -407,7 +357,6 @@ function initMobileFullscreen() {
         }
     });
 
-    // Добавление кнопок
     function injectButtons() {
         document.querySelectorAll('.gallery-slider').forEach(slider => {
             if (!slider.querySelector('.mobile-fullscreen-btn')) {
@@ -420,12 +369,10 @@ function initMobileFullscreen() {
     }
     injectButtons();
     
-    // Динамическое добавление, если слайдеры подгружаются позже
     const observer = new MutationObserver(() => injectButtons());
     observer.observe(document.body, { childList: true, subtree: true });
 }
 
-// ===== ВЕРТИКАЛЬНАЯ ПРОКРУТКА (СКРОЛЛБАР ПОЛНОСТЬЮ СКРЫТ) =====
 function initVerticalScrollbar() {
     const containers = document.querySelectorAll('.vertical-image-container');
     
@@ -470,7 +417,6 @@ function initVerticalScrollbar() {
     });
 }
 
-// ===== УПРАВЛЕНИЕ ПОДСКАЗКОЙ "ЛИСТАЙ" =====
 function initScrollHint() {
     window.updateHintForSecondSlide = function() {
         const sliderTrack = document.getElementById('slideTrack1');
@@ -504,11 +450,9 @@ function initScrollHint() {
         setupHintLogic(fourthSlide);
     }
 
-    // ===== НОВАЯ ФУНКЦИЯ ДЛЯ КРЫМСКОЙ ВЕСНЫ (2-Й СЛАЙД) =====
     window.updateHintForCrimeaSpringSecondSlide = function() {
         const sliderTrack = document.getElementById('slideTrack3');
         if (!sliderTrack) return;
-        // Индекс 1 - это второй слайд в слайдере Крымской весны
         const secondSlide = sliderTrack.children[1];
         if (!secondSlide) return;
         setupHintLogic(secondSlide);
@@ -580,7 +524,6 @@ function initScrollHint() {
         if(window.updateHintForFourthSlide) window.updateHintForFourthSlide();
         if(window.updateHintForSMOSecondSlide) window.updateHintForSMOSecondSlide();
         if(window.updateHintForSMOFourthSlide) window.updateHintForSMOFourthSlide();
-        // НОВЫЙ ВЫЗОВ для Крымской весны
         if(window.updateHintForCrimeaSpringSecondSlide) window.updateHintForCrimeaSpringSecondSlide();
     }, 500);
     
@@ -599,7 +542,6 @@ function initScrollHint() {
                 if(window.updateHintForSMOFourthSlide) window.updateHintForSMOFourthSlide();
             }, 300);
         }
-        // НОВЫЙ блок для Крымской весны
         if (sliderId === 3) {
             setTimeout(() => {
                 if(window.updateHintForCrimeaSpringSecondSlide) window.updateHintForCrimeaSpringSecondSlide();
@@ -622,7 +564,6 @@ function initScrollHint() {
                 if(window.updateHintForSMOFourthSlide) window.updateHintForSMOFourthSlide();
             }, 300);
         }
-        // НОВЫЙ блок для Крымской весны
         if (sliderId === 3) {
             setTimeout(() => {
                 if(window.updateHintForCrimeaSpringSecondSlide) window.updateHintForCrimeaSpringSecondSlide();
@@ -631,7 +572,6 @@ function initScrollHint() {
     };
 }
 
-// ===== УПРАВЛЕНИЕ ТЕКСТОМ ПРИ ПРОКРУТКЕ =====
 function initScrollText() {
     const textConfig = {
         slide4: [
@@ -744,19 +684,16 @@ function initScrollText() {
     }
 }
 
-// ===== ГАМБУРГЕР-МЕНЮ =====
 function initHamburgerMenu() {
     const hamburgerBtn   = document.getElementById('hamburgerBtn');
     const mobileNav      = document.getElementById('mobileNav');
     const mobileNavClose = document.getElementById('mobileNavClose');
     const mobileOverlay  = document.getElementById('mobileNavOverlay');
     const mobileLinks    = document.querySelectorAll('.mobile-nav__links a');
-    // Дополнительный чекбокс темы внутри шторки
     const mobileThemeChk = document.querySelector('.theme-checkbox--mobile');
 
     if (!hamburgerBtn || !mobileNav) return;
 
-    /* Синхронизация мобильного переключателя темы с основным */
     function syncMobileTheme() {
         const mainChk = document.getElementById('themeCheckbox');
         if (mobileThemeChk && mainChk) {
@@ -796,24 +733,20 @@ function initHamburgerMenu() {
     if (mobileNavClose)  mobileNavClose.addEventListener('click', closeMenu);
     if (mobileOverlay)   mobileOverlay.addEventListener('click',  closeMenu);
 
-    /* Закрытие по Escape */
     document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && mobileNav.classList.contains('open')) closeMenu();
     });
 
-    /* Клик по ссылке в шторке → переключаем страницу и закрываем меню */
     mobileLinks.forEach(function (link) {
         link.addEventListener('click', function (e) {
             e.preventDefault();
             const pageId = this.dataset.page;
 
-            /* Обновляем активный класс */
             mobileLinks.forEach(l => l.classList.remove('active'));
             this.classList.add('active');
 
             closeMenu();
 
-            /* Небольшая задержка, чтобы анимация закрытия успела сыграть */
             setTimeout(function () {
                 const desktopLink = document.querySelector('.nav__link[data-page="' + pageId + '"]');
                 if (desktopLink) desktopLink.click();
@@ -821,7 +754,6 @@ function initHamburgerMenu() {
         });
     });
 
-    /* Синхронизируем активный пункт в мобильном меню при клике по десктопному nav */
     document.querySelectorAll('.nav__link').forEach(function (link) {
         link.addEventListener('click', function () {
             const pageId = this.dataset.page;
@@ -832,7 +764,6 @@ function initHamburgerMenu() {
     });
 }
 
-// ===== ОСНОВНАЯ ИНИЦИАЛИЗАЦИЯ =====
 document.addEventListener('DOMContentLoaded', function() {
     initTheme();
     initEternalFlame();
@@ -844,7 +775,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initScrollText();
     initHamburgerMenu();
     initSwipeForSliders();
-    initInlineVideo();     // <-- ДОБАВИТЬ
+    initInlineVideo();
     initMobileFullscreen();
     
     const navLinks = document.querySelectorAll('.nav__link');
@@ -873,8 +804,6 @@ document.addEventListener('DOMContentLoaded', function() {
             el.classList.add('fade-in');
         });
 
-        // ====== ДОБАВИТЬ ЭТОТ КОД ======
-        // Автоматическая пауза видео при переключении на любую другую вкладку
         if (pageId !== 'videos') {
             const rutubePlayer = document.getElementById('rutubeIframeInline');
             if (rutubePlayer && rutubePlayer.contentWindow) {
@@ -884,7 +813,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 }), '*');
             }
         }
-        // ================================
     }
 
     navLinks.forEach(link => {
@@ -907,7 +835,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if (pages[hash]) switchToPage(hash);
     }
 
-    // ===== РОТАТОР ФАКТОВ/ЦИТАТ =====
     const quotes = document.querySelectorAll('.quote-slide');
     let currentQuote = 0;
 
@@ -923,7 +850,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (quotes.length) setInterval(showNextQuote, 10000);
 
-    // ===== ВОССТАНОВЛЕНИЕ СОХРАНЕННЫХ ТАБОВ =====
     setTimeout(() => {
         const savedMainTab = localStorage.getItem('activeMainTab');
         if (savedMainTab) {
@@ -932,7 +858,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }, 100);
 
-    // ===== ПЕРЕКЛЮЧЕНИЕ ОСНОВНЫХ ТАБОВ =====
     const mainTabBtns = document.querySelectorAll('[data-main-tab]');
     const mainPanels = {
         0: document.getElementById('mainPanel0'),
@@ -1011,7 +936,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // ===== ПЕРЕКЛЮЧЕНИЕ ПОДТАБОВ =====
     const subTabBtns = document.querySelectorAll('.sub-tab-btn');
     const subPanels = { 0: document.getElementById('subPanel0'), 1: document.getElementById('subPanel1') };
     const wowSubPanels = { 0: document.getElementById('wowSubPanel0'), 1: document.getElementById('wowSubPanel1'), 2: document.getElementById('wowSubPanel2') };
@@ -1044,7 +968,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // ===== КЛИК ПО КАРТОЧКАМ =====
     const exhibitCards = document.querySelectorAll('.exhibit-card');
     exhibitCards.forEach(card => {
         card.addEventListener('click', function() {
@@ -1068,7 +991,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // ===== СЛАЙДЕРЫ =====
     window.slidePrev = function(sliderId) {
         const track = document.getElementById(`slideTrack${sliderId}`);
         if (!track) return;
@@ -1103,14 +1025,12 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.event-description').forEach(el => el.classList.add('fade-in'));
 });
 
-// ===== ДОПОЛНИТЕЛЬНАЯ ИНИЦИАЛИЗАЦИЯ ПОСЛЕ ПОЛНОЙ ЗАГРУЗКИ =====
 window.addEventListener('load', function() {
     initVerticalScrollbar();
     initScrollHint();
     initScrollText();
 });
 
-// ===== УПРАВЛЕНИЕ ВИДИМОСТЬЮ КНОПОК =====
 function initSliderButtonsVisibility() {
     const slidesFullyScrolled = { slide2: false, slide5: false, smoSlide2: false, smoSlide4: false };
     
@@ -1217,7 +1137,6 @@ function initSliderButtonsVisibility() {
 document.addEventListener('DOMContentLoaded', () => setTimeout(initSliderButtonsVisibility, 1000));
 window.addEventListener('load', () => setTimeout(initSliderButtonsVisibility, 500));
 
-// ===== УПРАВЛЕНИЕ ПРОКРУТКОЙ СТРАНИЦЫ =====
 function initPageScrollBehavior() {
     function hasVerticalScroll(element) {
         if (!element) return false;
@@ -1254,7 +1173,6 @@ function initPageScrollBehavior() {
 document.addEventListener('DOMContentLoaded', () => setTimeout(initPageScrollBehavior, 1500));
 window.addEventListener('load', () => setTimeout(initPageScrollBehavior, 1000));
 
-// ===== УПРАВЛЕНИЕ ПОДСКАЗКОЙ ДЛЯ 51-Й АРМИИ =====
 function initArmyScrollHint() {
     function updateHint(slideIndex) {
         const sliderTrack = document.getElementById('slideTrack4');
@@ -1345,7 +1263,6 @@ function initArmyButtonsVisibility() {
 document.addEventListener('DOMContentLoaded', () => { setTimeout(initArmyScrollHint, 1500); setTimeout(initArmyButtonsVisibility, 1600); });
 window.addEventListener('load', () => { setTimeout(initArmyScrollHint, 1000); setTimeout(initArmyButtonsVisibility, 1100); });
 
-// ===== УПРАВЛЕНИЕ ТЕКСТОМ И ПОДСКАЗКОЙ ДЛЯ 5 СЛАЙДА 51-Й АРМИИ =====
 function initArmyFifthSlideScrollText() {
     const config = {
         slide5_army: [
@@ -1391,7 +1308,6 @@ function initArmyFifthSlideHint() {
 document.addEventListener('DOMContentLoaded', () => { setTimeout(initArmyFifthSlideHint, 1600); setTimeout(initArmyFifthSlideScrollText, 1700); });
 window.addEventListener('load', () => { setTimeout(initArmyFifthSlideHint, 1100); setTimeout(initArmyFifthSlideScrollText, 1200); });
 
-// ===== КРЫМ В ГОДЫ ВОВ =====
 function setupCrimeaHint(slideIndex, slideId) {
     const track = document.getElementById('slideTrack5'); if(!track) return;
     const slide = track.children[slideIndex]; if(!slide) return;
@@ -1451,7 +1367,6 @@ function initCrimeaThirdSlideButtons() {
 document.addEventListener('DOMContentLoaded', () => { setTimeout(initCrimeaThirdSlideHint, 1500); setTimeout(initCrimeaThirdSlideButtons, 1600); setTimeout(initCrimeaFourthSlideHint, 1500); });
 window.addEventListener('load', () => { setTimeout(initCrimeaThirdSlideHint, 1000); setTimeout(initCrimeaThirdSlideButtons, 1100); setTimeout(initCrimeaFourthSlideHint, 1000); });
 
-// ===== ПАГИНАЦИЯ =====
 function initSliderPagination() {
     document.querySelectorAll('.gallery-slider').forEach(slider => { 
         const match = slider.id.match(/\d+/); if(!match) return; const id = parseInt(match[0]);
@@ -1469,7 +1384,6 @@ function initSliderPagination() {
                 const w = s.querySelector('.vertical-image-wrapper');
                 if(w) w.addEventListener('scroll', () => { const max = w.scrollHeight - w.clientHeight; b.style.height = max > 0 ? (w.scrollTop / max) * 100 + '%' : '0%'; });
                 
-                // ===== ИСПРАВЛЕНИЕ: Прямой вызов goToSlide (вся валидация теперь там) =====
                 p.addEventListener('click', (e) => {
                     e.stopPropagation();
                     goToSlide(id, idx);
@@ -1494,57 +1408,43 @@ window.goToSlide = function(id, targetIndex) {
     const slides = slider.querySelectorAll('.slider-item'); 
     const total = slides.length;
     
-    // Нормализуем индекс
     let target = targetIndex;
     if(target < 0) target = total - 1;
     if(target >= total) target = 0;
     
     const currentIdx = currentSlides[id] !== undefined ? currentSlides[id] : 0;
     
-    // Инициализация хранилища рекордов слайдера
     if (window.maxReachedSlide[id] === undefined) window.maxReachedSlide[id] = 0;
     let maxUnlocked = window.maxReachedSlide[id];
     
-    // ===== НОВАЯ ЛОГИКА БЛОКИРОВКИ =====
-    
-    // 1. Цикличный возврат с последнего слайда на первый
     if (currentIdx === total - 1 && target === 0) {
-        // Разрешено (прыгаем в начало)
     }
-    // 2. Движение назад или по УЖЕ открытым слайдам
     else if (target <= maxUnlocked) {
-        // Разрешено (можно кликать на любые пройденные точки)
     }
-    // 3. Открытие НОВОГО слайда (строго +1 шаг вперед)
     else if (target === maxUnlocked + 1) {
-        // Проверяем, долистан ли до конца текущий максимальный слайд
         if (!checkScrollFinished(id, maxUnlocked)) {
             const hint = track.children[maxUnlocked]?.querySelector('.scroll-hint');
             if(hint) { 
                 hint.style.color = '#ffb74d'; 
                 setTimeout(() => hint.style.color = 'white', 500); 
             }
-            return; // Блокируем, не дочитали
+            return;
         }
-        // Успешно открываем новый слайд
         window.maxReachedSlide[id] = target;
     } 
-    // 4. Попытка перепрыгнуть через закрытые слайды (например, с 1 на 3)
     else {
         const hint = track.children[currentIdx]?.querySelector('.scroll-hint');
         if(hint) { 
             hint.style.color = '#ffb74d'; 
             setTimeout(() => hint.style.color = 'white', 500); 
         }
-        return; // Блокируем перескок
+        return;
     }
     
-    // Если дошли до последнего, навсегда открываем все слайды
     if (target === total - 1) {
         window.maxReachedSlide[id] = total - 1;
     }
     
-    // ===== ВЫПОЛНЯЕМ ПЕРЕХОД =====
     track.style.transition = 'transform 0.5s ease';
     track.style.transform = `translateX(-${target * 100}%)`;
     currentSlides[id] = target;
@@ -1556,7 +1456,6 @@ window.goToSlide = function(id, targetIndex) {
     
     updatePagination(id);
     
-    // Синхронизируем интерфейс и подсказки
     setTimeout(() => {
         if(typeof window.syncSliderControls === 'function') window.syncSliderControls(id);
         if(id === 1) { 
@@ -1585,7 +1484,6 @@ document.addEventListener('DOMContentLoaded', () => setTimeout(initSliderPaginat
 const originalSwitchToPage = window.switchToPage;
 if(originalSwitchToPage) window.switchToPage = function(pageId) { originalSwitchToPage(pageId); setTimeout(() => { for(let i=1; i<=8; i++) if(currentSlides[i] !== undefined) updatePagination(i); }, 300); };
 
-// ===== БЛОКИРОВКА СКРОЛЛА ДЛЯ МОДАЛОК =====
 function initModalScrollLock() {
     const m = document.getElementById('heroModal'); if(!m) return;
     let pos = 0;
@@ -1599,7 +1497,6 @@ function initModalScrollLock() {
 }
 document.addEventListener('DOMContentLoaded', initModalScrollLock);
 
-// ===== АНИМАЦИЯ КАРТОЧЕК =====
 document.addEventListener('DOMContentLoaded', () => {
     const home = document.getElementById('homePage'), cards = document.querySelectorAll('.exhibit-card');
     function anim() { cards.forEach((c, i) => { c.classList.remove('fade-in-up'); void c.offsetWidth; c.style.animationDelay = `${i * 0.15}s`; c.classList.add('fade-in-up'); }); }
@@ -1608,7 +1505,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
 });
 
-// ===== ЗАМКИ ПАГИНАЦИИ =====
 window.maxReachedSlide = window.maxReachedSlide || {};
 function checkScrollFinished(id, idx) {
     const s = document.getElementById(`slider${id}`); if(!s) return true;
@@ -1619,9 +1515,7 @@ function checkScrollFinished(id, idx) {
     if(!w) return true;
     const container = slide.querySelector('.vertical-image-container');
     if (!container) return true;
-    // Если нет вертикальной прокрутки — считаем прочитанным
     if (w.scrollHeight <= container.offsetHeight + 10) return true;
-    // Проверяем, доскроллили ли до низа (с запасом 80px)
     return (w.scrollTop + w.clientHeight) >= (w.scrollHeight - 25);
 }
 window.syncSliderControls = function(id) {
@@ -1634,19 +1528,15 @@ window.syncSliderControls = function(id) {
     if (window.maxReachedSlide[id] === undefined) window.maxReachedSlide[id] = 0;
     let maxUnlocked = window.maxReachedSlide[id];
     
-    // Флаг: пройден ли слайдер целиком
     const isFullyUnlocked = maxUnlocked >= totalSlides - 1;
     
-    // ===== КНОПКА "ВПЕРЁД" =====
     const nBtn = s.querySelector('.next-btn') || s.querySelector('.slider-btn:last-child');
     if(nBtn) {
         let canGoNext = false;
         
         if (isFullyUnlocked) {
-            // Если все пройдено, вперед можно листать бесконечно по кругу (сброс на 1)
             canGoNext = true;
         } else {
-            // Иначе активна только если текущий слайд дочитан
             canGoNext = checkScrollFinished(id, cur);
         }
         
@@ -1661,11 +1551,8 @@ window.syncSliderControls = function(id) {
         }
     }
     
-    // ===== КНОПКА "НАЗАД" =====
     const pBtn = s.querySelector('.prev-btn') || s.querySelector('.slider-btn:first-child');
     if(pBtn) {
-        // ИСПРАВЛЕНИЕ: Кнопка назад скрыта на 1-м слайде ТОЛЬКО ЕСЛИ слайдер еще не пройден до конца.
-        // Используем !important, чтобы старые функции видимости (например, для СВО) не перебивали логику.
         if (cur === 0 && !isFullyUnlocked) {
             pBtn.style.setProperty('opacity', '0', 'important');
             pBtn.style.setProperty('pointer-events', 'none', 'important');
@@ -1677,29 +1564,22 @@ window.syncSliderControls = function(id) {
         }
     }
     
-    // ===== ПАГИНАЦИЯ =====
     const pag = s.querySelector('.slider-pagination');
     if(pag) {
         Array.from(pag.children).forEach((item, i) => {
             let isAccessible = false;
             
             if (isFullyUnlocked || i <= maxUnlocked) {
-                // Все пройденные (или вообще все, если слайдер завершен) слайды всегда кликабельны
                 isAccessible = true;
             } 
             else if (i === maxUnlocked + 1) {
-                // ИСПРАВЛЕНИЕ БАГА ПАГИНАЦИИ: Проверяем статус скролла ТОЛЬКО если 
-                // пользователь сейчас физически находится на последнем открытом слайде.
                 if (cur === maxUnlocked) {
                     isAccessible = checkScrollFinished(id, maxUnlocked);
                 } else {
-                    // Если он ушел назад на первый слайд, то скрытый слайд проверять нельзя 
-                    // (браузер выдаст высоту 0 и ложно разблокирует точку), поэтому жестко блокируем.
                     isAccessible = false;
                 }
             }
             
-            // Используем !important для гарантии применения стилей
             if (isAccessible) {
                 item.style.setProperty('opacity', '1', 'important');
                 item.style.setProperty('pointer-events', 'auto', 'important');
@@ -1722,45 +1602,34 @@ function initExtendedLogic() {
 }
 if(document.readyState === 'complete') initExtendedLogic(); else window.addEventListener('load', initExtendedLogic);
 
-
-// =========================================================
-// БЛОК ДОПОЛНЕНИЙ 3: АНИМАЦИЯ СЛАЙДЕРОВ ПРИ СКРОЛЛЕ
-// =========================================================
 function initSliderScrollAnimations() {
     const sliders = document.querySelectorAll('.gallery-slider');
     
-    // Настройка Intersection Observer
     const observerOptions = {
         root: null,
-        rootMargin: '0px 0px -20% 0px', // Срабатывает чуть раньше
-        threshold: 0.15 // 15% слайдера должно быть видно
+        rootMargin: '0px 0px -20% 0px',
+        threshold: 0.15
     };
 
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
-            // Проверяем, что элемент виден и не скрыт во вкладке (offsetParent !== null)
             if (entry.isIntersecting && entry.target.offsetParent !== null) {
                 const slider = entry.target;
                 
-                // Защита от повторной анимации
                 if (slider.classList.contains('scroll-anim-visible')) return;
                 
-                // 1. Плавно выкатываем слайдер
                 slider.classList.add('scroll-anim-visible');
                 
-                // 2. Через 600мс плавно показываем кнопки и пагинацию
                 setTimeout(() => {
                     slider.classList.remove('controls-hidden');
                     slider.classList.add('controls-visible');
                     
-                    // Синхронизируем доступность кнопок (чтобы не сломать твою логику блокировки)
                     const sliderIdMatch = slider.id.match(/\d+/);
                     if (sliderIdMatch && typeof window.syncSliderControls === 'function') {
                         window.syncSliderControls(parseInt(sliderIdMatch[0]));
                     }
                 }, 600); 
                 
-                // Убираем слежение - анимируем только 1 раз
                 observer.unobserve(slider);
             }
         });
@@ -1770,7 +1639,6 @@ function initSliderScrollAnimations() {
         slider.classList.add('controls-hidden');
         slider.classList.add('scroll-anim-init');
         
-        // Чередуем выезды (слева, справа, слева...)
         if (index % 2 === 0) {
             slider.classList.add('scroll-anim-left');
         } else {
@@ -1780,15 +1648,11 @@ function initSliderScrollAnimations() {
         observer.observe(slider);
     });
 
-    // ФИКС ДЛЯ РАЗДЕЛА КРЕЙЗЕРА И ДРУГИХ ТАБОВ
-    // При переключении вкладок слайдер может появиться резко. Эта функция это исправляет.
     function checkVisibleSlidersOnTabSwitch() {
         setTimeout(() => {
             sliders.forEach(slider => {
-                // Если слайдер сейчас на экране, но еще не анимирован
                 if (slider.offsetParent !== null && !slider.classList.contains('scroll-anim-visible')) {
                     const rect = slider.getBoundingClientRect();
-                    // Проверяем, попадает ли он в окно просмотра
                     if (rect.top < window.innerHeight && rect.bottom > 0) {
                         slider.classList.add('scroll-anim-visible');
                         setTimeout(() => {
@@ -1799,44 +1663,36 @@ function initSliderScrollAnimations() {
                     }
                 }
             });
-        }, 50); // Небольшая задержка, чтобы браузер успел отрисовать вкладку
+        }, 50);
     }
 
-    // Слушаем все клики по меню, главным карточкам и кнопкам вкладок
     const triggerButtons = document.querySelectorAll('.nav__link, .exhibit-card, .tab-btn, .sub-tab-btn');
     triggerButtons.forEach(btn => {
         btn.addEventListener('click', checkVisibleSlidersOnTabSwitch);
     });
 }
 
-// Запускаем инициализацию анимаций после полной отрисовки
 document.addEventListener('DOMContentLoaded', function() {
     setTimeout(initSliderScrollAnimations, 500); 
 });
 
-// Запускаем инициализацию анимаций после полной отрисовки
 document.addEventListener('DOMContentLoaded', function() {
     setTimeout(initSliderScrollAnimations, 500); 
 });
 
-// ===== ФУНКЦИЯ ДЛЯ ПОДСКАЗКИ НА 2-М СЛАЙДЕ КРЫМСКОЙ ВЕСНЫ =====
 function initCrimeaSpringSecondSlideHint() {
     const sliderTrack = document.getElementById('slideTrack3');
     if (!sliderTrack) return;
     
-    // Индекс 1 - это второй слайд в слайдере Крымской весны
     const slide = sliderTrack.children[1];
     if (!slide) return;
     
-    // Удаляем старую подсказку, если есть
     const oldHint = slide.querySelector('.scroll-hint');
     if (oldHint) oldHint.remove();
     
-    // Проверяем, есть ли на этом слайде вертикальная прокрутка
     const wrapper = slide.querySelector('.vertical-image-wrapper');
     if (!wrapper) return;
     
-    // Создаем новую подсказку
     const hint = document.createElement('div');
     hint.className = 'scroll-hint';
     hint.innerHTML = '⬇ листай ⬇';
@@ -1860,7 +1716,6 @@ function initCrimeaSpringSecondSlideHint() {
         requestAnimationFrame(checkScrollAndHideHint);
     });
     
-    // Отслеживаем, когда слайд становится активным
     const observer = new MutationObserver(function(mutations) {
         mutations.forEach(function(mutation) {
             if (mutation.attributeName === 'class') {
@@ -1883,7 +1738,6 @@ function initCrimeaSpringSecondSlideHint() {
     
     observer.observe(slide, { attributes: true });
     
-    // Показываем подсказку, если слайд активен при загрузке
     if (slide.classList.contains('active-caption')) {
         setTimeout(() => {
             if (!hintHidden && hint && hint.parentNode) {
@@ -1893,7 +1747,6 @@ function initCrimeaSpringSecondSlideHint() {
     }
 }
 
-// ===== ФУНКЦИЯ ДЛЯ СВАЙПА НА МОБИЛЬНЫХ УСТРОЙСТВАХ =====
 function initSwipeForSliders() {
     const sliders = document.querySelectorAll('.gallery-slider');
 
@@ -1903,7 +1756,6 @@ function initSwipeForSliders() {
         let touchStartY = 0;
         let touchEndY = 0;
 
-        // Проверяем, что мы на мобильном устройстве (ширина экрана меньше 768px)
         const isMobile = window.matchMedia("(max-width: 768px)").matches;
         if (!isMobile) return;
 
@@ -1919,22 +1771,17 @@ function initSwipeForSliders() {
         });
         
         const handleSwipe = (slider) => {
-            // Находим ID слайдера
             const sliderIdMatch = slider.id.match(/\d+/);
             if (!sliderIdMatch) return;
             const sliderId = parseInt(sliderIdMatch[0]);
             
-            // Вычисляем дистанцию свайпа
             const deltaX = touchEndX - touchStartX;
             const deltaY = touchEndY - touchStartY;
             
-            // Минимальная длина свайпа в пикселях
             const minSwipeDistance = 50;
             
-            // Если свайп больше по горизонтали, чем по вертикали - листаем слайдер
             if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > minSwipeDistance) {
                 if (deltaX > 0) {
-                    // Свайп вправо -> предыдущий слайд
                     const track = document.getElementById(`slideTrack${sliderId}`);
                     if (!track) return;
                     const totalItems = track.children.length;
@@ -1942,7 +1789,6 @@ function initSwipeForSliders() {
                     let prevIndex = (current - 1 + totalItems) % totalItems;
                     goToSlide(sliderId, prevIndex);
                 } else {
-                    // Свайп влево -> следующий слайд
                     const track = document.getElementById(`slideTrack${sliderId}`);
                     if (!track) return;
                     const totalItems = track.children.length;
@@ -1955,18 +1801,12 @@ function initSwipeForSliders() {
     });
 }
 
-// ============================================================
-// МОБИЛЬНАЯ КНОПКА INFO ДЛЯ СЛАЙДОВ (ТОЛЬКО ПЕРВЫЙ СЛАЙД)
-// ============================================================
 (function() {
-    // Проверяем, мобильное ли устройство
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
     if (!isMobile) return;
     
-    // Хранилище состояния кнопок по разделам
     const sectionState = new Map();
     
-    // Конфигурация подсказок для каждого слайдера (только первый слайд)
     const tooltipsConfig = {
         'slider1': { text: '⬆️ Вытянутые элементы меню - слайды с вертикальной прокруткой. Попробуйте!' },
         'slider6': { text: '⬅️ Проведите влево по экрану чтобы увидеть больше фото' },
@@ -1974,7 +1814,6 @@ function initSwipeForSliders() {
         'slider8': { text: "Кнопка ⛶ открывает слайд на полный экран" }
     };
     
-    // Получение ключа раздела
     function getSectionKey(sliderElement) {
         const mainPanel = sliderElement.closest('.main-panel');
         if (!mainPanel) return null;
@@ -1996,7 +1835,6 @@ function initSwipeForSliders() {
         return mainPanelId;
     }
     
-    // Проверка, нужно ли показывать кнопку
     function shouldShowButton(sliderId, slideIndex, sliderElement) {
         if (slideIndex !== 0) return false;
         
@@ -2006,7 +1844,6 @@ function initSwipeForSliders() {
         return !sectionState.get(`${sectionKey}_activated`);
     }
     
-    // Отметка, что раздел активирован
     function markSectionActivated(sliderElement) {
         const sectionKey = getSectionKey(sliderElement);
         if (sectionKey) {
@@ -2014,7 +1851,6 @@ function initSwipeForSliders() {
         }
     }
     
-    // Добавление кнопки на слайд
     function addInfoButton(sliderId, slideIndex, slideElement) {
         if (!shouldShowButton(sliderId, slideIndex, slideElement)) return;
         
@@ -2024,13 +1860,11 @@ function initSwipeForSliders() {
         const config = tooltipsConfig[`slider${sliderId}`];
         if (!config) return;
         
-        // Создаем кнопку
         const btn = document.createElement('button');
         btn.className = 'mobile-info-btn';
         btn.setAttribute('aria-label', 'Информация о слайде');
         btn.innerHTML = 'i';
         
-        // Создаем тултип
         const tooltip = document.createElement('div');
         tooltip.className = 'mobile-info-tooltip';
         tooltip.textContent = config.text;
@@ -2045,7 +1879,6 @@ function initSwipeForSliders() {
         const sliderContainer = slideElement.closest('.gallery-slider');
         const sliderTrack = sliderContainer?.querySelector('.slider-track');
         
-        // Закрытие тултипа
         function hideTooltip() {
             if (tooltip) {
                 tooltip.classList.remove('show');
@@ -2053,7 +1886,6 @@ function initSwipeForSliders() {
             }
         }
         
-        // Исчезновение кнопки
         function fadeOutButton() {
             if (isFadingOut) return;
             isFadingOut = true;
@@ -2068,7 +1900,6 @@ function initSwipeForSliders() {
             }, 400);
         }
         
-        // Обработчик клика по кнопке
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
             e.preventDefault();
@@ -2081,7 +1912,6 @@ function initSwipeForSliders() {
                 return;
             }
             
-            // Закрываем другие тултипы
             document.querySelectorAll('.mobile-info-tooltip.show').forEach(t => {
                 if (t !== tooltip) t.classList.remove('show');
             });
@@ -2090,7 +1920,6 @@ function initSwipeForSliders() {
             isTooltipVisible = true;
         });
         
-        // Закрытие тултипа по клику вне
         function handleOutsideClick(e) {
             if (!isTooltipVisible) return;
             if (!btn.contains(e.target) && !tooltip.contains(e.target)) {
@@ -2110,7 +1939,6 @@ function initSwipeForSliders() {
             }
         });
         
-        // Отслеживание свайпов для исчезновения кнопки
         if (sliderTrack) {
             const handleUserInteraction = (e) => {
                 if (wasClicked && !isFadingOut) {
@@ -2128,7 +1956,6 @@ function initSwipeForSliders() {
         }
     }
     
-    // Добавление кнопок на все слайдеры
     function addButtonsToAllSliders() {
         for (let sliderId = 1; sliderId <= 8; sliderId++) {
             const sliderTrack = document.getElementById(`slideTrack${sliderId}`);
@@ -2143,7 +1970,6 @@ function initSwipeForSliders() {
         }
     }
     
-    // Следим за переключением слайдов
     function observeSliderChanges() {
         for (let sliderId = 1; sliderId <= 8; sliderId++) {
             const sliderTrack = document.getElementById(`slideTrack${sliderId}`);
@@ -2164,22 +1990,16 @@ function initSwipeForSliders() {
         }
     }
     
-    // Следим за переключением вкладок
     function observeTabChanges() {
-    // Находим кнопки вкладок, подвкладок, ссылки главного меню и логотип
     const clickTargets = document.querySelectorAll('.main-tabs .tab-btn, .sub-tab-btn, .nav__link, .logo');
     
     clickTargets.forEach(target => {
         target.addEventListener('click', () => {
-            // Таймаут в 300мс необходим, чтобы страница/вкладка успела стать видимой в браузере,
-            // иначе скрипт не сможет правильно посчитать высоту контента
             setTimeout(() => {
-                // 1. Вызываем старую функцию пересчета кнопок (если она есть)
                 if (typeof addButtonsToAllSliders === 'function') {
                     addButtonsToAllSliders();
                 }
                 
-                // 2. Принудительно обновляем пагинацию и стрелки на всех слайдерах
                 if (typeof window.syncAllSlidersControls === 'function') {
                     window.syncAllSlidersControls();
                 }
@@ -2188,7 +2008,6 @@ function initSwipeForSliders() {
     });
 }
     
-    // Запуск
     function init() {
         addButtonsToAllSliders();
         observeSliderChanges();
@@ -2203,7 +2022,6 @@ function initSwipeForSliders() {
 })();
 
 window.syncAllSlidersControls = function() {
-    // Пробегаемся по всем ID слайдеров от 1 до 8
     for (let id = 1; id <= 8; id++) {
         if (typeof window.syncSliderControls === 'function') {
             window.syncSliderControls(id);
@@ -2216,7 +2034,6 @@ function init() {
     observeSliderChanges();
     observeTabChanges();
     
-    // Добавь эту строчку, чтобы при самом первом заходе на сайт всё тоже сразу синхронизировалось
     setTimeout(() => {
         if (typeof window.syncAllSlidersControls === 'function') {
             window.syncAllSlidersControls();
@@ -2224,7 +2041,6 @@ function init() {
     }, 500);
 }
 
-// ===== ФИКС: СБРОС ПРОКРУТКИ МОДАЛЬНОГО ОКНА ГЕРОЯ ПРИ ОТКРЫТИИ =====
 (function fixHeroModalScroll() {
     const heroModal = document.getElementById('heroModal');
     const heroModalContent = document.querySelector('.hero-modal__content');
@@ -2232,17 +2048,13 @@ function init() {
     
     if (!heroModal || !heroModalContent) return;
     
-    // Функция для сброса прокрутки
     function resetModalScroll() {
-        // Сбрасываем прокрутку основного контента модалки
         if (heroModalContent) {
             heroModalContent.scrollTop = 0;
         }
-        // Сбрасываем прокрутку внутреннего контейнера
         if (heroModalInner) {
             heroModalInner.scrollTop = 0;
         }
-        // Также сбрасываем прокрутку любых дочерних элементов с прокруткой
         const scrollableElements = heroModalContent.querySelectorAll('.vertical-image-wrapper, .hero-modal__description');
         scrollableElements.forEach(el => {
             if (el.scrollTop !== undefined) {
@@ -2251,25 +2063,21 @@ function init() {
         });
     }
     
-    // Перехватываем открытие карточек героев
     const originalHeroCardClick = (function() {
         const cards = document.querySelectorAll('.hero-card');
         cards.forEach(card => {
             const oldClick = card.onclick;
             card.addEventListener('click', function(e) {
-                // Сбрасываем прокрутку перед открытием
                 resetModalScroll();
             }, { once: false });
         });
     })();
     
-    // Наблюдаем за появлением новых карточек (если они добавляются динамически)
     const observer = new MutationObserver(function(mutations) {
         mutations.forEach(function(mutation) {
             if (mutation.type === 'childList') {
                 const cards = document.querySelectorAll('.hero-card');
                 cards.forEach(card => {
-                    // Убираем дублирование обработчиков
                     if (!card.hasAttribute('data-scroll-fixed')) {
                         card.setAttribute('data-scroll-fixed', 'true');
                         card.addEventListener('click', function() {
@@ -2283,12 +2091,10 @@ function init() {
     
     observer.observe(document.body, { childList: true, subtree: true });
     
-    // Также сбрасываем при появлении активного класса у модалки
     const observerModal = new MutationObserver(function(mutations) {
         mutations.forEach(function(mutation) {
             if (mutation.attributeName === 'class') {
                 if (heroModal.classList.contains('active')) {
-                    // Когда модалка открывается - сбрасываем прокрутку
                     setTimeout(() => resetModalScroll(), 100);
                 }
             }
@@ -2297,45 +2103,33 @@ function init() {
     
     observerModal.observe(heroModal, { attributes: true });
     
-    // Экспортируем функцию глобально на всякий случай
     window.resetHeroModalScroll = resetModalScroll;
 })();
-
-// =========================================================
-// ФИКС: ЗАКРЫТИЕ МОДАЛЬНОГО ОКНА ГЕРОЯ ПО СВАЙПУ "НАЗАД" (ИСПРАВЛЕННЫЙ)
-// =========================================================
 
 document.addEventListener('DOMContentLoaded', () => {
     const heroModal = document.getElementById('heroModal');
     const closeBtn = document.querySelector('.hero-modal__close');
     if (!heroModal || !closeBtn) return;
 
-    // Флаг, чтобы отличать системный свайп от ручного клика по крестику
     let isProgrammaticClose = false;
 
-    // 1. Слушаем системное действие "Назад" (свайп или системная кнопка)
     window.addEventListener('popstate', (e) => {
-        // Если модалка физически открыта на экране
         if (heroModal.classList.contains('active') || heroModal.style.display === 'block') {
             isProgrammaticClose = true;
-            closeBtn.click(); // Эмулируем нажатие на крестик, чтобы отработал твой родной код (display: none и сброс скролла)
+            closeBtn.click();
             isProgrammaticClose = false;
         }
     });
 
-    // 2. Отслеживаем клики для управления историей
     document.addEventListener('click', (e) => {
         const isCardClick = e.target.closest('.hero-card');
         const isCloseClick = e.target.closest('.hero-modal__close');
         const isOverlayClick = e.target.classList.contains('hero-modal__overlay');
 
         if (isCardClick) {
-            // При открытии карточки создаем шаг в истории
             history.pushState({ modalOpen: true }, '');
         } 
         else if ((isCloseClick || isOverlayClick) && !isProgrammaticClose) {
-            // Если пользователь нажал на крестик сам (а не через свайп),
-            // мы "откатываем" историю назад, чтобы свайпы потом работали корректно
             if (history.state && history.state.modalOpen) {
                 history.back();
             }
@@ -2343,34 +2137,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// =========================================================
-// ФИКС: ЗАПРЕТ СКРОЛЛА САЙТА ПРИ ОТКРЫТОМ МЕНЮ НАВИГАЦИИ
-// =========================================================
-
 document.addEventListener('DOMContentLoaded', () => {
     const mobileNav = document.querySelector('.mobile-nav');
     if (!mobileNav) return;
 
-    // 1. Автоматически следим за открытием/закрытием меню
     const navObserver = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
             if (mutation.attributeName === 'class') {
                 if (mobileNav.classList.contains('active')) {
-                    document.body.style.overflow = 'hidden'; // Меню открыто - блокируем скролл сайта
+                    document.body.style.overflow = 'hidden';
                 } else {
-                    document.body.style.overflow = '';       // Меню закрыто - возвращаем скролл
+                    document.body.style.overflow = '';
                 }
             }
         });
     });
 
-    // Запускаем наблюдение за классом active у шторки меню
     navObserver.observe(mobileNav, { attributes: true });
 
-    // 2. Убиваем "резиновый" скролл на iOS/Android, чтобы фон не тянулся
     mobileNav.addEventListener('touchmove', function(e) {
-        // Проверяем, помещается ли контент меню в экран
-        // Если да (скроллить внутри меню нечего), то полностью блокируем свайп
         if (this.scrollHeight <= this.clientHeight) {
             e.preventDefault(); 
         }

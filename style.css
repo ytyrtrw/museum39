@@ -1,11 +1,11 @@
-/* ===== ОБНУЛЕНИЕ И ПЕРЕМЕННЫЕ ===== */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Светлая тема - пепельная, приглушенная */
+
 :root {
     --bg: #e8e6e1;
     --surface: #d6d2c9;
@@ -27,7 +27,7 @@
     --flame-core: rgba(241, 196, 15, 0.1);
 }
 
-/* Темная тема */
+
 body.dark-theme {
     --bg: #1a1a1e;
     --surface: #2c2c30;
@@ -66,7 +66,7 @@ body {
     z-index: 2;
 }
 
-/* ===== ВЕЧНЫЙ ОГОНЬ (АНИМАЦИЯ ПРИ ПРОКРУТКЕ) ===== */
+
 .eternal-flame {
     position: fixed;
     bottom: 0;
@@ -131,12 +131,12 @@ body {
     50% { opacity: 0.4; transform: translateX(-50%) scale(1.2); }
 }
 
-/* Класс для появления огня при прокрутке */
+
 .eternal-flame.visible {
     opacity: 1;
 }
 
-/* ===== ТИПОГРАФИКА ===== */
+
 h1, h2, h3 {
     font-weight: 500;
     letter-spacing: -0.01em;
@@ -160,7 +160,7 @@ h2 {
     border-bottom: none;
 }
 
-/* ===== ШАПКА ===== */
+
 .header {
     padding: 24px 0;
     position: sticky;
@@ -168,15 +168,15 @@ h2 {
     z-index: 10;
     transition: all 0.4s ease;
     
-    /* Акриловый/стеклянный эффект */
-    background-color: rgba(214, 210, 201, 0.7); /* 2упрозрачный для светлой темы */
+   
+    background-color: rgba(214, 210, 201, 0.7);
     backdrop-filter: blur(12px) saturate(180%);
     -webkit-backdrop-filter: blur(12px) saturate(180%);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     border-bottom: 1px solid rgba(201, 194, 184, 0.3);
 }
 
-/* Эффект при прокрутке - чуть более плотный */
+
 .header.scrolled {
     background-color: rgba(214, 210, 201, 0.85);
     backdrop-filter: blur(150px) saturate(500%);
@@ -184,7 +184,7 @@ h2 {
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.12);
 }
 
-/* Темная тема */
+
 body.dark-theme .header {
     background-color: rgba(44, 44, 48, 0.7);
     border-bottom: 1px solid rgba(58, 58, 62, 0.3);
@@ -258,7 +258,7 @@ body.dark-theme .header.scrolled {
     to { width: 100%; opacity: 1; }
 }
 
-/* ===== ПЕРЕКЛЮЧАТЕЛЬ ТЕМЫ (СЛАЙДЕР) ===== */
+
 .theme-switcher {
     margin-left: 24px;
 }
@@ -290,7 +290,7 @@ body.dark-theme .header.scrolled {
     transition: var(--transition);
     display: flex;
     align-items: center;
-    /* justify-content: space-between; */
+   
     padding: 0 5px;
 }
 
@@ -332,7 +332,7 @@ body.dark-theme .header.scrolled {
     transform: translateX(30px);
 }
 
-/* ===== РОТАТОР ЦИТАТ И ФАКТОВ (ПРОЗРАЧНЫЙ ВАРИАНТ) ===== */
+
 .quote-rotator {
     background-color: transparent;
     overflow: hidden;
@@ -405,7 +405,7 @@ body.dark-theme .header.scrolled {
     opacity: 0.7;
 }
 
-/* ПЛАВНОЕ СВОРАЧИВАНИЕ И РАЗВОРАЧИВАНИЕ ПАНЕЛИ ФАКТОВ */
+
 .quote-rotator.collapsed {
     max-height: 0;
     opacity: 0;
@@ -417,7 +417,7 @@ body.dark-theme .header.scrolled {
     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Плавное перемещение контента */
+
 .quote-rotator + .quote-toggle + * {
     transition: margin-top 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -426,7 +426,7 @@ body.dark-theme .header.scrolled {
     margin-top: -20px;
 }
 
-/* ===== ГЛАВНАЯ ===== */
+
 .hero {
     padding: 60px 0 0;
     position: relative;
@@ -475,7 +475,7 @@ body.dark-theme .exhibit-card:hover {
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
 }
 
-/* Стили для карточки СВО (увеличенная на 10%) */
+
 .exhibit-card[data-tab-main="1"] {
     transform: scale(1.1);
     position: relative;
@@ -518,7 +518,7 @@ body.dark-theme .exhibit-card:hover {
     transition: color 0.4s ease;
 }
 
-/* ===== ГАЛЕРЕЯ ===== */
+
 .main-tabs {
     display: flex;
     gap: 8px;
@@ -564,7 +564,7 @@ body.dark-theme .exhibit-card:hover {
     opacity: 1;
 }
 
-/* Подтабы для СВО */
+
 .sub-tabs {
     display: flex;
     gap: 8px;
@@ -606,7 +606,7 @@ body.dark-theme .exhibit-card:hover {
     opacity: 1;
 }
 
-/* Слайдер галереи */
+
 .gallery-slider {
     position: relative;
     border-radius: 24px;
@@ -681,11 +681,11 @@ body.dark-theme .exhibit-card:hover {
     font-size: 1rem;
     color: rgba(255, 255, 255, 0.8);
     line-height: 1.5;
-    display: block; /* Описание видно на ПК */
+    display: block;
 }
 
-/* Сетка героев */
-/* ===== КАРТОЧКИ ГЕРОЕВ ===== */
+
+
 .heroes-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -704,7 +704,7 @@ body.dark-theme .exhibit-card:hover {
     box-shadow: var(--shadow);
     transition: var(--transition);
     cursor: pointer;
-    aspect-ratio: 3 / 4; /* Фиксированное соотношение сторон */
+    aspect-ratio: 3 / 4;
     display: flex;
     flex-direction: column;
 }
@@ -724,7 +724,7 @@ body.dark-theme .hero-card:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Сохраняет пропорции, обрезая лишнее */
+    object-fit: cover;
     transition: transform 0.6s ease;
     z-index: 1;
 }
@@ -738,17 +738,17 @@ body.dark-theme .hero-card:hover {
     bottom: 0;
     left: 0;
     right: 0;
-    /* Убираем min-height, пусть высота определяется контентом */
+   
     padding: 10px 20px;
     text-align: center;
     z-index: 3;
     
-    /* display:flex + flex-end прижимает контент ко дну блока */
+   
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     
-    /* Более мягкий эффект жидкого стекла */
+   
     background: linear-gradient(
         to top,
         rgba(0, 0, 0, 0.6) 0%,
@@ -788,7 +788,7 @@ body.dark-theme .hero-card:hover {
     text-overflow: ellipsis;
 }
 
-/* Темная тема для карточек */
+
 body.dark-theme .hero-card__info {
     background: linear-gradient(
         to top,
@@ -800,7 +800,7 @@ body.dark-theme .hero-card__info {
     -webkit-backdrop-filter: blur(4px);
 }
 
-/* Пустой раздел */
+
 .empty-section {
     background: var(--surface);
     border-radius: 24px;
@@ -824,7 +824,7 @@ body.dark-theme .hero-card__info {
     transition: color 0.4s ease;
 }
 
-/* ===== ВИДЕО-ОТЗЫВЫ ===== */
+
 .videos-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -912,7 +912,7 @@ body.dark-theme .video-card:hover {
     transition: color 0.4s ease;
 }
 
-/* ===== МОДАЛЬНОЕ ОКНО ===== */
+
 .modal {
     display: none;
     position: fixed;
@@ -975,7 +975,7 @@ body.dark-theme .video-card:hover {
     color:#b5835a;
 }
 
-/* ===== ПОДВАЛ ===== */
+
 .footer {
     padding: 40px 0;
     background: var(--surface);
@@ -987,7 +987,7 @@ body.dark-theme .video-card:hover {
     z-index: 2;
 }
 
-/* ===== СТРАНИЦЫ ===== */
+
 .page {
     display: none;
     opacity: 0;
@@ -999,7 +999,7 @@ body.dark-theme .video-card:hover {
     opacity: 1;
 }
 
-/* ===== АНИМАЦИИ ===== */
+
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -1013,41 +1013,41 @@ body.dark-theme .video-card:hover {
     color: black;
 }
 
-/* ===== ЭФФЕКТ УВЕЛИЧЕНИЯ БЛОКОВ КАК У ВИДЕО ===== */
 
-/* Для карточек героев в разделе СВО */
+
+
 .hero-card:hover {
     transform: translateY(-6px) scale(1.02);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
     transition: var(--transition);
 }
 
-/* Для слайдов в галерее (если нужно) */
+
 .gallery-slider .slider-item {
     transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .gallery-slider .slider-item:hover {
-    transform: scale(1.01); /* Очень небольшое увеличение для слайдера */
+    transform: scale(1.01);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     z-index: 10;
 }
 
-/* Для карточек выставок на главной (улучшаем существующий эффект) */
+
 .exhibit-card:hover {
     transform: translateY(-8px) scale(1.02);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
 }
 
-/* Темная тема для карточек */
+
 body.dark-theme .hero-card:hover,
 body.dark-theme .exhibit-card:hover {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
 }
 
-/* ===== КНОПКА СВОРАЧИВАНИЯ ФАКТОВ ===== */
-/* ===== КНОПКА СВОРАЧИВАНИЯ ФАКТОВ ===== */
-/* ===== КНОПКА СВОРАЧИВАНИЯ ФАКТОВ ===== */
+
+
+
 .quote-toggle {
     display: flex;
     justify-content: center;
@@ -1057,12 +1057,11 @@ body.dark-theme .exhibit-card:hover {
     position: relative;
     z-index: 5;
     background-color: transparent;
-    /* Убрали border-bottom — теперь линия рисуется через ::before
-       точно по центру стрелки, не "вырвана" из контекста */
+   
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Горизонтальная линия строго на уровне центра стрелки */
+
 .quote-toggle::before {
     content: '';
     position: absolute;
@@ -1076,12 +1075,12 @@ body.dark-theme .exhibit-card:hover {
     transition: background 0.5s ease;
 }
 
-/* Убираем нижнюю границу у панели фактов */
+
 .quote-rotator {
     border-bottom: none;
 }
 
-/* Стрелочка */
+
 .quote-toggle__arrow {
     font-size: 12px;
     line-height: 1;
@@ -1092,7 +1091,7 @@ body.dark-theme .exhibit-card:hover {
     transform: rotate(0deg);
     font-family: serif;
     opacity: 0.5;
-    /* «Прорезает» горизонтальную линию — фоновая таблетка по цвету страницы */
+   
     position: relative;
     z-index: 1;
     background: var(--bg);
@@ -1107,19 +1106,19 @@ body.dark-theme .exhibit-card:hover {
     transform: rotate(0deg) scale(1.15);
 }
 
-/* Скрытое состояние (когда факты свернуты) */
+
 .quote-toggle.collapsed {
     opacity: 0.4;
     pointer-events: auto;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* При наведении стрелочка становится ярче */
+
 .quote-toggle.collapsed:hover {
     opacity: 1;
 }
 
-/* Поворот стрелочки в скрытом состоянии */
+
 .quote-toggle.collapsed .quote-toggle__arrow {
     transform: rotate(180deg);
 }
@@ -1128,7 +1127,7 @@ body.dark-theme .exhibit-card:hover {
     transform: rotate(180deg) scale(1.15);
 }
 
-/* ===== ОПИСАНИЯ СОБЫТИЙ В ГАЛЕРЕЕ ===== */
+
 .event-description {
     margin-bottom: 40px;
     padding: 20px 0;
@@ -1154,7 +1153,7 @@ body.dark-theme .exhibit-card:hover {
     transition: color 0.4s ease;
 }
 
-/* Анимация появления как на главной */
+
 .event-description.fade-in {
     animation: fadeInUp 0.8s ease forwards;
 }
@@ -1170,7 +1169,7 @@ body.dark-theme .exhibit-card:hover {
     }
 }
 
-/* Темная тема */
+
 body.dark-theme .event-description {
     border-bottom-color: var(--border-light);
 }
@@ -1183,7 +1182,7 @@ body.dark-theme .event-description__text {
     color: var(--text-secondary);
 }
 
-/* Адаптация для мобильных */
+
 @media (max-width: 768px) {
     .event-description__title {
         font-size: 1.5rem;
@@ -1195,7 +1194,7 @@ body.dark-theme .event-description__text {
     }
 }
 
-/* ===== ОПИСАНИЯ СОБЫТИЙ В ГАЛЕРЕЕ ===== */
+
 .event-description {
     margin-bottom: 40px;
     padding: 20px 0;
@@ -1215,7 +1214,7 @@ body.dark-theme .event-description__text {
     display: inline-block;
 }
 
-/* Ненавязчивое подчеркивание заголовка */
+
 .event-description__title::after {
     content: '';
     position: absolute;
@@ -1248,7 +1247,7 @@ body.dark-theme .event-description__text {
 }
 
 .event-description.expanded .event-description__full {
-    max-height: 500px; /* Достаточно для всего текста */
+    max-height: 500px;
     opacity: 1;
     margin-bottom: 20px;
 }
@@ -1261,7 +1260,7 @@ body.dark-theme .event-description__text {
     transition: color 0.4s ease;
 }
 
-/* Кнопка подробнее */
+
 .event-description__btn {
     background: transparent;
     border: none;
@@ -1293,7 +1292,7 @@ body.dark-theme .event-description__text {
     transform: translateY(-3px);
 }
 
-/* Анимация появления как на главной */
+
 .event-description.fade-in {
     animation: fadeInUp 0.8s ease forwards;
 }
@@ -1309,7 +1308,7 @@ body.dark-theme .event-description__text {
     }
 }
 
-/* Темная тема */
+
 body.dark-theme .event-description {
     border-bottom-color: var(--border-light);
 }
@@ -1326,7 +1325,7 @@ body.dark-theme .event-description__btn {
     color: var(--accent-dark);
 }
 
-/* Адаптация для мобильных */
+
 @media (max-width: 768px) {
     .event-description__title {
         font-size: 1.5rem;
@@ -1342,8 +1341,8 @@ body.dark-theme .event-description__btn {
     }
 }
 
-/* ===== КНОПКА ПОДДЕРЖКИ ===== */
-/* ===== КНОПКА ПОДДЕРЖКИ ===== */
+
+
 .support-button {
     position: fixed;
     bottom: 30px;
@@ -1380,11 +1379,11 @@ body.dark-theme .event-description__btn {
     transform: rotate(5deg) scale(1.1);
 }
 
-/* Всплывающий текст */
+
 .support-button::after {
     content: "Сообщить об ошибке";
     position: absolute;
-    right: 70px; /* Позиция слева от кнопки */
+    right: 70px;
     background: var(--surface);
     color: var(--text-primary);
     padding: 8px 16px;
@@ -1397,7 +1396,7 @@ body.dark-theme .event-description__btn {
     opacity: 0;
     transform: translateX(10px);
     transition: opacity 0.6s ease, transform 0.6s ease;
-    pointer-events: none; /* Чтобы текст не мешал наведению */
+    pointer-events: none;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
 }
@@ -1407,7 +1406,7 @@ body.dark-theme .event-description__btn {
     transform: translateX(0);
 }
 
-/* Анимация появления при загрузке */
+
 @keyframes slideInButton {
     from {
         opacity: 0;
@@ -1423,7 +1422,7 @@ body.dark-theme .event-description__btn {
     animation: slideInButton 0.6s ease forwards;
 }
 
-/* Темная тема */
+
 body.dark-theme .support-button {
     background: var(--accent-dark);
     border-color: rgba(255, 255, 255, 0.1);
@@ -1440,7 +1439,7 @@ body.dark-theme .support-button::after {
     border-color: var(--border-light);
 }
 
-/* Адаптация для мобильных */
+
 @media (max-width: 768px) {
     .support-button {
         bottom: 20px;
@@ -1454,13 +1453,13 @@ body.dark-theme .support-button::after {
         font-size: 1.5rem;
     }
     
-    /* На мобильных убираем всплывающий текст */
+   
     .support-button::after {
         display: none;
     }
 }
 
-/* ===== КНОПКА РАЗВЕРНУТЬ/СВЕРНУТЬ ДЛЯ ОПИСАНИЙ ===== */
+
 .event-description__toggle {
     background: transparent;
     border: none;
@@ -1493,7 +1492,7 @@ body.dark-theme .support-button::after {
     transform: rotate(180deg);
 }
 
-/* Темная тема */
+
 body.dark-theme .event-description__toggle {
     color: var(--accent-dark);
 }
@@ -1502,7 +1501,7 @@ body.dark-theme .event-description__toggle:hover {
     color: var(--accent);
 }
 
-/* ===== МОДАЛЬНОЕ ОКНО ДЛЯ ГЕРОЯ (ПЛАВНОЕ ПОЯВЛЕНИЕ) ===== */
+
 .hero-modal {
     display: none;
     position: fixed;
@@ -1544,11 +1543,11 @@ body.dark-theme .event-description__toggle:hover {
     overflow-y: auto;
     overflow-x: hidden;
     
-    /* Полностью скрываем скроллбар */
+   
     scrollbar-width: none;
     -ms-overflow-style: none;
     
-    /* Эффект жидкого стекла */
+   
     background: rgba(214, 210, 201, 0.4);
     backdrop-filter: blur(20px) saturate(200%);
     -webkit-backdrop-filter: blur(20px) saturate(200%);
@@ -1564,7 +1563,7 @@ body.dark-theme .event-description__toggle:hover {
     z-index: 2001;
 }
 
-/* На мобильных - фиксированное позиционирование */
+
 @media (max-width: 768px) {
     .hero-modal__content {
         position: fixed !important;
@@ -1628,12 +1627,12 @@ body.dark-theme .event-description__toggle:hover {
     transform: scale(1.02);
 }
 
-/* ===== МОДАЛЬНОЕ ОКНО ДЛЯ ГЕРОЯ ===== */
+
 .hero-modal__inner {
     display: flex;
     gap: 40px;
     padding: 40px;
-    min-height: 500px; /* Минимальная высота */
+    min-height: 500px;
 }
 
 .hero-modal__image-container {
@@ -1664,20 +1663,18 @@ body.dark-theme .event-description__toggle:hover {
     bottom: 0;
     left: 0;
     right: 0;
-    /* Фиксированная минимальная высота — все карточки одинаковые,
-       даже если имя переносится на вторую строку */
+   
     min-height: 135px;
     padding: 10px 20px;
     text-align: center;
     z-index: 3;
     
-    /* display:flex + flex-end прижимает контент ко дну блока,
-       поэтому при min-height текст не «всплывает» вверх */
+   
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     
-    /* Более мягкий эффект жидкого стекла */
+   
     background: linear-gradient(
         to top,
         rgba(0, 0, 0, 0.6) 0%,
@@ -1711,7 +1708,7 @@ body.dark-theme .event-description__toggle:hover {
     white-space: pre-line;
 }
 
-/* Адаптация для мобильных */
+
 @media (max-width: 768px) {
     .hero-modal__inner {
         flex-direction: column;
@@ -1729,7 +1726,7 @@ body.dark-theme .event-description__toggle:hover {
     }
 }
 
-/* ===== ПЛАВНОЕ ПЕРЕКЛЮЧЕНИЕ МЕЖДУ ПОДТАБАМИ ===== */
+
 .sub-panel {
     display: none;
     opacity: 0;
@@ -1743,7 +1740,7 @@ body.dark-theme .event-description__toggle:hover {
     transform: translateX(0);
 }
 
-/* Для более плавного появления контента внутри */
+
 .sub-panel .gallery-slider,
 .sub-panel .heroes-grid {
     animation: fadeInContent 0.5s ease forwards;
@@ -1762,7 +1759,7 @@ body.dark-theme .event-description__toggle:hover {
 
 
 
-/* ===== ЭФФЕКТ ЖИДКОГО СТЕКЛА ДЛЯ МОДАЛЬНОГО ОКНА ГЕРОЯ ===== */
+
 .hero-modal__content {
     position: relative;
     width: 90%;
@@ -1770,7 +1767,7 @@ body.dark-theme .event-description__toggle:hover {
     max-height: 90vh;
     margin: 5vh auto;
     
-    /* Эффект жидкого стекла */
+   
     background: rgba(214, 210, 201, 0.4);
     backdrop-filter: blur(20px) saturate(200%);
     -webkit-backdrop-filter: blur(20px) saturate(200%);
@@ -1789,14 +1786,14 @@ body.dark-theme .event-description__toggle:hover {
     z-index: 2001;
 }
 
-/* Контейнер для изображения тоже со стеклом */
+
 .hero-modal__image-container {
     flex: 0 0 300px;
     height: 400px;
     border-radius: 20px;
     overflow: hidden;
     
-    /* Легкий эффект стекла на рамке */
+   
     background: rgba(214, 210, 201, 0.2);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
@@ -1807,14 +1804,14 @@ body.dark-theme .event-description__toggle:hover {
     cursor: pointer;
 }
 
-/* Информационная часть */
+
 .hero-modal__info {
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 20px;
     
-    /* Легкая полупрозрачность для текстового блока */
+   
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
@@ -1824,7 +1821,7 @@ body.dark-theme .event-description__toggle:hover {
     border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-/* Заголовок */
+
 .hero-modal__title {
     font-size: 2.2rem;
     font-weight: 600;
@@ -1836,7 +1833,7 @@ body.dark-theme .event-description__toggle:hover {
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Годы жизни */
+
 .hero-modal__years {
     font-size: 1.2rem;
     color: var(--accent);
@@ -1844,7 +1841,7 @@ body.dark-theme .event-description__toggle:hover {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Описание */
+
 .hero-modal__description {
     font-size: 1.1rem;
     line-height: 1.6;
@@ -1853,12 +1850,12 @@ body.dark-theme .event-description__toggle:hover {
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
-/* Кнопка закрытия */
-/* ===== МОДАЛЬНОЕ ОКНО ДЛЯ ГЕРОЯ ===== */
+
+
 .hero-modal__close {
     position: absolute;
     top: 2px;
-    right: 12px; /* Слева вместо справа */
+    right: 12px;
     font-size: 2.5rem;
     color: var(--text-secondary);
     cursor: pointer;
@@ -1868,7 +1865,7 @@ body.dark-theme .event-description__toggle:hover {
     width: auto;
     height: auto;
     display: inline-block;
-    background: none !important; /* Принудительно убираем фон */
+    background: none !important;
     backdrop-filter: none;
     border: none;
     padding: 0;
@@ -1882,14 +1879,14 @@ body.dark-theme .event-description__toggle:hover {
     background: none !important;
 }
 
-/* Убираем возможные псевдоэлементы */
+
 .hero-modal__close::before,
 .hero-modal__close::after {
     display: none !important;
     content: none !important;
 }
 
-/* Темная тема */
+
 body.dark-theme .hero-modal__content {
     background: rgba(44, 44, 48, 0.4);
     border-color: rgba(255, 255, 255, 0.1);
@@ -1919,7 +1916,7 @@ body.dark-theme .hero-modal__close:hover {
     color: var(--accent);
 }
 
-/* ===== ВИДЕОЭКСКУРСИЯ ===== */
+
 .video-single {
     max-width: 800px;
     margin: 0 auto;
@@ -1953,15 +1950,15 @@ body.dark-theme .hero-modal__close:hover {
     color: var(--text-secondary);
 }
 
-/* Удаляем старую сетку для видео, если она больше не нужна */
+
 .videos-grid {
     display: none;
 }
 
-/* ===== ПЛАВНОЕ ПЕРЕКЛЮЧЕНИЕ ПОДТАБОВ БЕЗ ДЕРГАНЬЯ ===== */
+
 .main-panel {
     position: relative;
-    min-height: 800px; /* Фиксированная минимальная высота */
+    min-height: 800px;
 }
 
 .sub-panel {
@@ -1984,17 +1981,17 @@ body.dark-theme .hero-modal__close:hover {
     pointer-events: auto;
 }
 
-/* Для контейнера с подтабами */
-/* Для контейнера с подтабами */
+
+
 #mainPanel0, #mainPanel1, #mainPanel2 {
     position: relative;
-    overflow: visible;  /* Меняем с hidden на visible */
-    min-height: auto;   /* Убираем фиксированную высоту */
-    height: auto;       /* Добавляем auto */
+    overflow: visible; 
+    min-height: auto;  
+    height: auto;      
     transition: min-height 0.4s ease;
 }
 
-/* Адаптация высоты под контент */
+
 .sub-panel.active .gallery-slider,
 .sub-panel.active .heroes-grid {
     animation: fadeInContent 0.5s ease forwards;
@@ -2011,7 +2008,7 @@ body.dark-theme .hero-modal__close:hover {
     }
 }
 
-/* ===== КАРТОЧКИ ВЫСТАВОК НА ГЛАВНОЙ ===== */
+
 .exhibits-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -2027,8 +2024,8 @@ body.dark-theme .hero-modal__close:hover {
     transition: var(--transition);
     cursor: pointer;
     position: relative;
-    height: 100%; /* Растягиваем по высоте */
-    min-height: 320px; /* Минимальная высота как у героев */
+    height: 100%;
+    min-height: 320px;
 }
 
 .exhibit-card:hover {
@@ -2065,7 +2062,7 @@ body.dark-theme .exhibit-card:hover {
     text-align: center;
     z-index: 2;
     
-    /* Эффект жидкого стекла - полупрозрачный, не черный */
+   
     background: linear-gradient(
         to top,
         rgba(0, 0, 0, 0.6) 0%,
@@ -2093,7 +2090,7 @@ body.dark-theme .exhibit-card:hover {
     transition: color 0.4s ease;
 }
 
-/* Темная тема для карточек */
+
 body.dark-theme .exhibit-card__content {
     background: linear-gradient(
         to top,
@@ -2105,7 +2102,7 @@ body.dark-theme .exhibit-card__content {
     -webkit-backdrop-filter: blur(4px);
 }
 
-/* Стили для карточки СВО (увеличенная на 10%) */
+
 .exhibit-card[data-tab-main="1"] {
     transform: scale(1.1);
     position: relative;
@@ -2117,56 +2114,56 @@ body.dark-theme .exhibit-card__content {
 }
 
 
-/* ===== СПЕЦИАЛЬНЫЕ СТИЛИ ДЛЯ НАГРАДНОГО ЛИСТА ===== */
+
 .slider-item .vertical-image-container {
     height: 500px;
 }
 
-/* Для очень длинных изображений как наградной лист */
+
 .vertical-image {
     width: 100%;
     height: auto;
     display: block;
 }
 
-/* Если изображение слишком широкое, можно ограничить ширину */
+
 .slider-item .vertical-image {
     max-width: 100%;
-    object-fit: contain; /* Сохраняет пропорции */
-    background-color: var(--surface); /* Фон для областей без изображения */
+    object-fit: contain;
+    background-color: var(--surface);
 }
 
-/* Для темной темы */
+
 body.dark-theme .slider-item .vertical-image {
     background-color: var(--surface);
 }
 
-/* ===== ИСПРАВЛЕНИЕ ПРОКРУТКИ СЛАЙДЕРА ===== */
 
-/* Разрешаем прокрутку через оверлей */
+
+
 .slider-item .slider-overlay {
-    pointer-events: none; /* Оверлей не перехватывает события мыши */
+    pointer-events: none;
     z-index: 5;
 }
 
-/* Но оставляем возможность взаимодействия с текстом внутри оверлея */
+
 .slider-item .slider-caption {
-    pointer-events: none; /* Текст тоже не перехватывает события */
+    pointer-events: none;
 }
 
-/* Для 4 слайда - специально для scroll-text */
+
 .slider-item#slide4 .slider-caption {
     pointer-events: none;
 }
 
-/* Для всех элементов внутри caption, которые должны быть интерактивными */
+
 .slider-caption h3,
 .slider-caption p,
 .slider-caption .scroll-text {
     pointer-events: none;
 }
 
-/* Контейнер с вертикальной прокруткой должен занимать всю ширину */
+
 .slider-item .vertical-image-container {
     width: 100%;
     height: 100%;
@@ -2174,17 +2171,17 @@ body.dark-theme .slider-item .vertical-image {
     z-index: 1;
 }
 
-/* Убеждаемся, что wrapper занимает всю ширину */
+
 .slider-item .vertical-image-wrapper {
     width: 100%;
     height: 100%;
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 2; /* Выше оверлея */
+    z-index: 2;
 }
 
-/* Оверлей должен быть ниже wrapper, но визуально поверх */
+
 .slider-item .slider-overlay {
     position: absolute;
     top: 0;
@@ -2197,18 +2194,18 @@ body.dark-theme .slider-item .vertical-image {
     justify-content: flex-end;
     padding: 48px;
     transition: background 0.4s ease;
-    z-index: 3; /* Визуально поверх, но pointer-events: none */
+    z-index: 3;
     pointer-events: none;
 }
 
-/* Для всех слайдов с вертикальной прокруткой */
+
 .slider-item .vertical-image-container {
-    cursor: ns-resize; /* Визуально показываем, что тут можно скроллить */
+    cursor: ns-resize;
 }
 
-/* Блокируем прокрутку страницы при наведении на слайдер */
+
 .gallery-slider {
-    overscroll-behavior: contain; /* Предотвращает прокрутку страницы */
+    overscroll-behavior: contain;
 }
 
 .slider-container {
@@ -2219,14 +2216,14 @@ body.dark-theme .slider-item .vertical-image {
     overscroll-behavior: contain;
 }
 
-/* Для случая, когда курсор над текстом - все равно должен работать скролл */
+
 .slider-item.active-caption .slider-overlay {
     pointer-events: none;
 }
 
-/* Исправление для корректной работы скролла на 2 и 4 слайдах */
+
 .slider-item .vertical-image-wrapper {
-    -webkit-overflow-scrolling: touch; /* Для плавного скролла на мобильных */
+    -webkit-overflow-scrolling: touch;
 }
 
 
@@ -2234,9 +2231,9 @@ body.dark-theme .slider-item .vertical-image {
     animation: hintPulse 2s ease-in-out infinite;
 }
 
-/* ===== ОБНОВЛЕННЫЕ СТИЛИ ДЛЯ КНОПОК СЛАЙДЕРА ===== */
 
-/* Перемещаем кнопки в центр внизу */
+
+
 .slider-controls {
     position: absolute;
     bottom: 20px;
@@ -2248,13 +2245,13 @@ body.dark-theme .slider-item .vertical-image {
     width: auto;
 }
 
-/* Новый стиль для кнопок - более овальные/прямоугольные */
+
 .slider-btn {
     width: auto;
     min-width: 60px;
     height: 44px;
     padding: 0 24px;
-    border-radius: 30px; /* Овальная форма */
+    border-radius: 30px;
     background: rgba(139, 122, 107, 0.8);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
@@ -2272,7 +2269,7 @@ body.dark-theme .slider-item .vertical-image {
     font-weight: 500;
 }
 
-/* Добавляем текст для кнопок */
+
 .slider-btn.prev-btn::before {
     margin-right: 6px;
     font-size: 1.2rem;
@@ -2283,18 +2280,8 @@ body.dark-theme .slider-item .vertical-image {
     font-size: 1.2rem;
 }
 
-/* Альтернативный вариант с текстом (раскомментируйте если нужно) */
-/*
-.slider-btn.prev-btn::before {
-    content: "Предыдущий";
-    font-size: 0.9rem;
-}
 
-.slider-btn.next-btn::after {
-    content: "Следующий";
-    font-size: 0.9rem;
-}
-*/
+
 
 .slider-btn:hover {
     background: var(--accent);
@@ -2308,7 +2295,7 @@ body.dark-theme .slider-item .vertical-image {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Темная тема для кнопок */
+
 body.dark-theme .slider-btn {
     background: rgba(181, 131, 90, 0.7);
     border-color: rgba(255, 255, 255, 0.15);
@@ -2318,9 +2305,9 @@ body.dark-theme .slider-btn:hover {
     background: var(--accent-dark);
 }
 
-/* ===== ПОДСКАЗКА "ЛИСТАЙ" ПЕРЕНОСИМ ВВЕРХ ===== */
 
-/* ===== ПОДСКАЗКА "ЛИСТАЙ" С ПЛАВНЫМ ИСЧЕЗНОВЕНИЕМ ===== */
+
+
 
 .scroll-hint {
     position: absolute;
@@ -2344,44 +2331,44 @@ body.dark-theme .slider-btn:hover {
     white-space: nowrap;
     line-height: 1.2;
     
-    /* Начальное состояние - скрыта */
+   
     opacity: 0;
     visibility: hidden;
     
-    /* Единый плавный переход для всех свойств */
+   
     transition: opacity 0.8s ease,
                 visibility 0.8s ease,
                 transform 0.8s ease;
 }
 
-/* Показываем подсказку */
+
 .scroll-hint.show {
     opacity: 1;
     visibility: visible;
     transform: translateX(-50%) translateY(0);
 }
 
-/* Исчезновение с эффектом смахивания вверх */
+
 .scroll-hint.fade-out {
     opacity: 0;
     visibility: hidden;
     
-    /* Подсказка улетает вверх и исчезает */
+   
     transform: translateX(-50%) translateY(-50px);
     
-    /* Та же длительность, что и у появления */
+   
     transition: opacity 0.8s ease,
                 visibility 0.8s ease,
                 transform 0.8s ease;
 }
 
-/* Для темной темы */
+
 body.dark-theme .scroll-hint {
     background: rgba(181, 131, 90, 0.7);
     border-color: rgba(255, 255, 255, 0.15);
 }
 
-/* Мобильная адаптация */
+
 @media (max-width: 768px) {
     .scroll-hint {
         top: 15px;
@@ -2394,9 +2381,9 @@ body.dark-theme .scroll-hint {
     }
 }
 
-/* ===== ПОЛНОЕ УДАЛЕНИЕ СКРОЛЛБАРА ===== */
 
-/* Основной контейнер для вертикальной прокрутки */
+
+
 .vertical-image-container {
     position: relative;
     width: 100%;
@@ -2411,19 +2398,19 @@ body.dark-theme .scroll-hint {
     overflow-x: hidden;
     position: relative;
     
-    /* Полностью скрываем скроллбар во всех браузерах */
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* Internet Explorer/Edge */
+   
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
-/* Скрываем скроллбар для WebKit браузеров (Chrome, Safari, Edge) */
+
 .vertical-image-wrapper::-webkit-scrollbar {
-    display: none;  /* Chrome, Safari, Edge */
+    display: none; 
     width: 0;
     background: transparent;
 }
 
-/* ===== ФИКС ДЛЯ 4 СЛАЙДА ===== */
+
 #slide4 .vertical-image-wrapper {
     scroll-behavior: smooth;
 }
@@ -2434,9 +2421,9 @@ body.dark-theme .scroll-hint {
     line-height: 1.6;
 }
 
-/* ===== КАСТОМНЫЙ СКРОЛЛБАР ДЛЯ МОДАЛЬНОГО ОКНА ГЕРОЯ ===== */
 
-/* Основной контейнер модального окна */
+
+
 .hero-modal__content {
     position: relative;
     width: 90%;
@@ -2444,7 +2431,7 @@ body.dark-theme .scroll-hint {
     max-height: 90vh;
     margin: 5vh auto;
     
-    /* Эффект жидкого стекла */
+   
     background: rgba(214, 210, 201, 0.4);
     backdrop-filter: blur(20px) saturate(200%);
     -webkit-backdrop-filter: blur(20px) saturate(200%);
@@ -2464,54 +2451,54 @@ body.dark-theme .scroll-hint {
     z-index: 2001;
 }
 
-/* Стилизация скроллбара для WebKit браузеров (Chrome, Safari, Edge) */
+
 .hero-modal__content::-webkit-scrollbar {
-    width: 8px; /* Ширина скроллбара */
-    background: transparent; /* Прозрачный фон */
+    width: 8px;
+    background: transparent;
 }
 
-/* Трек (фон) скроллбара */
+
 .hero-modal__content::-webkit-scrollbar-track {
-    background: transparent; /* Прозрачный фон */
-    border-radius: 30px; /* Скругление */
-    margin: 10px 0; /* Отступ сверху и снизу, чтобы не касаться границ */
+    background: transparent;
+    border-radius: 30px;
+    margin: 10px 0;
 }
 
-/* Бегунок скроллбара */
+
 .hero-modal__content::-webkit-scrollbar-thumb {
-    background: rgba(128, 128, 128, 0.3); /* Серый полупрозрачный */
-    border-radius: 30px; /* Скругление */
-    border: 2px solid transparent; /* Прозрачная граница для отступа */
-    background-clip: padding-box; /* Чтобы фон не заходил на границу */
-    min-height: 40px; /* Минимальная высота бегунка */
+    background: rgba(128, 128, 128, 0.3);
+    border-radius: 30px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    min-height: 40px;
 }
 
-/* Бегунок при наведении */
+
 .hero-modal__content::-webkit-scrollbar-thumb:hover {
-    background: rgba(128, 128, 128, 0.5); /* Чуть темнее */
+    background: rgba(128, 128, 128, 0.5);
 }
 
-/* Полностью убираем стрелки */
+
 .hero-modal__content::-webkit-scrollbar-button {
     display: none;
     width: 0;
     height: 0;
 }
 
-/* Уголок между скроллбарами */
+
 .hero-modal__content::-webkit-scrollbar-corner {
     background: transparent;
 }
 
-/* Для Firefox */
+
 .hero-modal__content {
-    scrollbar-width: thin; /* Тонкий скроллбар */
-    scrollbar-color: rgba(128, 128, 128, 0.3) transparent; /* Бегунок и трек */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(128, 128, 128, 0.3) transparent;
 }
 
-/* Темная тема */
+
 body.dark-theme .hero-modal__content::-webkit-scrollbar-thumb {
-    background: rgba(200, 200, 200, 0.25); /* Светло-серый для темной темы */
+    background: rgba(200, 200, 200, 0.25);
 }
 
 body.dark-theme .hero-modal__content::-webkit-scrollbar-thumb:hover {
@@ -2522,9 +2509,9 @@ body.dark-theme .hero-modal__content {
     scrollbar-color: rgba(200, 200, 200, 0.25) transparent;
 }
 
-/* Добавьте в конец файла style.css */
 
-/* Плавное появление/исчезновение кнопок навигации */
+
+
 .slider-controls .next-btn {
     transition: opacity 0.4s ease, visibility 0.4s ease, background-color 0.3s ease, transform 0.2s ease !important;
 }
@@ -2533,14 +2520,14 @@ body.dark-theme .hero-modal__content {
     transition: opacity 0.4s ease, visibility 0.4s ease !important;
 }
 
-/* Для всех кнопок навигации добавляем плавность */
+
 .slider-btn {
     transition: all 0.7s ease !important;
 }
 
-/* Замените соответствующие блоки в файле style.css */
 
-/* ===== ИСПРАВЛЕНИЕ ПРОКРУТКИ СЛАЙДЕРА ===== */
+
+
 .gallery-slider {
     overscroll-behavior: auto !important;
     position: relative;
@@ -2559,7 +2546,7 @@ body.dark-theme .hero-modal__content {
     height: var(--slider-height);
     overflow: hidden;
     overscroll-behavior: auto;
-    margin-bottom: 0; /* Убираем лишний отступ */
+    margin-bottom: 0;
 }
 
 .slider-track {
@@ -2572,17 +2559,17 @@ body.dark-theme .hero-modal__content {
     flex: 0 0 100%;
     height: 100%;
     position: relative;
-    overflow: hidden; /* Убираем возможные полосы */
+    overflow: hidden;
 }
 
 .slider-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block; /* Убирает лишний отступ снизу у изображений */
+    display: block;
 }
 
-/* Контейнер для вертикальной прокрутки */
+
 .vertical-image-container {
     position: relative;
     width: 100%;
@@ -2611,17 +2598,17 @@ body.dark-theme .hero-modal__content {
 .vertical-image {
     width: 100%;
     height: auto;
-    display: block; /* Убирает лишний отступ снизу */
+    display: block;
     object-fit: contain;
     background-color: var(--surface);
 }
 
-/* Для темной темы */
+
 body.dark-theme .vertical-image {
     background-color: var(--surface);
 }
 
-/* Оверлей поверх изображения */
+
 .slider-overlay {
     position: absolute;
     top: 0;
@@ -2670,14 +2657,14 @@ body.dark-theme .vertical-image {
     line-height: 1.6;
 }
 
-/* Для всех элементов внутри caption */
+
 .slider-caption h3,
 .slider-caption p,
 .slider-caption .scroll-text {
     pointer-events: none;
 }
 
-/* Для 4 слайда */
+
 #slide4 .vertical-image-wrapper {
     scroll-behavior: smooth;
 }
@@ -2688,19 +2675,19 @@ body.dark-theme .vertical-image {
     line-height: 1.6;
 }
 
-/* Исправление для слайдов без вертикальной прокрутки */
+
 .slider-item:not(:has(.vertical-image-wrapper)) {
     overscroll-behavior: auto;
 }
 
-/* Убираем возможные отступы */
+
 .slider-item .vertical-image-container,
 .slider-item .vertical-image-wrapper {
-    line-height: 0; /* Убирает лишние отступы */
-    font-size: 0; /* Убирает лишние отступы */
+    line-height: 0;
+    font-size: 0;
 }
 
-/* Гарантированно убираем серую полосу */
+
 .vertical-image-wrapper::after,
 .vertical-image-container::after,
 .slider-item::after {
@@ -2708,7 +2695,7 @@ body.dark-theme .vertical-image {
     content: none !important;
 }
 
-/* ===== АНИМАЦИЯ ДЛЯ ВИДЕО НА СТРАНИЦЕ ЭКСКУРСИЯ ===== */
+
 #videosPage .video-single {
     opacity: 0;
     transform: translateY(20px);
@@ -2726,21 +2713,21 @@ body.dark-theme .vertical-image {
     }
 }
 
-/* Добавляем задержку для заголовка, если нужно */
+
 #videosPage h2 {
     opacity: 0;
     transform: translateY(20px);
     animation: videoFadeIn 0.6s ease forwards;
 }
 
-/* Сама карточка видео тоже с анимацией */
+
 #videosPage .video-card {
     opacity: 0;
     transform: translateY(20px);
     animation: videoFadeIn 0.8s ease 0.2s forwards;
 }
 
-/* Пагинация */
+
 .slider-pagination {
     position: absolute;
     left: 16px;
@@ -2755,12 +2742,12 @@ body.dark-theme .vertical-image {
     padding: 14px 10px;
     border-radius: 16px;
 
-    /* ЖИДКОЕ СТЕКЛО */
-    background: rgba(20, 20, 20, 0.55); /* стало темнее */
+   
+    background: rgba(20, 20, 20, 0.55);
     backdrop-filter: blur(12px) saturate(140%);
     -webkit-backdrop-filter: blur(12px) saturate(140%);
 
-    /* ЧЁТКАЯ ВИДИМОСТЬ */
+   
     border: 1px solid rgba(255,255,255,0.12);
     box-shadow: 
         0 8px 25px rgba(0,0,0,0.35),
@@ -2790,7 +2777,7 @@ body.dark-theme .vertical-image {
     background: var(--accent-dark);
     transform: scale(1.5);
 
-    /* свечение как у прогресса */
+   
     box-shadow: 
         0 0 4px 3px var(--flame-color),
         0 0 2px var(--flame-color);
@@ -2816,7 +2803,7 @@ body.dark-theme .vertical-image {
     height: 0%;
     background: var(--accent-dark);
 
-    /* тот же glow что и у точки */
+   
     box-shadow: 
         0 0 8px var(--accent-dark);
 
@@ -2838,40 +2825,40 @@ body.dark-theme .vertical-image {
             0 0 2px var(--flame-color);
 }
 
-/* ===== КАСТОМНЫЙ СКРОЛЛБАР ДЛЯ ВСЕГО САЙТА (ПРИГЛУШЕННЫЙ) ===== */
 
-/* Для всей страницы (WebKit браузеры) */
+
+
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
 }
 
-/* Трек (фон) скроллбара - почти прозрачный */
+
 ::-webkit-scrollbar-track {
     background: rgba(44, 42, 39, 0.08);
     border-radius: 10px;
 }
 
-/* Бегунок скроллбара - приглушенный */
+
 ::-webkit-scrollbar-thumb {
     background: rgba(139, 122, 107, 0.25);
     border-radius: 10px;
     transition: background 0.3s ease;
 }
 
-/* Бегунок при наведении - чуть заметнее */
+
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(139, 122, 107, 0.45);
 }
 
-/* Уголок между скроллбарами */
+
 ::-webkit-scrollbar-corner {
     background: transparent;
 }
 
-/* ===== МОДАЛЬНОЕ ОКНО ДЛЯ ГЕРОЯ С ФИКСИРОВАННЫМ КРЕСТИКОМ ===== */
 
-/* Контейнер модального окна */
+
+
 .hero-modal__content {
     position: relative;
     width: 90%;
@@ -2882,11 +2869,11 @@ body.dark-theme .vertical-image {
     overflow-y: auto;
     overflow-x: hidden;
     
-    /* Полностью скрываем скроллбар */
+   
     scrollbar-width: none;
     -ms-overflow-style: none;
     
-    /* Эффект жидкого стекла */
+   
     background: rgba(214, 210, 201, 0.4);
     backdrop-filter: blur(20px) saturate(200%);
     -webkit-backdrop-filter: blur(20px) saturate(200%);
@@ -2902,14 +2889,14 @@ body.dark-theme .vertical-image {
     z-index: 2001;
 }
 
-/* Скрываем скроллбар */
+
 .hero-modal__content::-webkit-scrollbar {
     display: none;
     width: 0;
     height: 0;
 }
 
-/* Крестик - фиксированный, не прокручивается */
+
 .hero-modal__close {
     position: sticky;
     right: 0;
@@ -2933,7 +2920,7 @@ body.dark-theme .vertical-image {
     background: rgba(0, 0, 0, 0.2);
 }
 
-/* Внутренний контент - очищаем от float */
+
 .hero-modal__inner {
     clear: both;
     display: flex;
@@ -2942,7 +2929,7 @@ body.dark-theme .vertical-image {
     min-height: 500px;
 }
 
-/* Адаптация для мобильных */
+
 @media (max-width: 768px) {
     .hero-modal__inner {
         flex-direction: column;
@@ -2959,7 +2946,7 @@ body.dark-theme .vertical-image {
     }
 }
 
-/* ===== ПРЕЛОАДЕР (ЗАГРУЗКА) ===== */
+
 .preloader {
     position: fixed;
     top: 0;
@@ -2990,7 +2977,7 @@ body.dark-theme .vertical-image {
     gap: 10px;
 }
 
-/* Колесо загрузки (толстое) */
+
 .preloader__spinner {
     width: 70px;
     height: 70px;
@@ -3011,7 +2998,7 @@ body.dark-theme .vertical-image {
     }
 }
 
-/* Пульсирующий текст */
+
 .preloader__text {
     font-size: 1.2rem;
     letter-spacing: 2px;
@@ -3032,7 +3019,7 @@ body.dark-theme .vertical-image {
     }
 }
 
-/* Для темной темы */
+
 body.dark-theme .preloader {
     background: var(--bg);
 }
@@ -3047,11 +3034,11 @@ body.dark-theme .preloader__spinner {
     border-right: 6px solid var(--accent);
 }
 
-/* ========================================================= */
-/* ===== НОВЫЕ СТИЛИ: АНИМАЦИИ, КНОПКА ВВЕРХ, БЛОКИРОВКИ ===== */
-/* ========================================================= */
 
-/* 1. Анимация появления карточек на главной (fade-in-up) */
+
+
+
+
 @keyframes cardFadeInUp {
     0% { opacity: 0; transform: translateY(50px); }
     100% { opacity: 1; transform: translateY(0); }
@@ -3059,11 +3046,11 @@ body.dark-theme .preloader__spinner {
 
 .exhibit-card.fade-in-up {
     animation: cardFadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-    opacity: 0; /* Изначально скрыты до старта анимации */
+    opacity: 0;
 }
 
 
-/* 3. Визуальная блокировка недоступных элементов пагинации */
+
 .slider-pagination.locked-forward .slider-dot.locked,
 .slider-pagination.locked-forward .slider-progress.locked {
     opacity: 0.3 !important;
@@ -3071,27 +3058,27 @@ body.dark-theme .preloader__spinner {
     pointer-events: none !important;
 }
 
-/* Фикс горизонтального скролла */
+
 html, body {
     max-width: 100%;
     overflow-x: hidden;
     position: relative;
 }
 
-/* ========================================================= */
-/* ===== ПЛАВНАЯ АНИМАЦИЯ СЛАЙДЕРОВ (БЕЗ СДВИГА ЦЕНТРА) ===== */
-/* ========================================================= */
+
+
+
 
 .gallery-slider.scroll-anim-init {
     opacity: 0;
-    filter: blur(5px); /* Добавим легкое размытие вместо сильного сдвига */
+    filter: blur(5px);
     transition: opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), 
                 transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1),
                 filter 1.2s ease;
     will-change: opacity, transform;
 }
 
-/* Вместо 60px делаем всего 20px, чтобы не ломать верстку и не вызывать скролл */
+
 .gallery-slider.scroll-anim-left { transform: translateX(-20px); }
 .gallery-slider.scroll-anim-right { transform: translateX(20px); }
 
@@ -3101,10 +3088,9 @@ html, body {
     filter: blur(0);
 }
 
-/* --- ИСПРАВЛЕНИЕ ПАГИНАЦИИ И КНОПОК --- */
 
-/* Скрытое состояние: сохраняем твои оригинальные стили центрирования, 
-   но добавляем прозрачность и мизерный сдвиг */
+
+
 .gallery-slider.controls-hidden .slider-controls,
 .gallery-slider.controls-hidden .slider-pagination {
     opacity: 0 !important;
@@ -3113,19 +3099,19 @@ html, body {
     transition: opacity 0.8s ease, transform 0.8s ease, visibility 0.8s ease !important;
 }
 
-/* Пагинация (левый край) — мягкое появление без потери центра */
+
 .gallery-slider.controls-hidden .slider-pagination {
-    /* Оставляем твой translateY(-50%), чтобы было по центру, и чуть сдвигаем влево */
+   
     transform: translateY(-50%) translateX(-10px) !important;
 }
 
-/* Стрелочки (низ) — мягкое появление без потери центра */
+
 .gallery-slider.controls-hidden .slider-controls {
-    /* Оставляем твой translateX(-50%), и чуть сдвигаем вниз */
+   
     transform: translateX(-50%) translateY(10px) !important;
 }
 
-/* Видимое состояние: возвращаем строго к твоим исходным координатам */
+
 .gallery-slider.controls-visible .slider-pagination {
     opacity: 1 !important;
     visibility: visible !important;
@@ -3138,22 +3124,22 @@ html, body {
     transform: translateX(-50%) translateY(0) !important;
 }
 
-/* --- ПЛАВНОЕ ПОЯВЛЕНИЕ ЭЛЕМЕНТОВ УПРАВЛЕНИЯ --- */
 
-/* 1. ПАГИНАЦИЯ (Левый край, центрирована вертикально) */
+
+
 .gallery-slider .slider-pagination {
-    /* Твои базовые настройки позиции */
+   
     position: absolute;
     left: 20px;
     top: 50%;
     z-index: 100;
     
-    /* Начальное состояние: невидима, чуть левее и сохраняет центр по Y */
+   
     opacity: 0;
     visibility: hidden;
     transform: translateY(-50%) translateX(-15px);
     
-    /* Плавный переход с кастомной кривой */
+   
     transition: 
         opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
         transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
@@ -3161,20 +3147,20 @@ html, body {
     will-change: transform, opacity;
 }
 
-/* 2. КНОПКИ НАВИГАЦИИ (Нижний край, центрированы горизонтально) */
+
 .gallery-slider .slider-controls {
-    /* Твои базовые настройки позиции */
+   
     position: absolute;
     bottom: 25px;
     left: 50%;
     z-index: 100;
 
-    /* Начальное состояние: невидимы, чуть ниже и сохраняют центр по X */
+   
     opacity: 0;
     visibility: hidden;
     transform: translateX(-50%) translateY(15px);
     
-    /* Плавный переход */
+   
     transition: 
         opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
         transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
@@ -3182,40 +3168,40 @@ html, body {
     will-change: transform, opacity;
 }
 
-/* СОСТОЯНИЕ ПРИ ПОЯВЛЕНИИ (Класс, который добавляет JS) */
+
 
 .gallery-slider.controls-visible .slider-pagination {
     opacity: 1;
     visibility: visible;
-    /* Возвращаем в идеальный центр по Y и на свою позицию по X */
+   
     transform: translateY(-50%) translateX(0);
 }
 
 .gallery-slider.controls-visible .slider-controls {
     opacity: 1;
     visibility: visible;
-    /* Возвращаем в идеальный центр по X и на свою позицию по Y */
+   
     transform: translateX(-50%) translateY(0);
 }
 
-/* ===== ФИКС ПРЫГАЮЩЕГО ФУТЕРА ===== */
-/* Делаем body флекс-контейнером на всю высоту экрана */
+
+
 body {
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Минимальная высота — весь экран */
+    min-height: 100vh;
     margin: 0;
     padding: 0;
 }
 
-/* Основной контент занимает всё доступное пространство */
+
 main#mainContent {
-    flex: 1 0 auto; /* Растягивается, выталкивая футер вниз */
+    flex: 1 0 auto;
     display: flex;
     flex-direction: column;
 }
 
-/* Каждая страница тоже должна занимать всю высоту */
+
 .page {
     flex: 1 0 auto;
     display: none;
@@ -3226,31 +3212,31 @@ main#mainContent {
     display: flex;
 }
 
-/* Контент внутри страницы растягивается */
+
 .page .container {
     flex: 1 0 auto;
     display: flex;
     flex-direction: column;
 }
 
-/* Футер всегда прижат к низу */
+
 .footer {
-    flex-shrink: 0; /* Запрещаем сжиматься */
-    margin-top: 0; /* Убираем лишний отступ */
+    flex-shrink: 0;
+    margin-top: 0;
     width: 100%;
 }
 
-/* Фикс для hero на главной странице */
+
 #homePage .hero {
     flex: 1;
 }
 
-/* Фикс для галереи */
+
 #galleryPage .container {
-    min-height: 500px; /* Минимальная высота для стабильности */
+    min-height: 500px;
 }
 
-/* Фикс для страницы видео */
+
 #videosPage .container {
     flex: 1;
     display: flex;
@@ -3259,7 +3245,7 @@ main#mainContent {
     min-height: 400px;
 }
 
-/* Дополнительный фикс для контейнера внутри страниц */
+
 #homePage .container,
 #galleryPage .container,
 #videosPage .container {
@@ -3268,43 +3254,43 @@ main#mainContent {
     flex: 1;
 }
 
-/* Убираем возможные конфликтующие стили */
+
 .page > .container {
     width: 100%;
 }
 
-/* ===== ОТСТУП МЕЖДУ ГАЛЕРЕЕЙ И ФУТЕРОМ ===== */
-/* Добавляем отступ снизу для контейнера галереи */
+
+
 #galleryPage .container {
-    padding-bottom: 60px; /* Отступ перед футером */
+    padding-bottom: 60px;
 }
 
-/* Альтернативный вариант - отступ для последнего элемента в галерее */
+
 .gallery-slider:last-child {
     margin-bottom: 60px;
 }
 
-/* Для страницы видео тоже добавляем отступ */
+
 #videosPage .container {
     padding-bottom: 60px;
 }
 
-/* Для главной страницы */
+
 #homePage .container {
     padding-bottom: 60px;
 }
 
-/* ===== АДАПТАЦИЯ ДЛЯ БОЛЬШИХ ЭКРАНОВ (от 1440px и выше) ===== */
 
-/* Общее масштабирование для экранов шире 1440px */
+
+
 @media (min-width: 1440px) {
-    /* Увеличиваем максимальную ширину контейнера */
+   
     .container {
         max-width: 1600px;
         padding: 0 48px;
     }
     
-    /* Увеличиваем шрифты */
+   
     h2 {
         font-size: 2.8rem;
         margin-bottom: 2rem;
@@ -3320,7 +3306,7 @@ main#mainContent {
         max-width: 900px;
     }
     
-    /* Увеличиваем карточки на главной */
+   
     .exhibits-grid {
         gap: 32px;
     }
@@ -3333,7 +3319,7 @@ main#mainContent {
         font-size: 1rem;
     }
     
-    /* Увеличиваем слайдер */
+   
     .gallery-slider {
         max-width: 1300px;
     }
@@ -3350,7 +3336,7 @@ main#mainContent {
         font-size: 1.2rem;
     }
     
-    /* Увеличиваем карточки героев */
+   
     .heroes-grid {
         max-width: 1300px;
         gap: 32px;
@@ -3364,7 +3350,7 @@ main#mainContent {
         font-size: 0.95rem;
     }
     
-    /* Увеличиваем видео */
+   
     .video-single {
         max-width: 1100px;
     }
@@ -3377,7 +3363,7 @@ main#mainContent {
         font-size: 1.1rem;
     }
     
-    /* Увеличиваем кнопки в слайдере */
+   
     .slider-btn {
         min-width: 80px;
         height: 52px;
@@ -3385,7 +3371,7 @@ main#mainContent {
         padding: 0 32px;
     }
     
-    /* Увеличиваем пагинацию */
+   
     .slider-pagination {
         gap: 18px;
         padding: 18px 12px;
@@ -3402,7 +3388,7 @@ main#mainContent {
     }
 }
 
-/* Для очень больших экранов (1920px и выше) */
+
 @media (min-width: 1920px) {
     .container {
         max-width: 1800px;
@@ -3451,7 +3437,7 @@ main#mainContent {
     }
 }
 
-/* Увеличенные кнопки для больших экранов */
+
 @media (min-width: 1440px) {
     .nav {
         gap: 60px;
@@ -3471,34 +3457,32 @@ main#mainContent {
     }
 }
 
-/* ===== ДОПОЛНИТЕЛЬНЫЙ ОТСТУП ДЛЯ ПОДВАЛА (чтобы не сливался) ===== */
+
 .footer {
     margin-top: 0;
     padding: 40px 0;
 }
 
-/* Убеждаемся, что между контентом и футером есть воздух */
+
 .page.active .container:last-child {
     margin-bottom: 0;
     padding-bottom: 60px;
 }
 
-/* Для страницы галереи последний слайдер получает отступ снизу */
+
 #galleryPage .gallery-slider:last-of-type {
     margin-bottom: 0;
 }
 
-/* А для контейнера галереи добавляем отступ */
+
 #galleryPage .container {
     padding-bottom: 60px;
 }
 
-/* ================================================================
-   ГАМБУРГЕР-МЕНЮ И МОБИЛЬНАЯ ШТОРКА
-   ================================================================ */
+
 
 .hamburger {
-    display: none;               /* виден только на мобильных */
+    display: none;              
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -3526,7 +3510,7 @@ main#mainContent {
                 background 0.3s ease;
 }
 
-/* Анимация в крестик */
+
 .hamburger.open .hamburger__line:nth-child(1) {
     transform: translateY(7px) rotate(45deg);
 }
@@ -3538,12 +3522,12 @@ main#mainContent {
     transform: translateY(-7px) rotate(-45deg);
 }
 
-/* ---- Шторка мобильного меню ---- */
+
 .mobile-nav {
     position: fixed;
     inset: 0;
     z-index: 499;
-    visibility: hidden; /* Вместо display: none */
+    visibility: hidden;
     transition: visibility 0.3s ease;
 }
 
@@ -3551,7 +3535,7 @@ main#mainContent {
     visibility: visible;
 }
 
-/* Затемнённый backdrop */
+
 .mobile-nav__overlay {
     position: absolute;
     inset: 0;
@@ -3565,7 +3549,7 @@ main#mainContent {
     opacity: 1;
 }
 
-/* Сама шторка — выезжает справа */
+
 .mobile-nav__menu {
     position: absolute;
     top: 0;
@@ -3587,7 +3571,7 @@ main#mainContent {
     transform: translateX(0);
 }
 
-/* Кнопка закрыть */
+
 .mobile-nav__close {
     position: absolute;
     top: 16px;
@@ -3611,7 +3595,7 @@ main#mainContent {
     background: rgba(139, 122, 107, 0.1);
 }
 
-/* Логотип внутри шторки */
+
 .mobile-nav__logo {
     font-size: 1.4rem;
     font-weight: 500;
@@ -3625,7 +3609,7 @@ main#mainContent {
     font-weight: 400;
 }
 
-/* Ссылки меню */
+
 .mobile-nav__links {
     display: flex;
     flex-direction: column;
@@ -3671,7 +3655,7 @@ main#mainContent {
     color: var(--accent);
 }
 
-/* Переключатель темы в шторке */
+
 .mobile-nav__theme {
     margin-top: 28px;
     padding-top: 20px;
@@ -3683,22 +3667,20 @@ main#mainContent {
     font-size: 0.95rem;
 }
 
-/* Темная тема для шторки */
+
 body.dark-theme .mobile-nav__menu {
     box-shadow: -12px 0 50px rgba(0, 0, 0, 0.45);
 }
 
 
-/* ================================================================
-   АДАПТИВ — ПЛАНШЕТ (до 1024px)
-   ================================================================ */
+
 @media (max-width: 1024px) {
 
     .container {
         padding: 0 24px;
     }
 
-    /* Шапка */
+   
     .nav {
         gap: 28px;
     }
@@ -3706,7 +3688,7 @@ body.dark-theme .mobile-nav__menu {
         font-size: 0.95rem;
     }
 
-    /* Hero */
+   
     .hero {
         padding: 48px 0 0;
     }
@@ -3718,7 +3700,7 @@ body.dark-theme .mobile-nav__menu {
         max-width: 600px;
     }
 
-    /* Карточки выставок — всё ещё 3 в ряд, но с меньшим gap */
+   
     .exhibits-grid {
         gap: 16px;
     }
@@ -3726,13 +3708,13 @@ body.dark-theme .mobile-nav__menu {
         font-size: 1.2rem;
     }
 
-    /* Карточки героев: 2×2 */
+   
     .heroes-grid {
         grid-template-columns: repeat(2, 1fr);
         max-width: 640px;
     }
 
-    /* Слайдер */
+   
     :root {
         --slider-height: 420px;
     }
@@ -3746,7 +3728,7 @@ body.dark-theme .mobile-nav__menu {
         font-size: 0.9rem;
     }
 
-    /* Табы */
+   
     .main-tabs {
         flex-wrap: wrap;
         gap: 6px;
@@ -3765,7 +3747,7 @@ body.dark-theme .mobile-nav__menu {
         padding: 6px 16px;
     }
 
-    /* Описание */
+   
     .event-description__title {
         font-size: 1.7rem;
     }
@@ -3773,12 +3755,12 @@ body.dark-theme .mobile-nav__menu {
         font-size: 1rem;
     }
 
-    /* h2 */
+   
     h2 {
         font-size: 1.9rem;
     }
 
-    /* Модальное окно героя */
+   
     .hero-modal__content {
         width: 92%;
     }
@@ -3787,7 +3769,7 @@ body.dark-theme .mobile-nav__menu {
         height: auto;
     }
 
-    /* Слайдер-оверлей чуть шире */
+   
     .slider-overlay {
         width: 50%;
         padding: 32px;
@@ -3795,31 +3777,29 @@ body.dark-theme .mobile-nav__menu {
 }
 
 
-/* ================================================================
-   АДАПТИВ — МОБИЛЬНЫЙ (до 768px)
-   ================================================================ */
+
 @media (max-width: 768px) {
 
-    /* ---- Контейнер ---- */
+   
     .container {
         padding: 0 16px;
     }
 
-    /* Раздел СВО */
+   
 
 
-    /* ---- Шапка ---- */
+   
     .header {
         padding: 14px 0;
     }
-    /* Прячем десктопный нав, показываем гамбургер */
+   
     .nav {
         display: none;
     }
     .hamburger {
         display: flex;
     }
-    /* Прячем переключатель темы в шапке (он есть в шторке) */
+   
     .theme-switcher {
         display: none;
     }
@@ -3827,7 +3807,7 @@ body.dark-theme .mobile-nav__menu {
         font-size: 1.25rem;
     }
 
-    /* ---- Ротатор фактов ---- */
+   
     .quote-rotator {
         max-height: 110px;
         padding: 30px 0;
@@ -3842,7 +3822,7 @@ body.dark-theme .mobile-nav__menu {
         font-size: 0.65rem;
     }
 
-    /* ---- Главная ---- */
+   
     .hero {
         padding: 32px 0 0;
     }
@@ -3860,13 +3840,13 @@ body.dark-theme .mobile-nav__menu {
         margin-bottom: 1rem;
     }
 
-    /* Карточки выставок: 1 в ряд */
+   
     .exhibits-grid {
         grid-template-columns: 1fr;
         gap: 16px;
         margin-top: 24px;
     }
-    /* Убираем увеличение средней карточки на мобильном */
+   
     .exhibit-card[data-tab-main="1"] {
         transform: none;
         z-index: auto;
@@ -3882,10 +3862,10 @@ body.dark-theme .mobile-nav__menu {
     }
 
 
-    /* ---- Слайдер ---- */
-    /* ---- Слайдер ---- */
-/* ---- Слайдер на мобильных ---- */
-/* ---- Слайдер на мобильных ---- */
+   
+   
+
+
 @media (max-width: 768px) {
     :root {
         --slider-height: 300px;
@@ -3896,8 +3876,8 @@ body.dark-theme .mobile-nav__menu {
         border-radius: 16px;
     }
 
-    /* Текст внизу по центру */
-    /* Оверлей снизу */
+   
+   
     .slider-overlay {
         position: absolute;
         inset: 0 !important;
@@ -3907,8 +3887,8 @@ body.dark-theme .mobile-nav__menu {
 
         display: flex !important;
 
-        align-items: flex-end !important;   /* вниз */
-        justify-content: center !important; /* центр */
+        align-items: flex-end !important;  
+        justify-content: center !important;
 
         padding: 0 !important;
 
@@ -3925,7 +3905,7 @@ body.dark-theme .mobile-nav__menu {
         width: 100% !important;
         max-width: 100% !important;
 
-        /* максимум 25% высоты слайда */
+       
         max-height: 40% !important;
 
         text-align: center !important;
@@ -3953,7 +3933,7 @@ body.dark-theme .mobile-nav__menu {
 
         color: white;
 
-        /* максимум 2 строки */
+       
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
@@ -3970,7 +3950,7 @@ body.dark-theme .mobile-nav__menu {
 
         color: rgba(255,255,255,0.92);
 
-        /* максимум 3 строки */
+       
         display: -webkit-box;
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
@@ -3985,12 +3965,12 @@ body.dark-theme .mobile-nav__menu {
         opacity: 1;
     }
 
-    /* скрыть кнопки на мобильных */
+   
     .slider-controls {
         display: none !important;
     }
 }
-    /* ---- Галерея — табы ---- */
+   
     .main-tabs {
         flex-wrap: wrap;
         gap: 6px;
@@ -4012,7 +3992,7 @@ body.dark-theme .mobile-nav__menu {
         padding: 5px 12px;
     }
 
-    /* ---- Описание событий ---- */
+   
     .event-description {
         margin-bottom: 24px;
         padding: 16px 0;
@@ -4028,14 +4008,14 @@ body.dark-theme .mobile-nav__menu {
         max-height: 800px;
     }
 
-    /* ---- Карточки героев: 2×2 на «планшете-телефоне» ---- */
+   
     .heroes-grid {
         grid-template-columns: repeat(2, 1fr);
         max-width: 100%;
         gap: 12px;
     }
 
-    /* ---- Модальное окно героя ---- */
+   
     .hero-modal__content {
         width: 95%;
         margin: 12px auto;
@@ -4067,7 +4047,7 @@ body.dark-theme .mobile-nav__menu {
         margin-top: 4px;
     }
 
-    /* ---- Видео-модалка ---- */
+   
     .modal-content {
         width: 95%;
         border-radius: 16px;
@@ -4078,19 +4058,19 @@ body.dark-theme .mobile-nav__menu {
         font-size: 1.5rem;
     }
 
-    /* ---- Видеоэкскурсия ---- */
+   
     .video-single {
         max-width: 100%;
         padding: 10px 0;
     }
 
-    /* ---- Подвал ---- */
+   
     .footer {
         padding: 20px 0;
         font-size: 0.85rem;
     }
 
-    /* ---- Кнопка поддержки ---- */
+   
     .support-button {
         bottom: 16px;
         right: 16px;
@@ -4098,7 +4078,7 @@ body.dark-theme .mobile-nav__menu {
         height: 48px;
     }
 
-    /* ---- Подсекции (battle-section) ---- */
+   
     .battle-section {
         margin-bottom: 24px !important;
     }
@@ -4108,9 +4088,7 @@ body.dark-theme .mobile-nav__menu {
 }
 
 
-/* ================================================================
-   АДАПТИВ — МАЛЕНЬКИЙ ТЕЛЕФОН (до 480px)
-   ================================================================ */
+
 @media (max-width: 480px) {
 
     .container {
@@ -4135,7 +4113,7 @@ body.dark-theme .mobile-nav__menu {
         font-size: 1.3rem;
     }
 
-    /* Слайдер */
+   
     :root {
         --slider-height: 250px;
     }
@@ -4149,13 +4127,13 @@ body.dark-theme .mobile-nav__menu {
         font-size: 0.85rem;
     }
 
-    /* Герои: 1 столбец */
+   
     .heroes-grid {
         grid-template-columns: 1fr;
         max-width: 340px;
     }
 
-    /* Карточки выставок */
+   
     .exhibit-card {
         min-height: 240px;
     }
@@ -4163,7 +4141,7 @@ body.dark-theme .mobile-nav__menu {
         font-size: 1.1rem;
     }
 
-    /* Табы */
+   
     .tab-btn {
         font-size: 0.78rem;
         padding: 6px 10px;
@@ -4173,7 +4151,7 @@ body.dark-theme .mobile-nav__menu {
         padding: 4px 10px;
     }
 
-    /* Модальное окно */
+   
     .hero-modal__content {
         width: 98%;
         margin: 8px auto;
@@ -4195,7 +4173,7 @@ body.dark-theme .mobile-nav__menu {
         padding: 12px 12px 20px;
     }
 
-    /* Описание */
+   
     .event-description__title {
         font-size: 1.2rem !important;
     }
@@ -4205,16 +4183,14 @@ body.dark-theme .mobile-nav__menu {
 }
 
 
-/* ================================================================
-   МОБИЛЬНЫЙ — ФИКС ТЕМЫ ДЛЯ ШТОРКИ
-   ================================================================ */
+
 body.dark-theme .hamburger__line {
     background: var(--text-primary);
 }
 body.dark-theme .mobile-nav__menu {
     border-left-color: var(--border-light);
 }
-/* Стрелка на quote-toggle тоже наследует правильный фон */
+
 body.dark-theme .quote-toggle__arrow {
     background: var(--bg);
 }
@@ -4233,11 +4209,11 @@ body.dark-theme .quote-toggle__arrow {
     flex-direction: column;
     gap: 0;
     transform: translateX(100%);
-    transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1); /* ← плавнее */
+    transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     overflow-y: auto;
 }
 
-/* ===== ФИКС КАРТИНКИ СВО НА МОБИЛЬНЫХ ===== */
+
 @media (max-width: 768px) {
     .exhibit-card[data-tab-main="1"] .exhibit-card__image {
         position: absolute;
@@ -4249,13 +4225,13 @@ body.dark-theme .quote-toggle__arrow {
         background-position: center;
     }
     
-    /* Принудительно показываем карточку СВО */
+   
     .exhibit-card[data-tab-main="1"] {
         transform: none !important;
         min-height: 260px;
     }
     
-    /* Убеждаемся, что абсолютное позиционирование работает */
+   
     .exhibit-card {
         position: relative;
         overflow: hidden;
@@ -4266,9 +4242,9 @@ body.dark-theme .quote-toggle__arrow {
     }
 }
 
-/* ===== КОМПАКТНАЯ ПАГИНАЦИЯ ДЛЯ МОБИЛЬНЫХ ===== */
+
 @media (max-width: 768px) {
-    /* Пагинация - делаем компактнее */
+   
     .slider-pagination {
         left: 6px !important;
         gap: 8px !important;
@@ -4280,13 +4256,13 @@ body.dark-theme .quote-toggle__arrow {
         border: 1px solid rgba(255, 255, 255, 0.1) !important;
     }
 
-    /* Точки пагинации - меньше размер */
+   
     .slider-dot {
         width: 6px !important;
         height: 6px !important;
     }
 
-    /* Прогресс-бары - уже и короче */
+   
     .slider-progress {
         width: 6px !important;
         height: 30px !important;
@@ -4297,30 +4273,30 @@ body.dark-theme .quote-toggle__arrow {
         width: 100% !important;
     }
 
-    /* Активная точка - меньше масштаб */
+   
     .slider-dot.active {
         transform: scale(1.3) !important;
         box-shadow: 0 0 3px 2px var(--flame-color), 0 0 1px var(--flame-color) !important;
     }
 
-    /* Активный прогресс-бар */
+   
     .slider-progress.active {
         transform: scale(1.05) !important;
         box-shadow: 0 0 3px 2px var(--flame-color), 0 0 1px var(--flame-color) !important;
     }
 
-    /* Скрываем кнопки навигации на мобильных, если они мешают */
+   
     .slider-controls {
         display: none !important;
     }
 }
 
-    /* Для совсем маленьких экранов (480px и меньше) - еще компактнее */
+   
     @media (max-width: 768px) {
         .slider-pagination {
             left: 8px !important;
-            gap: 10px !important;           /* было 8px */
-            padding: 10px 8px !important;   /* было 8px 6px */
+            gap: 10px !important;          
+            padding: 10px 8px !important;  
             border-radius: 35px !important;
             background: rgba(20, 20, 20, 0.7) !important;
             backdrop-filter: blur(10px) saturate(160%) !important;
@@ -4329,13 +4305,13 @@ body.dark-theme .quote-toggle__arrow {
         }
 
         .slider-dot {
-            width: 8px !important;           /* было 6px */
-            height: 8px !important;          /* было 6px */
+            width: 8px !important;          
+            height: 8px !important;         
         }
 
         .slider-progress {
-            width: 8px !important;           /* было 6px */
-            height: 35px !important;         /* было 30px */
+            width: 8px !important;          
+            height: 35px !important;        
             border-radius: 5px !important;
         }
     }
@@ -4346,7 +4322,7 @@ body.dark-theme .quote-toggle__arrow {
     }
 
 
-/* Для планшетов (768px - 1024px) - делаем чуть меньше, но не так радикально */
+
 @media (min-width: 769px) and (max-width: 1024px) {
     .slider-pagination {
         left: 12px !important;
@@ -4365,11 +4341,9 @@ body.dark-theme .quote-toggle__arrow {
     }
 }
 
-/* ============================================================
-   МОБИЛЬНАЯ КНОПКА INFO ДЛЯ СЛАЙДОВ
-   ============================================================ */
 
-/* Только для мобильных устройств */
+
+
 @media (max-width: 768px) {
     .mobile-info-btn {
         position: absolute;
@@ -4399,7 +4373,7 @@ body.dark-theme .quote-toggle__arrow {
         transform: scale(1.05);
     }
     
-    /* Исчезновение кнопки после свайпа */
+   
     .mobile-info-btn.fade-out {
         opacity: 0;
         visibility: hidden;
@@ -4408,7 +4382,7 @@ body.dark-theme .quote-toggle__arrow {
         pointer-events: none;
     }
 
-    /* Тултип с подсказкой */
+   
     .mobile-info-tooltip {
         position: absolute;
         top: 38px;
@@ -4440,7 +4414,7 @@ body.dark-theme .quote-toggle__arrow {
         visibility: visible;
     }
 
-    /* Стрелка тултипа */
+   
     .mobile-info-tooltip::before {
         content: '';
         position: absolute;
@@ -4455,7 +4429,7 @@ body.dark-theme .quote-toggle__arrow {
         backdrop-filter: blur(16px);
     }
 
-    /* Темная тема */
+   
     body.dark-theme .mobile-info-btn {
         background: rgba(181, 131, 90, 0.7);
         border-color: rgba(255, 255, 255, 0.25);
@@ -4474,7 +4448,7 @@ body.dark-theme .quote-toggle__arrow {
     }
 }
 
-/* Адаптация для очень маленьких экранов */
+
 @media (max-width: 480px) {
     .mobile-info-btn {
         top: 8px;
@@ -4500,9 +4474,9 @@ body.dark-theme .quote-toggle__arrow {
     }
 }
 
-/* ========================================================= */
-/* 1. ФИКС ТОРМОЗОВ МОДАЛЬНОГО ОКНА ГЕРОЕВ НА МОБИЛЬНЫХ      */
-/* ========================================================= */
+
+
+
 @media (max-width: 768px) {
     .hero-modal__content {
         backdrop-filter: none !important;
@@ -4524,9 +4498,9 @@ body.dark-theme .quote-toggle__arrow {
     }
 }
 
-/* ========================================================= */
-/* 2. СТИЛИ ДЛЯ ВСТРОЕННОГО ВИДЕО (ИНЛАЙН ПЛЕЕР)             */
-/* ========================================================= */
+
+
+
 .video-card.is-playing .play-icon {
     display: none; 
 }
@@ -4537,19 +4511,19 @@ body.dark-theme .quote-toggle__arrow {
     background: #000;
 }
 
-/* ========================================================= */
-/* 3. КНОПКА ЛУПЫ И ПОЛНОЭКРАННЫЙ РЕЖИМ СЛАЙДОВ (ЧИСТАЯ ВЕРСИЯ) */
-/* ========================================================= */
 
-/* Базовые стили: скрываем на ПК */
+
+
+
+
 .mobile-fullscreen-btn {
     display: none !important;
 }
 
-/* Только для мобильных */
+
 @media (max-width: 768px) {
     
-    /* Кнопка лупы - левый верхний угол */
+   
     .mobile-fullscreen-btn {
         display: flex !important;
         position: absolute;
@@ -4579,7 +4553,7 @@ body.dark-theme .quote-toggle__arrow {
         transform: scale(1.05);
     }
     
-    /* Полноэкранный режим слайдера */
+   
     .gallery-slider.is-fullscreen {
         position: fixed !important;
         top: 0 !important;
@@ -4599,15 +4573,15 @@ body.dark-theme .quote-toggle__arrow {
         height: 100% !important;
     }
     
-    /* Пагинация в полноэкранном режиме */
+   
     .gallery-slider.is-fullscreen .slider-pagination {
         transform: scale(1.3) translateY(-40%);
         transform-origin: left center;
         left: 15px !important;
     }
     
-    /* Экран-просьба повернуть телефон (единый блок) */
-    /* Экран-просьба повернуть телефон (ПЛАВНОЕ ПОЯВЛЕНИЕ) */
+   
+   
 .orientation-prompt {
     display: flex;
     position: fixed;
@@ -4621,7 +4595,7 @@ body.dark-theme .quote-toggle__arrow {
     text-align: center;
     padding: 20px;
     
-    /* Плавное появление/исчезновение */
+   
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
@@ -4688,7 +4662,7 @@ body.dark-theme .quote-toggle__arrow {
         50% { transform: rotate(90deg); }
     }
     
-    /* Настоящий фулскрин браузера */
+   
     .gallery-slider:fullscreen {
         background: #000;
         padding: 0;
@@ -4699,7 +4673,7 @@ body.dark-theme .quote-toggle__arrow {
     }
 }
 
-/* Для очень маленьких экранов */
+
 @media (max-width: 480px) {
     .mobile-fullscreen-btn {
         width: 30px !important;
@@ -4710,7 +4684,7 @@ body.dark-theme .quote-toggle__arrow {
     }
 }
 
-/* Скрываем кнопку поддержки в полноэкранном режиме */
+
 :fullscreen + .support-button,
 .is-fullscreen + .support-button,
 .is-fullscreen .support-button {
@@ -4720,8 +4694,8 @@ body.dark-theme .quote-toggle__arrow {
 
 
 
-/* ===== ПРИНУДИТЕЛЬНОЕ УВЕЛИЧЕНИЕ КНОПКИ i (В КОНЕЦ ФАЙЛА) ===== */
-/* ===== ЕДИНЫЙ СТИЛЬ ДЛЯ КНОПОК i И ЛУПЫ (В КОНЕЦ ФАЙЛА) ===== */
+
+
 @media (max-width: 768px) {
     .mobile-info-btn,
     .mobile-fullscreen-btn {
@@ -4765,14 +4739,14 @@ body.dark-theme .quote-toggle__arrow {
     }
 }
 
-/* ===== ФИКС: СКРЫТИЕ ПОДСКАЗКИ ПОВОРОТА НА ПК ===== */
+
 @media (min-width: 769px) {
     .orientation-prompt {
         display: none !important;
     }
 }
 
-/* ===== ФИКС: ОКНО ГЕРОЯ НА ПК (возвращаем работоспособность) ===== */
+
 .hero-modal__content {
     position: relative;
     width: 90%;
@@ -4806,7 +4780,7 @@ body.dark-theme .quote-toggle__arrow {
     opacity: 1;
 }
 
-/* Мобильные стили (шрифты увеличены для читабельности) */
+
 @media (max-width: 768px) {
     .hero-modal__content {
         position: fixed !important;
@@ -4867,7 +4841,7 @@ body.dark-theme .quote-toggle__arrow {
     }
 }
 
-/* ПК стили (окно работает нормально) */
+
 @media (min-width: 769px) {
     .hero-modal__inner {
         display: flex;
@@ -4907,14 +4881,14 @@ body.dark-theme .quote-toggle__arrow {
     }
 }
 
-/* ===== СКРЫТИЕ ПОДСКАЗКИ ПОВОРОТА НА ПК ===== */
+
 @media (min-width: 769px) {
     .orientation-prompt {
         display: none !important;
     }
 }
 
-/* ===== СМЕЩЕНИЕ КРЕСТИКА ПРАВЕЕ НА МОБИЛЬНЫХ (АЛЬТЕРНАТИВА) ===== */
+
 @media (max-width: 768px) {
     .hero-modal__close {
         right: -10px !important;
@@ -4923,11 +4897,11 @@ body.dark-theme .quote-toggle__arrow {
     }
 }
 
-/* ========================================================= */
-/* ИСПРАВЛЕНИЯ: ПАГИНАЦИЯ, СВЕЧЕНИЕ ТАБОВ, ТЕМА И ПОДСКАЗКА  */
-/* ========================================================= */
 
-/* 1. Легкое свечение для активных вкладок галереи */
+
+
+
+
 .tab-btn.active,
 .sub-tab-btn.active {
     box-shadow: 0 0 12px rgba(139, 122, 107, 0.6) !important;
@@ -4940,7 +4914,7 @@ body.dark-theme .sub-tab-btn.active {
     text-shadow: 0 0 4px rgba(255, 255, 255, 0.3) !important;
 }
 
-/* 2. Перенос блока пагинации на всех слайдах наверх по центру (горизонтально) */
+
 .slider-pagination {
     top: 20px !important;
     bottom: auto !important;
@@ -4955,7 +4929,7 @@ body.dark-theme .sub-tab-btn.active {
     box-sizing: border-box !important;
 }
 
-/* Корректировка анимации появления пагинации сверху */
+
 .gallery-slider.controls-hidden .slider-pagination {
     transform: translateX(-50%) translateY(-15px) !important;
 }
@@ -4963,7 +4937,7 @@ body.dark-theme .sub-tab-btn.active {
     transform: translateX(-50%) translateY(0) !important;
 }
 
-/* ФИКС: Удерживаем пагинацию по центру в полноэкранном режиме (перебиваем старый left: 15px) */
+
 .gallery-slider.is-fullscreen .slider-pagination,
 .gallery-slider:fullscreen .slider-pagination {
     left: 50% !important;
@@ -4971,7 +4945,7 @@ body.dark-theme .sub-tab-btn.active {
     transform-origin: center top !important;
 }
 
-/* 3. Выравнивание высоты элементов пагинации на остальных слайдах */
+
 .slider-pagination .slider-progress {
     transform: rotate(-90deg) !important;
     margin: 0 16px !important; 
@@ -4986,13 +4960,13 @@ body.dark-theme .sub-tab-btn.active {
     flex-shrink: 0 !important;
 }
 
-/* 4. Смещение подсказки "листай" строго под блок пагинации */
+
 .scroll-hint {
     top: 65px !important; 
     bottom: auto !important;
 }
 
-/* 5. Адаптация под мобильные устройства и планшеты */
+
 @media (max-width: 1024px) {
     .slider-pagination {
         top: 12px !important;
@@ -5040,7 +5014,7 @@ body.dark-theme .sub-tab-btn.active {
         height: 26px !important;
     }
 
-    /* ФИКС для полноэкранного режима на телефоне (возвращаем в центр и убираем увеличение) */
+   
     .gallery-slider.is-fullscreen .slider-pagination,
     .gallery-slider:fullscreen .slider-pagination {
         left: 50% !important;
@@ -5049,7 +5023,7 @@ body.dark-theme .sub-tab-btn.active {
     }
 }
 
-/* 6. Исправление переключателя темы ТОЛЬКО для мобильной шторки */
+
 .mobile-nav__theme .theme-slider {
     justify-content: space-between !important;
     padding: 0 6px !important;
@@ -5070,12 +5044,12 @@ body.dark-theme .sub-tab-btn.active {
     font-size: 13px;
 }
 
-/* ========================================================= */
-/* ФИКС: ЗАКРЕПЛЕННАЯ ШАПКА И РАБОЧИЙ КРЕСТИК МЕНЮ           */
-/* ========================================================= */
+
+
+
 
 @media (max-width: 768px) {
-    /* 1. Закрепляем шапку */
+   
     .header {
         position: fixed !important;
         top: 0 !important;
@@ -5095,7 +5069,7 @@ body.dark-theme .sub-tab-btn.active {
         box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3) !important;
     }
     
-    /* 2. Компенсируем высоту шапки, чтобы контент не уезжал под неё */
+   
     body {
         padding-top: 74px !important;
     }
@@ -5104,36 +5078,36 @@ body.dark-theme .sub-tab-btn.active {
         padding-top: 0 !important;
     }
 
-    /* 3. Поднимаем шторку меню над закрепленной шапкой */
+   
     .mobile-nav {
         z-index: 1500 !important; 
     }
     
-    /* 4. Возвращаем крестику кликабельность БЕЗ поломки позиционирования */
+   
     .mobile-nav__close {
         z-index: 1600 !important;
         pointer-events: auto !important; 
     }
 }
 
-/* 5. Безопасное правило для маленьких экранов (вынесено отдельно, чтобы не ломать CSS) */
+
 @media (max-width: 480px) {
     body {
         padding-top: 68px !important;
     }
 }
 
-/* ========================================================= */
-/* ФИКС: УБИРАЕМ СИНЮЮ ПОДСВЕТКУ/РАМКУ ПРИ КЛИКЕ НА МОБИЛЬНЫХ*/
-/* ========================================================= */
 
-/* 1. Отключаем системную подсветку при касании (тапе) для всех элементов */
+
+
+
+
 * {
     -webkit-tap-highlight-color: transparent !important;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
 }
 
-/* 2. Убираем рамку фокуса для кнопок, ссылок и вкладок */
+
 button:focus, 
 a:focus, 
 input:focus,
@@ -5143,21 +5117,21 @@ input:focus,
 .mobile-nav__close:focus,
 .slider-btn:focus {
     outline: none !important;
-    box-shadow: none; /* на случай, если рамка сделана через тень */
+    box-shadow: none;
 }
 
-/* ========================================================= */
-/* ФИКС: КНОПКА ПОДДЕРЖКИ В ШТОРКЕ (ЦВЕТ СРАЗУ И НАВСЕГДА)    */
-/* ========================================================= */
 
-/* Полностью скрываем плавающую кнопку на мобильных устройствах */
+
+
+
+
 @media (max-width: 768px) {
     .support-button {
         display: none !important;
     }
 }
 
-/* Принудительно красим ссылку в любой стадии (новая, посещенная, активная) */
+
 body #mobileNav a.mobile-nav__support,
 body #mobileNav a.mobile-nav__support:link,
 body #mobileNav a.mobile-nav__support:visited,
@@ -5166,8 +5140,8 @@ body #mobileNav a.mobile-nav__support:active {
     align-items: center !important;
     gap: 10px !important;
     text-decoration: none !important;
-    color: var(--text-primary) !important; /* Цвет основного текста темы сразу */
-    font-size: 0.8rem !important;          /* Уменьшенный размер текста */
+    color: var(--text-primary) !important;
+    font-size: 0.8rem !important;         
     padding: 12px 0 !important;
     margin-top: 20px !important;
     border-top: 1px solid var(--border-light) !important;
@@ -5175,18 +5149,18 @@ body #mobileNav a.mobile-nav__support:active {
     opacity: 0.6 !important;
 }
 
-/* Отключаем полосочку слева, если ссылка наследует стили других пунктов меню */
+
 body #mobileNav a.mobile-nav__support::before {
     display: none !important;
 }
 
-/* Эффект прозрачности при наведении */
+
 body #mobileNav a.mobile-nav__support:hover {
     opacity: 0.7 !important;
     color: var(--text-primary) !important;
 }
 
-/* Сдвигаем и корректируем блок переключателя темы под кнопкой */
+
 .mobile-nav__theme {
     margin-top: 16px !important; 
     border-top: none !important;
