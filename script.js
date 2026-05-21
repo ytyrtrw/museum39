@@ -235,12 +235,17 @@ function initInlineVideo() {
             }
         }
 
-        const iframeSrc = `https://rutube.ru/play/embed/${videoId}?skinColor=e6830f`;
+        const iframeSrc = `https://rutube.ru/play/embed/${videoId}?skinColor=e6830f&autoplay=1&muted=1`;
 
         const preview = this.querySelector('.video-card__preview');
-        preview.innerHTML = `<iframe id="rutubeIframeInline" style="position:absolute; top:0; left:0; width:100%; height:100%; display:block; border:none;" src="${iframeSrc}" frameborder="0" allow="clipboard-write; encrypted-media" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>`;
+        preview.innerHTML = `<iframe id="rutubeIframeInline" style="position:absolute; top:0; left:0; width:100%; height:100%; display:block; border:none;" src="${iframeSrc}" frameborder="0" allow="clipboard-write; autoplay; encrypted-media" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>`;
         
         this.classList.add('is-playing');
+        
+        const iframe = document.getElementById('rutubeIframeInline');
+        iframe.onload = () => {
+            iframe.focus();
+        };
     });
 }
 
