@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Музей39</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" sizes="16x16" href="icon.png">
+</head>
+<body class="dark-theme"> <!-- Темная тема по умолчанию -->
+    <!-- ПРЕЛОАДЕР (ЗАГРУЗКА) -->
+    <div class="preloader" id="preloader">
+        <div class="preloader__container">
+            <!-- Колесо загрузки (спиннер) -->
+            <div class="preloader__spinner"></div>
+            <!-- Пульсирующий текст -->
+            <div class="preloader__text">Загрузка...</div>
+        </div>
+    </div>
+    <!-- ШАПКА -->
+    <header class="header">
+        <div class="container header__inner">
+            <a href="#" class="logo" id="logoHome"><b>Музей</b><span><b>39</b></span></a>
+            <nav class="nav" id="mainNav">
+                <a href="#home" class="nav__link active" data-page="home">Главная</a>
+                <a href="#gallery" class="nav__link" data-page="gallery">Галерея</a>
+                <a href="#videos" class="nav__link" data-page="videos">Экскурсия</a>
+            </nav>
+            <!-- ПЕРЕКЛЮЧАТЕЛЬ ТЕМЫ (Слайдер, а не кнопка) -->
+            <div class="theme-switcher">
+                <label class="theme-toggle" for="themeCheckbox">
+                    <input type="checkbox" id="themeCheckbox" class="theme-checkbox">
+                    <span class="theme-slider">
+                        <span class="theme-icon sun">☀️</span>
+                        <span class="theme-icon moon">🌙</span>
+                    </span>
+                </label>
+            </div>
+            <!-- ГАМБУРГЕР-КНОПКА (только на мобильных) -->
+            <button class="hamburger" id="hamburgerBtn" aria-label="Открыть меню" aria-expanded="false">
+                <span class="hamburger__line"></span>
+                <span class="hamburger__line"></span>
+                <span class="hamburger__line"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- МОБИЛЬНОЕ МЕНЮ-ШТОРКА -->
+    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+        <div class="mobile-nav__overlay" id="mobileNavOverlay"></div>
+        <div class="mobile-nav__menu">
+            <button class="mobile-nav__close" id="mobileNavClose" aria-label="Закрыть меню">✕</button>
+            <div class="mobile-nav__logo"><b>Музей</b><span><b>39</b></span></div>
+            <nav class="mobile-nav__links">
+                <a href="#home"    class="active" data-page="home">Главная</a>
+                <a href="#gallery"             data-page="gallery">Галерея</a>
+                <a href="#videos"              data-page="videos">Экскурсия</a>
+            </nav>
+            
+            <div class="mobile-nav__theme">
+                <span>Тема</span>
+                <label class="theme-toggle" for="themeCheckboxMobile">
+                    <input type="checkbox" id="themeCheckboxMobile" class="theme-checkbox theme-checkbox--mobile">
+                    <span class="theme-slider">
+                        <span class="theme-icon sun">☀️</span>
+                        <span class="theme-icon moon">🌙</span>
+                    </span>
+                </label>
+            </div>
+            <a href="https://t.me/ytyrtrw" target="_blank" class="mobile-nav__support">Сообщить об ошибке</a>
+        </div>
+    </div>
+
+    <!-- ДИНАМИЧЕСКАЯ ПАНЕЛЬ (РОТАТОР ФАКТОВ И ЦИТАТ) -->
+    <div class="quote-rotator" id="quoteRotator">
+        <div class="container quote-rotator__inner">
+            <!-- Слайд 1: Факт -->
+            <div class="quote-slide active">
+                <div class="quote-label">Факт:</div>
+                <div class="quote-text">Музей сооружен силами родителей, учителей и учащихся школы</div>
+            </div>
+            <!-- Слайд 2: Цитата -->
+            <div class="quote-slide">
+                <div class="quote-label">Цитата:</div>
+                <div class="quote-text">«Мы должны знать свою историю, историю своей семьи, своей страны. Без этого невозможно двигаться вперёд».</div>
+                <div class="quote-author">В.В. Путин</div>
+            </div>
+            <!-- Слайд 3: Факт -->
+            <div class="quote-slide">
+                <div class="quote-label">Факт:</div>
+                <div class="quote-text">Музей  занимает помещение общей площадью 24 кв. м. и состоит из одного полуизолированного экспозиционного зала</div>
+            </div>
+            <!-- Слайд 4: Цитата -->
+            <div class="quote-slide">
+                <div class="quote-label">Факт:</div>
+                <div class="quote-text">Имя Героя Советского Союза Крейзра Я.Г. было присвоено нашей школе 27 августа 2020 года</div>
+            </div>
+            <!-- Слайд 5: Факт -->
+            <div class="quote-slide">
+                <div class="quote-label">Факт:</div>
+                <div class="quote-text">Яков Григорьевич Крейзер получил звание Героя Советского Союза спустя месяц после начала Великой Отечественной войны.</div>
+            </div>
+            <!-- Слайд 6: Цитата -->
+            <div class="quote-slide">
+                <div class="quote-label">Цитата:</div>
+                <div class="quote-text">«Если драка неизбежна - бить надо первым».</div>
+                <div class="quote-author">В.В. Путин</div>
+            </div>
+                        <!-- Слайд 7: Факт о Крымской весне -->
+            <div class="quote-slide">
+                <div class="quote-label">Факт:</div>
+                <div class="quote-text">Большинство эксопзиций музея выполнены ручной работой.</div>
+            </div>
+            
+            <!-- Слайд 8: Цитата о войне -->
+            <div class="quote-slide">
+                <div class="quote-label">Цитата:</div>
+                <div class="quote-text">«Кто с мечом к нам придет, тот от меча и погибнет».</div>
+                <div class="quote-author">Александр Невский</div>
+            </div>
+            
+            <!-- Слайд 9: Факт о школе -->
+            <div class="quote-slide">
+                <div class="quote-label">Факт:</div>
+                <div class="quote-text">18 марта 2014 года Крым был возвращён в состав Российской Федерации.</div>
+            </div>
+            
+            <!-- Слайд 11: Факт о героях -->
+            <div class="quote-slide">
+                <div class="quote-label">Факт:</div>
+                <div class="quote-text">В музее хранятся письма с фронта, написанные солдатами своим родным в 1941-1945 годах.</div>
+            </div>
+        </div>
+    </div>
+    <!-- КНОПКА СВОРАЧИВАНИЯ ФАКТОВ -->
+    <div class="quote-toggle" id="quoteToggle">
+        <div class="quote-toggle__arrow">▲</div>
+    </div>
+
+    <!-- ЭЛЕМЕНТ ВЕЧНОГО ОГНЯ (ДЛЯ АНИМАЦИИ) -->
+    <div class="eternal-flame" id="eternalFlame"></div>
+
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <main id="mainContent">
+        <!-- ГЛАВНАЯ -->
+        <section id="homePage" class="page active">
+            <div class="container">
+                <div class="hero">
+                    <h1 class="hero__title fade-in"> <b>Память, которая объединяет поколения.</b></h1>
+                    <div class="hero__text fade-in" style="animation-delay: 0.1s;">
+                        Этот сайт создан для того, чтобы сохранить историю нашего школьного музея. Мы хотим, чтобы каждый ученик помнил подвиги предков и гордился героями современности. Здесь собраны экспонаты трёх выставок, фотографии и видеоэкскурсия.
+                    </div>
+
+                    <!-- Карточки 3 выставок -->
+                    <div class="exhibits-grid">
+                        <div class="exhibit-card" data-tab-main="0" data-tab-sub="0">
+                            <div class="exhibit-card__image" style="background-image: url('img/музей/2.jpg')"></div>
+                            <div class="exhibit-card__content">
+                                <h3 class="exhibit-card__title">Великая Отечественная война</h3>
+                                <p class="exhibit-card__desc">Крейзер Я.Г., путь 51-й армии и история полуострова.</p>
+                            </div>
+                        </div>
+                        <div class="exhibit-card" data-tab-main="1" data-tab-sub="0">
+                            <div class="exhibit-card__image" style="background-image: url('img/музей/3.jpg')"></div>
+                            <div class="exhibit-card__content">
+                                <h3 class="exhibit-card__title">Специальная военная операция</h3>
+                                <p class="exhibit-card__desc">Фотографии, документы, история подвига наших дней</p>
+                            </div>
+                        </div>
+                        <div class="exhibit-card" data-tab-main="2" data-tab-sub="0">
+                            <div class="exhibit-card__image" style="background-image: url('img/музей/4.jpg')"></div>
+                            <div class="exhibit-card__content">
+                                <h3 class="exhibit-card__title">Крымская весна</h3>
+                                <p class="exhibit-card__desc">Воссоединение Крыма с Россией, история полуострова</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ГАЛЕРЕЯ -->
+        <section id="galleryPage" class="page">
+            <div class="container">
+                <h2><b>Экспозиции музея</b></h2>
+                
+                <!-- Основные табы (3 раздела) -->
+                <div class="gallery-tabs main-tabs" id="galleryMainTabs">
+                    <button class="tab-btn active" data-main-tab="0">Великая Отечественная</button>
+                    <button class="tab-btn" data-main-tab="1">Специальная военная операция</button>
+                    <button class="tab-btn" data-main-tab="2">Крымская весна</button>
+                </div>
+
+                <!-- Панель ВОВ (с подтабами) -->
+                <div id="mainPanel0" class="main-panel active">
+                    <!-- ОПИСАНИЕ ВЕЛИКОЙ ОТЕЧЕСТВЕННОЙ ВОЙНЫ (ОБЩЕЕ) -->
+                    <div class="event-description fade-in">
+                        <h3 class="event-description__title">Великая Отечественная война</h3>
+                        <div class="event-description__preview">
+                            <p class="event-description__text">Великая Отечественная война началась 22 июня 1941 года с вторжения нацистской Германии и её союзников на территорию Советского Союза.</p>
+                        </div>
+                        <div class="event-description__full">
+                            <p class="event-description__text"> Завершилась 9 мая 1945 года полным разгромом нацистской Германии и подписанием акта о безоговорочной капитуляции. Война унесла жизни около 27 миллионов советских граждан, стала самым кровопролитным конфликтом в истории человечества. Ключевые сражения: битва за Москву, Сталинградская битва, Курская дуга, снятие блокады Ленинграда, Берлинская операция. В памяти народной навсегда останутся подвиги защитников Брестской крепости, панфиловцев, молодогвардейцев и миллионов других героев, отдавших жизни за свободу Родины.</p>
+                        </div>
+                        <button class="event-description__toggle">
+                            <span class="event-description__toggle-text">Развернуть</span>
+                            <span class="event-description__toggle-arrow">▼</span>
+                        </button>
+                    </div>
+
+                    <!-- ===== НОВЫЕ РАЗДЕЛЫ ДЛЯ ДИОРАМ ===== -->
+                    <!-- ВСТАВЬТЕ ЭТОТ КОД ПОСЛЕ ЗАКРЫВАЮЩЕГО ТЕГА </button> ОБЩЕГО ОПИСАНИЯ ВОВ 
+                        И ПЕРЕД ОТКРЫВАЮЩИМ ТЕГОМ <div class="sub-tabs"> -->
+                    <!-- РАЗДЕЛ 1: Контрнаступление под Москвой -->
+                    <div class="battle-section" style="margin-bottom: 40px;">
+                        <h3 class="event-description__title" style="font-size: 1.8rem;">Контрнаступление советских войск под Москвой</h3>
+                        <div class="gallery-slider" id="slider6">
+                            <div class="slider-container">
+                                <div class="slider-track" id="slideTrack6">
+                                    <!-- Слайд 1 -->
+                                    <div class="slider-item active-caption">
+                                        <img src="img/музей/вов/под мск/контрнаступление под москвой.jpg" class="slider-image" loading="lazy">
+                                        <div class="slider-overlay">
+                                            <div class="slider-caption">
+                                                <h3><b>Диорама «Контрнаступление советских войск под Москвой в декабре 1941 года»</b></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Слайд 2 -->
+                                    <div class="slider-item">
+                                        <img src="img/музей/вов/под мск/танк.jpg" class="slider-image" loading="lazy">
+                                        <div class="slider-overlay">
+                                            <div class="slider-caption">
+                                                <h3><b>Битва за Москву</b></h3>
+                                                <p>Перед посетителем — картина недавнего боя под Москвой: заснеженная дорога с противотанковыми заграждениями, разбитая техника и догорающие деревни.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Слайд 3 -->
+                                    <div class="slider-item">
+                                        <img src="img/музей/вов/под мск/бойцы.jpg" class="slider-image" loading="lazy">
+                                        <div class="slider-overlay">
+                                            <div class="slider-caption">
+                                                <h3><b>Бойцы</b></h3>
+                                                <p>В центре — бойцы сибирских и уральских частей для 1-й ударной армии: в полушубках, валенках, с новыми противотанковыми ружьями. В их шаге — уверенность и сила.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slider-controls">
+                                <button class="slider-btn prev-btn" onclick="slidePrev(6)">←</button>
+                                <button class="slider-btn next-btn" onclick="slideNext(6)">→</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- РАЗДЕЛ 2: Непокоренный Сталинград -->
+                    <div class="battle-section" style="margin-bottom: 40px;">
+                        <h3 class="event-description__title" style="font-size: 1.8rem;">Непокоренный Сталинград</h3>
+                        <div class="gallery-slider" id="slider7">
+                            <div class="slider-container">
+                                <div class="slider-track" id="slideTrack7">
+                                    <!-- Слайд 1 -->
+                                    <div class="slider-item active-caption">
+                                        <img src="img/музей/вов/сталинград/сталинград.jpg" class="slider-image" loading="lazy">
+                                        <div class="slider-overlay">
+                                            <div class="slider-caption">
+                                                <h3><b>Диорама «Непокоренный Сталинград»</b></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Слайд 2 -->
+                                    <div class="slider-item">
+                                        <img src="img/музей/вов/сталинград/2.jpg" class="slider-image" loading="lazy">
+                                        <div class="slider-overlay">
+                                            <div class="slider-caption">
+                                                <h3><b>Соединение войск</b></h3>
+                                                <p>Сталинградская битва (более 2 млн чел., 100 тыс. км², 200 дней). Сюжет диорамы — соединение фронтов 23 ноября 1942 года.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Слайд 3 -->
+                                    <div class="slider-item">
+                                        <img src="img/музей/вов/сталинград/1.jpg" class="slider-image" loading="lazy">
+                                        <div class="slider-overlay">
+                                            <div class="slider-caption">
+                                                <h3><b>Сергей Алёшков</b></h3>
+                                                <p>В правом углу — Сергей Алёшков, сын полка, самый юный защитник Сталинграда.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slider-controls">
+                                <button class="slider-btn prev-btn" onclick="slidePrev(7)">←</button>
+                                <button class="slider-btn next-btn" onclick="slideNext(7)">→</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- РАЗДЕЛ 3: Штурм Сапун-горы -->
+                    <div class="battle-section" style="margin-bottom: 40px;">
+                        <h3 class="event-description__title" style="font-size: 1.8rem;">Штурм Сапун-горы</h3>
+                        <div class="gallery-slider" id="slider8">
+                            <div class="slider-container">
+                                <div class="slider-track" id="slideTrack8">
+                                    <!-- Слайд 1 -->
+                                    <div class="slider-item active-caption">
+                                        <img src="img/музей/вов/сапун гора/сапун-гора.jpg" class="slider-image" loading="lazy">
+                                        <div class="slider-overlay">
+                                            <div class="slider-caption">
+                                                <h3><b>Диорама «Штурм Сапун-горы 7 мая 1944 года»</b></h3>
+                                                <p>Штурм был осуществлен силами 51-й армии и Приморской армии, которыми командовали генерал-лейтенанты Крейзер Я.Г. и Мельник К.С.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Слайд 2 -->
+                                    <div class="slider-item">
+                                        <img src="img/музей/вов/сапун гора/брустверы.jpg" class="slider-image" loading="lazy">
+                                        <div class="slider-overlay">
+                                            <div class="slider-caption">
+                                                <h3><b>Брустверы</b></h3>
+                                                <p>Брустверы просыпаны настоящей просеянной землей, в грунте присутствуют подлинные обломки укреплений, найденные на местах боев за Севастополь.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Слайд 3 -->
+                                    <div class="slider-item">
+                                        <img src="img/музей/вов/сапун гора/осколки.jpg" class="slider-image" loading="lazy">
+                                        <div class="slider-overlay">
+                                            <div class="slider-caption">
+                                                <h3><b>Осколки</b></h3>
+                                                <p>В создании предметного плана использованы подлинные осколки снарядов, остатки оружия и боевого снаряжения.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slider-controls">
+                                <button class="slider-btn prev-btn" onclick="slidePrev(8)">←</button>
+                                <button class="slider-btn next-btn" onclick="slideNext(8)">→</button>
+                            </div>
+                        </div>
+                    </div>                    
+                    <!-- Подтабы для ВОВ -->
+                    <div class="sub-tabs">
+                        <button class="sub-tab-btn active" data-sub-tab="0">Яков Крейзер</button>
+                        <button class="sub-tab-btn" data-sub-tab="1">Путь 51-й армии</button>
+                        <button class="sub-tab-btn" data-sub-tab="2">Крым в годы ВОВ</button>
+                    </div>
+
+                    <!-- Подпанель: Яков Крейзер -->
+                    <div id="wowSubPanel0" class="sub-panel active">
+                        <div class="event-description fade-in">
+                            <h3 class="event-description__title">Яков Григорьевич Крейзер</h3>
+                            <div class="event-description__preview">
+                                <p class="event-description__text">Яков Григорьевич Крейзер (1905-1969) — выдающийся советский военачальник, генерал армии, Герой Советского Союза. Имя которого носит наша школа.</p>
+                            </div>
+                            <div class="event-description__full">
+                                <p class="event-description__text">Родился 4 ноября 1905 года в Воронеже. В Красной Армии с 1921 года. Окончил пехотную школу, курсы «Выстрел» и Военную академию им. Фрунзе. Великую Отечественную войну встретил в должности командира 1-й мотострелковой дивизии. В июле 1941 года дивизия под его командованием остановила наступление танковой группы Гудериана на Березине. 22 июля 1941 года Я.Г. Крейзеру было присвоено звание Героя Советского Союза — это был первый случай присвоения звания Героя командиру стрелковой дивизии в годы войны. В дальнейшем командовал армиями на Западном, Юго-Западном, Сталинградском и 1-м Прибалтийском фронтах. Участвовал в обороне Москвы, Сталинградской битве, освобождении Прибалтики. После войны продолжал службу, был генерал-инспектором Министерства обороны. Награжден 5 орденами Ленина, 4 орденами Красного Знамени, орденами Суворова и Кутузова. Умер 29 ноября 1969 года.</p>
+                            </div>
+                            <button class="event-description__toggle">
+                                <span class="event-description__toggle-text">Развернуть</span>
+                                <span class="event-description__toggle-arrow">▼</span>
+                            </button>
+                        </div>
+                        
+                        <div class="gallery-slider" id="slider1">
+                            <div class="slider-container">
+                                <div class="slider-track" id="slideTrack1">
+                                    <!-- 5 слайдов Яков Крейзер -->
+                                    <div class="slider-item active-caption">
+                                        <img src="img/музей/Крейзер/крейзер.jpeg" alt="Яков Крейзер" class="slider-image" loading="lazy">
+                                        <div class="slider-overlay">
+                                            <div class="slider-caption">
+                                                <h3><b>Яков Григорьевич Крейзер</b></h3>
+                                                <p>Генерал армии, Герой Советского Союза. Командир 1-й мотострелковой дивизии.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slider-item">
+                                        <div class="vertical-image-container">
+                                            <div class="vertical-image-wrapper">
+                                                <img src="img/музей/Крейзер/шкаф.jpg" class="vertical-image" loading="lazy">
+                                            </div>
+                                        </div>
+                                        <div class="slider-overlay">
+                                            <div class="slider-caption">
+                                                <h3><b>Экспозиция «Я.Г. Крейзер-имя в истории Победы»</b></h3>
+                                            </div>
+                                        </div>
+                                        <!-- ВСПЛЫВАЮЩАЯ ПОДСКАЗКА -->
+                                        <div class="scroll-hint">↓ листай ↓</div>
+                                    </div>
+                                    <div class="slider-item">
+                                        <img src="img/музей/Крейзер/1.jpg" class="slider-image" loading="lazy">
+                                        <div class="slider-overlay">
+                                            <div class="slider-caption">
+                                                <h3><b>Документы</b></h3>
+                                                <p>На стендах и в витрине — биографические сведения, копии наградных документов, фото, воспоминания, письма жене Я.Г. Крейзера и другие материалы.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="slider-item">
+                                        <img src="img/музей/Крейзер/наступательная операция.jpg" class="slider-image" loading="lazy">
+                                        <div class="slider-overlay">
+                                            <div class="slider-caption">
+                                                <h3><b>Наступательная операция</b></h3>
+                                                <p>Макет «Крымская наступательная операция 4-го Украинского фронта и отдельной Приморской армии в 1944 году».</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="slider-item" id="slide4">
+                                        <div class="vertical-image-container">
+                                            <div class="vertical-image-wrapper">
+                                                <img src="img/музей/Крейзер/наградной лист.jpg" alt="Наградной лист" class="vertical-image" loading="lazy">
+                                            </div>
+                                        </div>
+                                            <div class="slider-overlay">
+                                                <div class="slider-caption">
+                                                    <h3>Наградной лист</h3>
+                                                    <div class="scroll-text" id="scrollText4">
+                                                        О присвоении звания «Герой Советского Союза»
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="slider-controls">
+                                <button class="slider-btn prev-btn" onclick="slidePrev(1)">←</button>
+                                <button class="slider-btn next-btn" onclick="slideNext(1)">→</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Подпанель: Путь 51-й армии -->
+                    <div id="wowSubPanel1" class="sub-panel">
+                        <div class="event-description fade-in">
+                            <h3 class="event-description__title">51-я армия: Боевой путь</h3>
+                            <div class="event-description__preview">
+                                <p class="event-description__text">51-я отдельная армия была сформирована в Крыму в августе 1941 года для обороны полуострова.</p>
+                            </div>
+                            <div class="event-description__full">
+                                <p class="event-description__text">51-я армия сыграла ключевую роль в обороне Крыма и Севастополя. Армия была сформирована на базе 9-го стрелкового корпуса и включала в себя несколько стрелковых и кавалерийских дивизий. В октябре 1941 года армия вела тяжелые оборонительные бои на Перекопском перешейке, сдерживая наступление 11-й немецкой армии Манштейна. После прорыва немецких войск в Крым, части 51-й армии отошли к Севастополю и Керчи. В декабре 1941 года армия участвовала в Керченско-Феодосийской десантной операции. В мае 1942 года понесла тяжелые потери в ходе обороны Керченского полуострова. Остатки армии были эвакуированы на Тамань. Впоследствии армия была переформирована и участвовала в Сталинградской битве, освобождении Донбасса, Крыма и Прибалтики. За годы войны 51-я армия прошла славный боевой путь от Крыма до Курляндии.</p>
+                            </div>
+                            <button class="event-description__toggle">
+                                <span class="event-description__toggle-text">Развернуть</span>
+                                <span class="event-description__toggle-arrow">▼</span>
+                            </button>
+                        </div>
+                        
+                        <div class="gallery-slider" id="slider4">
+                            <div class="slider-container">
+                                <div class="slider-track" id="slideTrack4">
+                                    <!-- 5 слайдов Путь 51-й армии -->
+                                    <div class="slider-item active-caption">
+                                        <img src="img/музей/51 армия/минометчики.jpg" class="slider-image" loading="lazy">
+                                        <div class="slider-overlay">
+                                            <div class="slider-caption">
+                                                <h3><b>Минометчики 51-й армии</b></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                <!-- 2 слайд: Оборона Перекопа (с вертикальной прокруткой) -->
+                <div class="slider-item">
+                    <div class="vertical-image-container">
+                        <div class="vertical-image-wrapper">
+                            <img src="img/музей/51 армия/общее.jpg" class="vertical-image" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="slider-overlay">
+                        <div class="slider-caption">
+                            <h3><b>Экспозиция 51-й армии</b></h3>
+                            <p>Сформированной 14 августа 1941 года из крымчан. Основу армии составили жители Симферополя.</p>
+                        </div>
+                    </div>
+                    <!-- ВСПЛЫВАЮЩАЯ ПОДСКАЗКА -->
+                    <div class="scroll-hint">↓ листай ↓</div>
+                </div>
+                                    <!-- 3 слайд: Газета (с вертикальной прокруткой) -->
+                <div class="slider-item">
+                    <div class="vertical-image-container">
+                        <div class="vertical-image-wrapper">
+                            <img src="img/музей/51 армия/газета.jpg" alt="Газета" class="vertical-image" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="slider-overlay">
+                        <div class="slider-caption">
+                            <h3><b>Газета</b></h3>
+                            <p>Копия ежедневной газеты 51-й армии «Сын Отечества» от 15 мая 1944 г.</p>
+                        </div>
+                    </div>
+                    <!-- ВСПЛЫВАЮЩАЯ ПОДСКАЗКА -->
+                    <div class="scroll-hint">↓ листай ↓</div>
+                </div>
+                                    <div class="slider-item">
+                                        <img src="img/музей/51 армия/герои.jpg" class="slider-image" loading="lazy">
+                                        <div class="slider-overlay">
+                                            <div class="slider-caption">
+                                                <h3><b>"Стена памяти"</b></h3>
+                                                <p>В нижней части стенда макет «Стена памяти», на которой расположены портреты всех главнокомандующих 51-й армии.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <div class="slider-item" id="slide5_army">
+                                    <div class="vertical-image-container">
+                                        <div class="vertical-image-wrapper">
+                                            <img src="img/музей/51 армия/док общ.jpg" alt="Документы 51-й армии" class="vertical-image" loading="lazy">
+                                        </div>
+                                    </div>
+                                    <div class="slider-overlay">
+                                        <div class="slider-caption">
+                                            <h3><b>Документы 51-й армии</b></h3>
+                                            <div class="scroll-text" id="scrollTextArmy5">
+                                                Приказы, наградные листы и фронтовые письма
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- ВСПЛЫВАЮЩАЯ ПОДСКАЗКА -->
+                                    <div class="scroll-hint">↓ листай ↓</div>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="slider-controls">
+                                <button class="slider-btn" onclick="slidePrev(4)">←</button>
+                                <button class="slider-btn" onclick="slideNext(4)">→</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Подпанель: Крым в годы ВОВ -->
+                    <div id="wowSubPanel2" class="sub-panel">
+                        <div class="event-description fade-in">
+                            <h3 class="event-description__title">Крым в годы Великой Отечественной</h3>
+                            <div class="event-description__preview">
+                                <p class="event-description__text">Крым стал ареной ожесточенных сражений с первых дней войны. Оборона Севастополя длилась 250 дней.</p>
+                            </div>
+                            <div class="event-description__full">
+                                <p class="event-description__text">Великая Отечественная война стала тяжелейшим испытанием для Крыма. Боевые действия на полуострове начались в сентябре 1941 года, когда немецкие войска ворвались в Крым. Героическая оборона Севастополя продолжалась 250 дней — с 30 октября 1941 по 4 июля 1942 года. Город держался, сковав крупные силы противника. В мае 1942 года произошла трагедия Керченского фронта, но борьба продолжалась. Керчь дважды была оккупирована, дважды освобождалась. В катакомбах Аджимушкая держали оборону советские воины. В апреле-мае 1944 года в ходе Крымской наступательной операции полуостров был полностью освобожден. За годы оккупации фашисты уничтожили более 130 тысяч мирных жителей, угнали на работу в Германию около 85 тысяч человек. Крым был награжден орденом Ленина, а города-герои Керчь и Севастополь носят это высокое звание.</p>
+                            </div>
+                            <button class="event-description__toggle">
+                                <span class="event-description__toggle-text">Развернуть</span>
+                                <span class="event-description__toggle-arrow">▼</span>
+                            </button>
+                        </div>
+                        
+                        <div class="gallery-slider" id="slider5">
+                            <div class="slider-container">
+                                <div class="slider-track" id="slideTrack5">
+                                    <!-- 5 слайдов Крым в годы ВОВ -->
+                                    <div class="slider-item active-caption">
+                                        <img src="img/музей/крым вов/памятник кораблям.jpg" class="slider-image" loading="lazy">
+                                        <div class="slider-overlay">
+                                            <div class="slider-caption">
+                                                <h3><b>Оборона Севастополя</b></h3>
+                                                <p>30 октября 1941 — 4 июля 1942. 250 дней мужества и героизма.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slider-item">
+                                        <img src="img/музей/крым вов/плакат.jpg" class="slider-image" loading="lazy">
+                                        <div class="slider-overlay">
+                                            <div class="slider-caption">
+                                                <h3><b>Плакат "Бессмертный полк"</b></h3>
+                                                <p>На плакате изображены герои СССР, России, участники ВОВ и уроженцы Крыма</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slider-item" id="slide5_crimea">
+                                        <div class="vertical-image-container">
+                                            <div class="vertical-image-wrapper">
+                                                <img src="img/музей/крым вов/шкаф.jpg" class="vertical-image" loading="lazy">
+                                            </div>
+                                        </div>
+                                        <div class="slider-overlay">
+                                            <div class="slider-caption">
+                                                <h3><b>Экспозиция "Крым в годы Великой Отечественной войны"</b></h3>
+                                                <p>Витрина «Наш город в годы великих испытаний» раскрывает темы первых дней войны, мобилизации, обороны Крыма, ужасов фашистской оккупации и борьбы с ней.</p>
+                                            </div>
+                                        </div>
+                                        <!-- ВСПЛЫВАЮЩАЯ ПОДСКАЗКА -->
+                                        <div class="scroll-hint">↓ листай ↓</div>
+                                    </div>
+                                    <div class="slider-item" id="slide4_crimea">
+                                        <div class="vertical-image-container">
+                                            <div class="vertical-image-wrapper">
+                                                <img src="img/музей/крым вов/плакат победа1.jpg" class="vertical-image" loading="lazy">
+                                            </div>
+                                        </div>
+                                        <div class="slider-overlay">
+                                            <div class="slider-caption">
+                                                <h3><b>Плакат "Победа будет за нами!"</b></h3>
+                                                <p>Копия плаката «Победа будет за нами!» Н. Самокиша, созданного в 1941 году в Симферополе и ставшего одним из первых агитационных плакатов Великой Отечественной войны.</p>
+                                            </div>
+                                        </div>
+                                        <!-- ВСПЛЫВАЮЩАЯ ПОДСКАЗКА -->
+                                        <div class="scroll-hint">↓ листай ↓</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slider-controls">
+                                <button class="slider-btn prev-btn" onclick="slidePrev(5)">←</button>
+                                <button class="slider-btn next-btn" onclick="slideNext(5)">→</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Панель СВО (с подтабами) -->
+                <div id="mainPanel1" class="main-panel">
+                    <!-- ОПИСАНИЕ СПЕЦИАЛЬНОЙ ВОЕННОЙ ОПЕРАЦИИ -->
+                    <div class="event-description fade-in">
+                        <h3 class="event-description__title">Специальная военная операция</h3>
+                        <div class="event-description__preview">
+                            <p class="event-description__text">Специальная военная операция началась 24 февраля 2022 года.</p>
+                        </div>
+                        <div class="event-description__full">
+                            <p class="event-description__text">Целями операции были объявлены защита населения Донбасса, демилитаризация и денацификация Украины. Конфликт стал продолжением противостояния, начавшегося в 2014 году после событий Евромайдана и воссоединения Крыма с Россией. В ходе операции российские военнослужащие проявляют мужество и героизм, освобождая города и населенные пункты. Многие бойцы удостоены государственных наград, в том числе звания Героя России. Особую роль играют военные корреспонденты, волонтеры и медики, которые ежедневно рискуют жизнями ради помощи фронту и мирному населению освобожденных территорий.</p>
+                        </div>
+                        <button class="event-description__toggle">
+                            <span class="event-description__toggle-text">Развернуть</span>
+                            <span class="event-description__toggle-arrow">▼</span>
+                        </button>
+                    </div>
+                    
+                    <div class="sub-tabs">
+                        <button class="sub-tab-btn active" data-sub-tab="0">Галерея СВО</button>
+                        <button class="sub-tab-btn" data-sub-tab="1">Герои школы</button>
+                    </div>
+
+                    <div id="subPanel0" class="sub-panel active">
+                        <div class="gallery-slider" id="slider2">
+                            <div class="slider-container">
+                                <div class="slider-track" id="slideTrack2">
+                                    <div class="slider-item active-caption">
+                                        <img src="img/музей/сво/1.jpg" class="slider-image" loading="lazy">
+                                        <div class="slider-overlay">
+                                            <div class="slider-caption">
+                                                <h3>Специальная военная операция</h3>
+                                                <p>Музей СВО находится в стадии наполнения. Количество экспонатов будет расти по мере поступления материалов с фронта.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slider-item">
+                                        <div class="vertical-image-container">
+                                            <div class="vertical-image-wrapper">
+                                                <img src="img/музей/сво/маникен.jpg" class="vertical-image" loading="lazy">
+                                            </div>
+                                        </div>
+
+                                        <div class="slider-overlay">
+                                            <div class="slider-caption">
+                                                <h3>Маникен</h3>
+                                                <p>Отец одного из учеников - участник СВО, предоставил свою форму нашему музею.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="scroll-hint">↓ листай ↓</div>
+                                    </div>
+                                    <div class="slider-item">
+                                        <img src="img/музей/сво/шкаф.jpg" class="slider-image" loading="lazy">
+                                        <div class="slider-overlay">
+                                            <div class="slider-caption">
+                                                <h3>Экспозиция "Специальная военная операция"</h3>
+                                                <p>На полках представлены предметы со специальной военной операции</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slider-item">
+                                        <div class="vertical-image-container">
+                                            <div class="vertical-image-wrapper">
+                                                <img src="img/музей/сво/стенд.jpg" class="vertical-image" loading="lazy">
+                                            </div>
+                                        </div>
+                                        <div class="slider-overlay">
+                                            <div class="slider-caption">
+                                                <h3>Герои России, участники СВО крымчане</h3>
+                                                <p></p>
+                                            </div>
+                                        </div>
+                                        <div class="scroll-hint">↓ листай ↓</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slider-controls">
+                                <button class="slider-btn" onclick="slidePrev(2)">←</button>
+                                <button class="slider-btn" onclick="slideNext(2)">→</button>
+                            </div>
+                        </div>
+                    </div>
+
+                                        <div id="subPanel1" class="sub-panel">
+                        <div class="heroes-grid">
+                            <div class="hero-card" 
+                                data-hero-name="Ковязин Михаил Викторович"
+                                data-hero-years="29.12.1987 - 06.11.2022"
+                                data-hero-description="С 1995 г. по 2005 г. учился в гимназии № 39. По окончанию школы учился в Таврическом колледже экономики и управления.
+                            С мая 2019 года проходил службу в войсковой части 12676 с. Перевальное на должности командира орудия гаубичной артиллерийской батареи, рядового. После ему было присвоено звание сержант.
+                            С 24 февраля 2022 года участвовал в Специальной военной операции в должности заместителя командира взвода, командира орудийного расчета батареи в составе 126-й отдельной бригады береговой обороны.
+                            Летом 2022 года 126-я бригада береговой обороны провела успешную военную операцию, за выполнение которой было присвоено звание гвардейской. Михаил Ковязин получил звание сержанта гвардии и был награжден правительственной наградой – знаком отличия ордена Святого Георгия – Георгиевским Крестом IV степени.
+                            22 сентября 2022 года сержант гвардии Ковязин Михаил получил тяжелые ранения и ушел из жизни 6 ноября 2022 года в военном госпитале им. Бурденко в г. Москва.
+                            За отвагу и героизм, проявленные при исполнении воинского долга, Указом президента России Ковязин Михаил Викторович награжден орденом «Мужества» посмертно.
+                            "
+                                data-hero-image="img/герои сво/Михаил Викторович.png">
+                                <img src="img/герои сво/Михаил Викторович.png" alt="Ковязин Михаил Викторович" class="hero-card__image" loading="lazy">
+                                <div class="hero-card__info">
+                                    <div class="hero-card__name">Ковязин Михаил Викторович</div>
+                                    <div class="hero-card__years">1987-2022</div>
+                                    <div class="hero-card__desc">Сержант гвардии, заместитель командира взвода. Награжден Георгиевским крестом IV степени и орденом Мужества (посмертно).</div>
+                                </div>
+                            </div>
+                            
+                            <div class="hero-card" 
+                                 data-hero-name="Прохоренков Евгений Михайлович"
+                                 data-hero-years="03.05.1993 – 07.08.2024"
+                                 data-hero-description="С 2000 г. по 2009 г. обучался в гимназии № 39. В 18 лет пошёл служить в армию, после окончания службы подписал контранкт. Много лет проработал в ФСИН Росии. Там ему присвоили позывной «Прохор». Позже Евгений перевлся в спецподразделение Крыма «Вектор», в составе которого принимал участие в заданиях и отличался смелостью, добротой и оптимизмом.
+                                С началом Специалльной военной операции на территории Украины, он заключил контракт в батальоне 810 отдельной гвардейской орденов Жукова и Ушакова бригады морской пехоты Черноморского флота. Принимал участие в боевых действиях в составе десантно-штурмовой роты. Получал дважды ранение на Херсонском направлении «Крынки», захватывал точки, участвовал в прямых перестрелках. Был награждён орденом Жукова, после чего стал командиром взвода. Так же заслужил медаль «За Отвагу».
+                                Его жизнь трагически оборвалась при выполнении воинского долга 7 августа 2024 года. Его взвод направили на Донецкое направление в село Желанное. 4 августа он прислал последнее сообщение родным о том, что идет на боевое задание. На задании ребята выполняли четкие задачи, эвакуировали мирных жителей. И шли вперед навстречу врагу. Когда уже было максимально сложно и опасно, Прохор принял решениевыводить всех своих ребят на эвакуацию. Он попал под артиллерийский обстрел, спасая своих товарищей.
+                                За отвагу и героизм, проявленные при исполнении воинского долга, Указом президента России Прохоренков Евгений Михайлович награждён орденом «Мужества»  посмертно.
+                                "
+                                 data-hero-image="img/герои сво/Евгений Михайлович.png">
+                                <img src="img/герои сво/Евгений Михайлович.png" alt="Прохоренков Евгений Михайлович" class="hero-card__image" loading="lazy">
+                                <div class="hero-card__info">
+                                    <div class="hero-card__name">Прохоренков Евгений Михайлович</div>
+                                    <div class="hero-card__years">03.05.1993 – 07.08.2024</div>
+                                    <div class="hero-card__desc">Служил в 810-й бригаде морской пехоты.</div>
+                                </div>
+                            </div>
+                            
+                            <div class="hero-card" 
+                                 data-hero-name="Сава Александр Евгеньевич"
+                                 data-hero-years="12.12.2001 - 09.10.2022"
+                                 data-hero-description="С 2008 г. по 2017 г. обучался в гимназии № 39. 
+                                С 2017 г. по 2021 г. учился в «Симферопольском техникуме железнодорожного транспорта и промышленности» по специальности техническая эксплуатация подъемно-транспортных, строительных, дорожных машин и оборудования.
+                                04 октября 2021 г. поступил на воинскую службу по контракту в 810-ю отдельную гвардейскую ордена Жукова бригаду морской пехоты, гаубично - артиллерийский дивизион Севастополя в звании Гвардии матрос
+                                С начала проведения Специальной военной операции, а именно с 26 февраля 2022 года, Александр, исполнявший обязанности заряжающего гаубицы, был отправлен на территорию Украины с целью защиты гражданского населения от националистических формирований. В составе 810-й бригады он принимал участие в освобождении таких городов, как Мелитополь, Бердянск, Волноваха и Мариуполь.
+                                В дальнейшем его боевой путь пролегал через Донецкую и Херсонскую области, где, к сожалению, жизнь Александра трагически оборвалась в возрасте 20 лет.
+                                Во время наступления на село Безыменное, расположенное рядом с Чкалово в Херсонской области, артиллерийский дивизион попал под вражеский огонь. Александр получил серьёзное ранение, однако, превозмогая боль, он оказывал помощь в эвакуации других пострадавших, пока не потерял сознание. Из-за значительной кровопотери его не успели доставить в медицинское учреждение.
+                                За отвагу и героизм, проявленные при исполнении воинского долга, Указом президента России Сава Александр Евгеньевич награждён медалью «За освобождение Мариуполя»  и орденом «Мужества»  посмертно.
+                                "
+                                 data-hero-image="img/герои сво/Александр Евгеньевич.jpg">
+                                <img src="img/герои сво/Александр Евгеньевич.jpg" alt="Сава Александр Евгеньевич" class="hero-card__image" loading="lazy">
+                                <div class="hero-card__info">
+                                    <div class="hero-card__name">Сава Александр Евгеньевич</div>
+                                    <div class="hero-card__years">12.12.2001- 09.10.2022</div>
+                                    <div class="hero-card__desc">Гвардии матрос, заряжающий гаубицы 810-й бригады морской пехоты. Участник освобождения Мариуполя. Награждён медалью «За освобождение Мариуполя» и орденом Мужества (посмертно).</div>
+                                </div>
+                            </div>
+                            
+                            <div class="hero-card" 
+                                 data-hero-name="Шведович Кирилл Юрьевич"
+                                 data-hero-years="23.01.1992 – 15.10.2022"
+                                 data-hero-description="С 2002 г. по 2007 г. обучался в гимназии № 39. После школы учился в автотранспортном техникуме. 
+                                С 2016 г. его призвали в ряды вооруженных сил Российской Федерации. Службу проходил на флоте, где получил военную специальность «сапер».
+                                В мае 2022 г. ушел добровольцем на фронт, подписав контракт с Министерством обороны России. Он выбрал один из самых не простых родов войск – реактивную артиллерию, где важны собранность, точность и оперативность.
+                                Кирилл воевал на Николаевском направлении в Херсонской области.
+                                15 октября 2022 года он уходил на боевое дежурство. Как обычно, позвонил маме, написал друзьям, пошутил, пообещал, что вечером напишет… Его «Град» отработал, как всегда, точно. Противник понес потери, была уничтожена вражеская техника. Но… прилетел гаубичный снаряд противника, который стал роковым… 
+                                В честь героя названа улица в микрорайоне «Залесье» в Симферополе.
+                                За отвагу и героизм, проявленные при исполнении воинского долга, Указом президента России Шведович Кирилл Юрьевич награждён орденом «Мужества»  посмертно.
+                                Приказом атамана городского казачьего общества «Станица Терская» за участие в Специальной военной операции и активные действия в борьбе с врагом Шведович Кирилл Юрьевич награжден медалью «За спецоперацию». В соответствии с решением Региональной Общественной Организации «Союз пограничников Крыма» за вклад в победу Кирилл награжден медалью «За боевые заслуги».
+                                "
+                                 data-hero-image="img/герои сво/Кирилл Юрьевич.png">
+                                <img src="img/герои сво/Кирилл Юрьевич.png" alt="Шведович Кирилл Юрьевич" class="hero-card__image" loading="lazy">
+                                <div class="hero-card__info">
+                                    <div class="hero-card__name">Шведович Кирилл Юрьевич</div>
+                                    <div class="hero-card__years">23.01.1992 – 15.10.2022</div>
+                                    <div class="hero-card__desc">Старший наводчик реактивной артиллерии. Награждён орденом Мужества (посмертно), медалями «За спецоперацию» и «За боевые заслуги». Его именем названа улица в Симферополе.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Панель Крымская весна -->
+                <div id="mainPanel2" class="main-panel">
+                    <!-- ОПИСАНИЕ КРЫМСКОЙ ВЕСНЫ -->
+                    <div class="event-description fade-in">
+                        <h3 class="event-description__title">Крымская весна</h3>
+                        <div class="event-description__preview">
+                            <p class="event-description__text">Крымская весна — исторические события февраля-марта 2014 года, когда после государственного переворота на Украине жители Крыма и Севастополя отказались признавать новую власть.</p>
+                        </div>
+                        <div class="event-description__full">
+                            <p class="event-description__text">16 марта 2014 года состоялся референдум о статусе полуострова, на котором 96,77% избирателей Крыма и 95,6% избирателей Севастополя проголосовали за воссоединение с Россией. 18 марта 2014 года был подписан договор о принятии Республики Крым и города Севастополя в состав Российской Федерации. Это событие стало восстановлением исторической справедливости и возвращением исконно русских земель домой. За годы в составе России полуостров преобразился: построен Крымский мост, новый аэропорт, трасса «Таврида», электростанции и множество социальных объектов.</p>
+                        </div>
+                        <button class="event-description__toggle">
+                            <span class="event-description__toggle-text">Развернуть</span>
+                            <span class="event-description__toggle-arrow">▼</span>
+                        </button>
+                    </div>
+                    
+                    <div class="gallery-slider" id="slider3">
+                        <div class="slider-container">
+                            <div class="slider-track" id="slideTrack3">
+                                <div class="slider-item active-caption">
+                                    <img src="img/музей/крымская весна/1.jpg" class="slider-image" loading="lazy">
+                                    <div class="slider-overlay">
+                                        <div class="slider-caption">
+                                            <h3><b>Референдум 2014 года</b></h3>
+                                            <p>16 марта 2014 года состоялся референдум о статусе Крыма. 96.77% проголосовали за воссоединение с Россией.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slider-item">
+                                        <div class="vertical-image-container">
+                                            <div class="vertical-image-wrapper">
+                                                <img src="img/музей/крымская весна/стенд1.jpg" class="vertical-image" loading="lazy">
+                                            </div>
+                                        </div>
+                                        <div class="slider-overlay">
+                                            <div class="slider-caption">
+                                                <h3><b>Плакат "Хроники Крымской весны"</b></h3>
+                                            </div>
+                                        </div>
+                                        <!-- ВСПЛЫВАЮЩАЯ ПОДСКАЗКА -->
+                                        <div class="scroll-hint">↓ листай ↓</div>
+                                    </div>
+                                <div class="slider-item">
+                                    <img src="img/музей/крымская весна/мост.jpg" class="slider-image" loading="lazy">
+                                    <div class="slider-overlay">
+                                        <div class="slider-caption">
+                                            <h3><b>Крымский мост</b></h3>
+                                            <p>Символ воссоединения. Самый длинный мост в России, соединивший полуостров с материком.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slider-item">
+                                    <img src="img/музей/крымская весна/аэропорт.jpg" class="slider-image" loading="lazy">
+                                    <div class="slider-overlay">
+                                        <div class="slider-caption">
+                                            <h3><b>Развитие полуострова</b></h3>
+                                            <p>Новые дороги, аэропорт, электростанции и социальные объекты.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slider-controls">
+                            <button class="slider-btn" onclick="slidePrev(3)">←</button>
+                            <button class="slider-btn" onclick="slideNext(3)">→</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ВИДЕО-ОТЗЫВЫ (6 ячеек) -->
+                <!-- ВИДЕОЭКСКУРСИЯ -->
+        <section id="videosPage" class="page">
+            <div class="container">
+                <h2><b>Видеоэкскурсия по музею</b></h2>
+                <div class="video-single" id="videoContainer">
+                    <div class="video-card" data-video="cd0698283a5c58a42a55b776a2368bf5/?p=lTbm6zRWGp9--rkudH8JVw&skinColor=8b7a6b">
+                        <div class="video-card__preview">
+                            <img src="img/музей/обложка.jpg" alt="Видеоэкскурсия" loading="lazy">
+                            <div class="play-icon">▶</div>
+                        </div>
+                        <div class="video-card__info">
+                            <div class="video-author">Видеоэкскурсия по музею</div>
+                            <div class="video-desc">Обзор экспозиций музея школы №39</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- КОНТАКТЫ -->
+    </main>
+
+    <!-- ПОДВАЛ -->
+    <footer class="footer">
+        <div class="container">
+            <p>Музей Школы-гимназии №39 им. Крейзера Я.Г.</p>
+        </div>
+    </footer>
+
+    <!-- МОДАЛЬНОЕ ОКНО ДЛЯ ВИДЕО -->
+
+        <!-- МОДАЛЬНОЕ ОКНО ДЛЯ ГЕРОЯ -->
+    <div class="hero-modal" id="heroModal">
+        <div class="hero-modal__overlay"></div>
+        <div class="hero-modal__content">
+            <span class="hero-modal__close">&times;</span>
+            <div class="hero-modal__inner">
+                <div class="hero-modal__image-container">
+                    <img src="" alt="Фото героя" class="hero-modal__image" id="heroModalImage">
+                </div>
+                <div class="hero-modal__info">
+                    <h2 class="hero-modal__title" id="heroModalTitle"></h2>
+                    <div class="hero-modal__years" id="heroModalYears"></div>
+                    <div class="hero-modal__description" id="heroModalDescription"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="orientation-prompt" id="orientationPrompt">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+        <h3>Пожалуйста, переверните устройство</h3>
+        <p>Для просмотра слайда во весь экран поверните телефон горизонтально.</p>
+        <button id="cancelFullscreenBtn" class="orientation-prompt__btn">Отмена</button>
+    </div>
+
+    <a href="https://t.me/ytyrtrw" target="_blank" class="support-button" id="supportButton">
+        <span class="support-icon">🤝</span>
+    </a>
+    <!-- ПОДКЛЮЧЕНИЕ JAVASCRIPT -->
+    
+    <script src="script.js"></script>
+</body>
+</html>
